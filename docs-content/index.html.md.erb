@@ -1,0 +1,74 @@
+---
+title: Event Alerts for PCF (Beta for Healthwatch Tile)
+owner: PCF Event Alerts
+---
+
+<p class="note warning">
+<strong>IMPORTANT! </strong>
+The Event Alerts for PCF tile is currently in beta and is intended for evaluation and test purposes only.
+Do not use this product in a PCF production environment.
+</p>
+
+This documentation describes Event Alerts for Pivotal Cloud Foundry (PCF). Event Alerts sends notifications
+via email to CF users.
+
+## <a id='overview'></a>Overview
+
+Event Alerts for PCF is a service that reads events from the firehose and turns them into email notifications
+sent to CF users.
+
+## <a id='features'></a>Key Features
+
+Event Alerts includes the following key features:
+
+* Send an email to a specific CF user.
+* Send emails to users within a specific CF space.
+
+## <a id="snapshot"></a>Product Snapshot
+
+The following table provides version and version-support information about Event Alerts for PCF.
+
+<table class="nice">
+    <th>Element</th>
+    <th>Details</th>
+    <tr>
+        <td>Tile version</td>
+        <td>v1.0.0</td>
+    </tr>
+    <tr>
+        <td>Release date</td>
+        <td>December 15, 2017</td>
+    </tr>
+    <tr>
+        <td>Compatible Ops Manager version(s)</td>
+        <td>v1.12.x</td>
+    </tr>
+    <tr>
+        <td>Compatible Elastic Runtime version(s)</td>
+        <td>v1.12.x</td>
+    </tr>
+    <tr>
+        <td>IaaS support</td>
+        <td>AWS, Azure, GCP, OpenStack, and vSphere</td>
+    </tr>
+</table>
+
+## <a id="reqs"></a>Requirements
+
+Event Alerts for PCF has the following requirements:
+
++ Pivotal Elastic Runtime v1.12.x deployed with the following:
+  + `Email Notifications` enabled with SMTP server configured.
+  + `Notifications Errand` and `Notifications UI Errand` run.
+
+## <a id="limitations"></a>Limitations
+
+Event Alerts for PCF has the following limitations:
+
++ Only sends email notifications on Healthwatch events.
++ Only sends emails to cf users.
+
+## <a id="feedback"></a>Feedback
+
+If you have a feature request, questions, or information about a bug, please email
+[Pivotal Cloud Foundry Feedback](mailto:pivotal-cf-feedback@pivotal.io) list or send an email to `pcf-event-alerts at pivotal.io`.

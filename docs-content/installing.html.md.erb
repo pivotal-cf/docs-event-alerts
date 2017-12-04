@@ -1,0 +1,113 @@
+---
+title: Installing and Configuring Event Alerts for PCF
+owner: PCF Event Alerts
+---
+
+This topic describes how to install and configure Event Alerts for PCF.
+
+##<a id='install'></a> Install and Configure Event Alerts for PCF
+
+1. Download the product file from Pivotal Network.
+
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+
+1. Under the **Import a Product** button, click **+** next to the version number of Event Alerts for PCF.
+This adds the tile to your staging area.
+
+1. Click the newly added **Event Alerts for PCF** tile.
+
+## <a id="config-tile"></a> Configure Event Alerts for PCF
+
+Follow the steps below to configure the Event Alerts for PCF tile.
+
+###<a id="azs"></a> Configure AZs and Networks
+
+Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts and to select networks.
+
+1. Click **Assign AZs and Networks**.
+
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Place singleton jobs in</strong></td>
+        <td>Select the AZ for executing the Event Alerts Errands. All Event Alerts components execute as apps and do not require VMs.</td>
+      </tr>
+      <tr><td><strong>Balance other jobs in</strong></td>
+          <td>Ignore this field.</td>
+      </tr>
+      <tr>
+        <td><strong>Network</strong></td>
+        <td>Select a subnet for the Event Alerts Errands. Use the subnet that includes the Elastic Runtime component VMs.</td>
+      </tr>
+    </table>
+
+    <p class="note"><strong>NOTE</strong>: The network selected is used only by Errand VMs.</p>
+
+1. Click **Save**.
+
+###<a id="event-alerts-alerting-config"></a> Configure Event Alerts Alerting Options
+
+1. Click **Alerting**.
+
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Page user name</strong></td>
+        <td>This field is required. This username must specify a valid cf user configured with a valid email address. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/uaa/uaa-user-management.html">Creating and Managing Users with the UAA CLI (UAAC)</a> for instructions on user creation.</td>
+      </tr>
+      <tr>
+        <td><strong>Page space</strong></td>
+        <td>This field is required. Any user that is a member of this space will receieve email notifications. The space name can be an existing space in the <code>system</code> org. If the space does not exist, it will be created when Event Alerts for PCF is installed. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/adminguide/cli-user-management.html">Creating and Managing Users with the cf CLI</a> for instructions on how to assign a user to a space.</td>
+      </tr>
+    </table>
+1. Click **Save**.
+
+###<a id="event-alerts-scale-config"></a> Configure Event Alerts Scale Options
+
+1. Click **Scale**.
+
+1. Configure the fields as follows:
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Nozzle Instance Count</strong></td>
+        <td>The field is required. This defines the number of instances of the Event Alerts app. We recommend a minimum of 5 instances.</td>
+      </tr>
+    </table>
+1. Click **Save**.
+
+###<a id="resources"></a> Verify Resource Config
+
+1. Click **Resource Config**.
+
+1. Verify the settings.
+
+1. Click **Save**.
+
+###<a id="stemcell"></a> Verify Stemcell Version
+
+1. Click **Stemcell**.
+
+1. Verify the settings. If you need to import a new stemcell version, see the _Download Stemcell_ section for your IaaS:
+   [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
+   [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell),
+   [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
+   [vSphere](https://docs.pivotal.io/pivotalcf/customizing/config-er-vmware.html#stemcell).
+
+1. Click **Save**.
+
+1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install Event Alerts for PCF tile.
