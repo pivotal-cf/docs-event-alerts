@@ -1,15 +1,27 @@
 ---
-title: Using YOUR-PRODUCT-NAME
-owner: Partners
+title: Using Event Alerts for PCF
+owner: PCF Event Alerts
 ---
 
-This topic describes how to use YOUR-PRODUCT-NAME.
+This topic describes how to use Event Alerts for PCF.
 
-##<a id='using'></a> Using YOUR-PRODUCT-NAME
+##<a id='subscribe'></a> Subscribing to Notifications
 
-**This topic should include any instructions for how to use the service or dashboard created by the tile. 
-Give procedures for how to perform the different functions offered by your product and provide screenshots where necessary.** 
+In order to receive notifications for Healthwatch events, a user must be configured in the `Alerting` configuration. The default user is `admin`. See [Configure Event Alerts Alerting Options](/myservice/installing.html#event-alerts-alerting-config).
 
-**You can also use this section to include information about Architecture and Troubleshooting for known errors. 
-If you include a Troubleshooting section, follow the Symptom/Explanation format used in the 
-[Okta Troubleshooting](http://docs.pivotal.io/p-identity/okta/troubleshooting.html) topic**.
+If notifications need to be sent to multiple users, CF users can be added to the configured space.
+By default this space is `event-alerts-users`.  See [Configure Event Alerts Alerting Options](/myservice/installing.html#event-alerts-alerting-config).
+
+To add a user to a space, assign a space role to that user as described [here](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
+
+<p class="note"><strong>NOTE</strong>: With the default <a href="/myservice/installing.html#event-alerts-alerting-config">Alerting</a> settings, the <code>admin</code> user will receive all notifications twice as the admin user account is the default user that notifications are sent to and is also used to create the space for paging (and is a user in that space as a result).</p>
+
+
+##<a id='unsubscribe'></a> Unsubscribing from Notifications
+
+There are two ways to unsubscribe from emails:
+
++ Click the unsubscribe link in the email
++ Go to `https://notifications-ui.<system_domain>`
+
+The user who wants to unsubscribe will need to log in with their CF user credentials.
