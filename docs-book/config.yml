@@ -16,11 +16,11 @@ public_host: hello
 sections:
   - repository:
       name: docs-content
-    directory: myservice
-    subnav_template: myservice_subnav.erb       
+    directory: event-alerts-for-pcf
+    subnav_template: event-alerts-for-pcf_subnav.erb
 
 template_variables:                             # optional
 
-book_title: Partner Services Template
+book_title: Event Alerts for PCF
 book_repo: docs-book
 layout_repo: docs-layout
