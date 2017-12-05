@@ -13,7 +13,7 @@ The `event-alerts` app functions as a nozzle for the firehose and sends email no
 ##<a id='metrics'></a> Event Alerts Metrics
 
 Event Alerts has a metrics endpoint for troubleshooting at `https://event-alerts.{domain}/debug/metrics`.
-In order to get a full view of metrics across the multiple instances of `event-alerts`, [The App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin)
+In order to get a full view of metrics across the multiple instances of `event-alerts`, [the App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin)
 can be used.
 
 The following table contains a subset of the Event Alerts app metrics:
@@ -62,4 +62,4 @@ If the value is zero, the last attempt to communicate with CF Notifications fail
 1. Event Alerts keeps getting disconnected from the firehose. This can occur if Event Alerts is a slow consumer, Loggregator will
 close the firehose connection. This can be mitigated by increasing the number of `event-alerts` instances.
 
-1. Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. Please refer to the Loggregator Service Level Agreement (SLA) and documentation for more details.
+1. Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. Please refer to the [Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html) for correctly configuring Loggregator.
