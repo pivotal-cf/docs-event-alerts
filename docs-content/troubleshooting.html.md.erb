@@ -1,0 +1,65 @@
+---
+title: Troubleshooting Event Alerts for PCF
+owner: PCF Event Alerts
+---
+
+This topic describes how to troubleshoot Event Alerts for PCF.
+
+##<a id='overview'></a> Overview
+
+Event Alerts for PCF is deployed as a CF app. By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
+The `event-alerts` app functions as a nozzle for the firehose and sends email notifications to both a user and space with information regarding matched events.
+
+##<a id='metrics'></a> Event Alerts Metrics
+
+Event Alerts has a metrics endpoint for troubleshooting at `https://event-alerts.{domain}/debug/metrics`.
+In order to get a full view of metrics across the multiple instances of `event-alerts`, [The App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin)
+can be used.
+
+The following table contains a subset of the Event Alerts app metrics:
+
+<table class="nice">
+  <tr>
+    <th>Metric Name</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><strong>nozzle.dropped</strong></td>
+    <td>Event Alerts is dropping metrics from the firehose to keep from reading too slowly. If this number is increasing, increase the number of <code>event-alerts</code> instances.</td>
+  </tr>
+  <tr>
+    <td><strong>notifier.dropped</strong></td>
+    <td>CF Notifications is slowly processing email requests.</td>
+  </tr>
+  <tr>
+    <td><strong>notifier.userEmails.failed</strong></td>
+    <td>An email was unable to be sent to the user.</td>
+  </tr>
+  <tr>
+    <td><strong>notifier.spaceEmails.failed</strong></td>
+    <td>An email was unable to be sent to the space.</td>
+  </tr>
+  <tr>
+    <td><strong>ingress.received</strong></td>
+    <td>The total number of firehose metrics received.</td>
+  </tr>
+  <tr>
+    <td><strong>ingress.matched</strong></td>
+    <td>The number of firehose metrics corresponding to predefined events.</td>
+  </tr>
+</table>
+
+<p class="note warning">
+<strong>IMPORTANT! </strong>
+If an email cannot be sent to both the user and the space, the event is dropped without retrying.
+</p>
+
+##<a id='errors'></a> Known Error Cases
+
+1. Event Alerts is unable to communicate with CF Notifications. This can be verified by checking the `eva.notificationsStatus` app metric.
+If the value is zero, the last attempt to communicate with CF Notifications failed.
+
+1. Event Alerts keeps getting disconnected from the firehose. This can occur if Event Alerts is a slow consumer, Loggregator will
+close the firehose connection. This can be mitigated by increasing the number of `event-alerts` instances.
+
+1. Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. Please refer to the Loggregator Service Level Agreement (SLA) and documentation for more details.
