@@ -1,24 +1,24 @@
 ---
-title: Installing and Configuring Event Alerts for PCF
+title: Installing and Configuring PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to install and configure Event Alerts for PCF.
+This topic describes how to install and configure PCF Event Alerts.
 
-##<a id='install'></a> Install and Configure Event Alerts for PCF
+##<a id='install'></a> Install and Configure PCF Event Alerts
 
 1. Download the product file from Pivotal Network.
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
-1. Under the **Import a Product** button, click **+** next to the version number of Event Alerts for PCF.
+1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
 
-1. Click the newly added **Event Alerts for PCF** tile.
+1. Click the newly added **PCF Event Alerts** tile.
 
-## <a id="config-tile"></a> Configure Event Alerts for PCF
+## <a id="config-tile"></a> Configure PCF Event Alerts
 
-Follow the steps below to configure the Event Alerts for PCF tile.
+Follow the steps below to configure the PCF Event Alerts tile.
 
 ###<a id="azs"></a> Configure AZs and Networks
 
@@ -67,7 +67,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
       </tr>
       <tr>
         <td><strong>Page space</strong></td>
-        <td>This field is required. Any user that is a member of this space will receieve email notifications. The space name can be an existing space in the <code>system</code> org. If the space does not exist, it will be created when Event Alerts for PCF is installed. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/adminguide/cli-user-management.html">Creating and Managing Users with the cf CLI</a> for instructions on how to assign a user to a space.<br/><br/>The default value is <strong><code>event-alerts-users</code></strong></td>
+        <td>This field is required. Any user that is a member of this space will receieve email notifications. The space name can be an existing space in the <code>system</code> org. If the space does not exist, it will be created when PCF Event Alerts is installed. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/adminguide/cli-user-management.html">Creating and Managing Users with the cf CLI</a> for instructions on how to assign a user to a space.<br/><br/>The default value is <strong><code>event-alerts-users</code></strong></td>
       </tr>
     </table>
 1. Click **Save**.
@@ -110,4 +110,4 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install Event Alerts for PCF tile.
+1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install PCF Event Alerts tile.
