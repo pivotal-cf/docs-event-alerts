@@ -7,14 +7,14 @@ This topic describes how to use Event Alerts for PCF.
 
 ##<a id='subscribe'></a> Subscribing to Notifications
 
-In order to receive notifications for Healthwatch events, a user must be configured in the `Alerting` configuration. The default user is `admin`. See [Configure Event Alerts Alerting Options](/myservice/installing.html#event-alerts-alerting-config).
+In order to receive notifications for Healthwatch events, a user must be configured in the `Alerting` configuration. The default user is `admin`. See [Configure Event Alerts Alerting Options](/event-alerts-for-pcf/installing.html#event-alerts-alerting-config).
 
 If notifications need to be sent to multiple users, CF users can be added to the configured space.
-By default this space is `event-alerts-users`.  See [Configure Event Alerts Alerting Options](/myservice/installing.html#event-alerts-alerting-config).
+By default this space is `event-alerts-users`.  See [Configure Event Alerts Alerting Options](/event-alerts-for-pcf/installing.html#event-alerts-alerting-config).
 
 To add a user to a space, assign a space role to that user as described [here](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
 
-<p class="note"><strong>NOTE</strong>: With the default <a href="/myservice/installing.html#event-alerts-alerting-config">Alerting</a> settings, the <code>admin</code> user will receive all notifications twice as the admin user account is the default user that notifications are sent to and is also used to create the space for paging (and is a user in that space as a result).</p>
+<p class="note"><strong>NOTE</strong>: With the default <a href="/event-alerts-for-pcf/installing.html#event-alerts-alerting-config">Alerting</a> settings, the <code>admin</code> user will receive all notifications twice as the admin user account is the default user that notifications are sent to and is also used to create the space for paging (and is a user in that space as a result).</p>
 
 ##<a id='unsubscribe'></a> Unsubscribing from Notifications
 
