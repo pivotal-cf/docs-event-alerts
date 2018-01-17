@@ -1,0 +1,38 @@
+---
+title: PCF Event Alerts Plugin (Beta)
+owner: PCF Event Alerts
+---
+
+This topic describes how to use PCF Event Alerts Plugin.
+
+##<a id='purpose'></a> Purpose
+
+The PCF Event Alerts Plugin is in beta and is currently under development.
+
+The CLI plugin can be used to subscribe to topics that are published by a variety of publishers such as Healthwatch.
+
+##<a id='installing'></a> Installing
+
+```
+# To add the CF-Community plugin repo (if not already added)
+cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+
+# To install latest release
+cf install-plugin -r CF-Community "PCF Event Alerts (Beta)"
+```
+
+##<a id='uninstalling'></a> Uninstalling
+
+```
+cf uninstall-plugin EventAlertsPlugin
+```
+
+##<a id='uninstalling'></a> Features
+
+```
+# To list all plugin commands
+cf plugins | grep EventAlertsPlugin
+
+# Individual plugin command help
+cf <command> --help
+```
