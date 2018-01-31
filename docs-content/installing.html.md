@@ -109,11 +109,11 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
 
 1. Return to Ops Manager Alerting tab and paste in the webhook URL
 
-![Installation step 1](img/install-step-11.png)  
+![Installation step 1](img/install-step-11a.png)  
 
 1. Click **Save** (you should see a _Successfully updated settings_ message)
 
-![Installation step 1](img/install-step-12.png)  
+![Installation step 1](img/install-step-11b.png)  
 
 
 
