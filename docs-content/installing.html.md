@@ -7,6 +7,16 @@ This topic describes how to install and configure PCF Event Alerts.
 
 ##<a id='install'></a> Install and Configure PCF Event Alerts
 
+###Prerequisites
+
+1. PCF 1.12+ environment with Ops Manager
+1. PCF MySQL v2 tile installed in Ops Manager or external MySQL credentials
+1. Slack account for optional slack integration
+
+
+###Installation
+
+
 1. Download the product file from Pivotal Network.
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
@@ -14,7 +24,13 @@ This topic describes how to install and configure PCF Event Alerts.
 1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
 
-1. Click the newly added **PCF Event Alerts** tile.
+![Installation step 1](img/install-step-1.png)
+
+1. Click the newly added **PCF Event Alerts** tile in orange.
+
+![Installation step 1](img/install-step-2.png)
+
+
 
 ## <a id="config-tile"></a> Configure PCF Event Alerts
 
@@ -25,6 +41,7 @@ Follow the steps below to configure the PCF Event Alerts tile.
 Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts and to select networks.
 
 1. Click **Assign AZs and Networks**.
+![Installation step 1](img/install-step-3.png)
 
 1. Configure the fields as follows:
 
@@ -48,55 +65,58 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
 
     <p class="note"><strong>NOTE</strong>: The network selected is used only by Errand VMs.</p>
 
+![Installation step 1](img/install-step-4.png)
+
 1. Click **Save**.
+
+![Installation step 1](img/install-step-5.png)
+
+
 
 ###<a id="event-alerts-alerting-config"></a> Configure Event Alerts Alerting Options
 
 1. Click **Alerting**.
 
-1. Configure the fields as follows:
+![Installation step 1](img/install-step-6.png)
 
-    <table class="nice">
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><strong>Page user name</strong></td>
-        <td>This field is required. This username must specify a valid cf user configured with a valid email address. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/uaa/uaa-user-management.html">Creating and Managing Users with the UAA CLI (UAAC)</a> for instructions on user creation.<br/><br/>The default value is <strong><code>admin</code></strong></td>
-      </tr>
-      <tr>
-        <td><strong>Page space</strong></td>
-        <td>This field is required. Any user that is a member of this space will receieve email notifications. The space name can be an existing space in the <code>system</code> org. If the space does not exist, it will be created when PCF Event Alerts is installed. Please refer to <a target="_blank" href="https://docs.cloudfoundry.org/adminguide/cli-user-management.html">Creating and Managing Users with the cf CLI</a> for instructions on how to assign a user to a space.<br/><br/>The default value is <strong><code>event-alerts-users</code></strong></td>
-      </tr>
-    </table>
-1. Click **Save**.
+1. Create an incoming webhook in slack: <https://my.slack.com/services/new/incoming-webhook/>
 
-###<a id="event-alerts-scale-config"></a> Configure Event Alerts Scale Options
+![Installation step 1](img/install-step-8.png)
 
-1. Click **Scale**.
+1. Click the _**create a new channel**_ link
 
-1. Configure the fields as follows:
+![Installation step 1](img/install-step-9.png)
 
-    <table class="nice">
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><strong>Nozzle Instance Count</strong></td>
-        <td>The field is required. This defines the number of instances of the Event Alerts app. We recommend a minimum of 5 instances.</td>
-      </tr>
-    </table>
-1. Click **Save**.
+1. Fill in the name and purpose then click the _Create Channel_ button
+1. Scroll down and fill in the desccriptive Label and Customize Name fields
 
-###<a id="resources"></a> Verify Resource Config
+![Installation step 1](img/install-step-10a.png)  
 
-1. Click **Resource Config**.
+1. Scroll to the bottom of the page
+![Installation step 1](img/install-step-10b.png)  
 
-1. Verify the settings.
+1. Click **Save** (you should see _Your settings have been saved_)
 
-1. Click **Save**.
+![Installation step 1](img/install-step-10c.png)  
+
+1. Scroll to the Webhook URL section
+
+![Installation step 1](img/install-step-10d.png)  
+
+1. Click **Copy URL** (you should see _Copied!_)
+
+![Installation step 1](img/install-step-10e.png)  
+
+1. Return to Ops Manager Alerting tab and paste in the webhook URL
+
+![Installation step 1](img/install-step-11.png)  
+
+1. Click **Save** (you should see a _Successfully updated settings_ message)
+
+![Installation step 1](img/install-step-12.png)  
+
+
+
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
