@@ -115,8 +115,75 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
 
 ![Installation step 1](img/install-step-11b.png)  
 
+###<a id="mysql"></a> Configure Event Alerts MySQL Settings
 
+<p class="note">
+    <strong>Note</strong>
+    : PCF Event Alerts can either use the Pivotal MySQLv2 service broker or an external database for
+    database configuration.
+</p>
 
+#### Using the MySQL Service
+1. Click **MySQL Settings**.
+
+1. Select either **MySQL Service** (for use with the Pivotal MySQLv2 tile)
+
+1. Configure the field as follows:
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>Service plan to use for the MySQL service</strong></td>
+        <td>The Pivotal MySQLv2 service plan to be used when creating a database. See the <a href="http://docs.pivotal.io/p-mysql/2-0/install-config.html#-configure-active-service-plans">MySQLv2 tile docs</a> for more information.</td>
+      </tr>
+    </table>
+
+1. Click Save (you should see a Successfully updated settings message)
+
+#### Using an External MySQL Database
+1. Click **MySQL Settings**.
+
+1. Select **External** (for an external to PCF database)
+
+1. Configure the field as follows:
+
+    <table class="nice">
+      <tr>
+        <th>Field</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><strong>MySQL Host</strong></td>
+        <td>The external MySQL database host address.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Port</strong></td>
+        <td>The external MySQL database port.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Username</strong></td>
+        <td>The external MySQL database username. See note <a href="/event-alerts-for-pcf/installing.html#mysql-username">below</a> for required privileges.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Password</strong></td>
+        <td>The external MySQL database password.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Database</strong></td>
+        <td>The external MySQL database name.</td>
+      </tr>
+    </table>
+
+    <p class="note" id="mysql-username">
+        <strong>Note</strong>
+        : The mysql user needs the following privileges for the PCF Event Alerts database:
+        ALTER, CREATE, DELETE, DROP, INDEX, INSERT, LOCK TABLES, REFERENCES, SELECT, UPDATE
+    </p>
+
+1. Click Save (you should see a Successfully updated settings message)
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
