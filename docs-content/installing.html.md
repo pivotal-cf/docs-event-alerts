@@ -137,7 +137,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
       </tr>
       <tr>
         <td><strong>Service plan to use for the MySQL service</strong></td>
-        <td>The Pivotal MySQLv2 service plan to be used when creating a database. See the <a href="http://docs.pivotal.io/p-mysql/2-0/install-config.html#-configure-active-service-plans">MySQLv2 tile docs</a> for more information.</td>
+        <td>The Pivotal MySQLv2 service plan to be used when creating a database. See the <a href="http://docs.pivotal.io/p-mysql/2-0/install-config.html#active">MySQLv2 tile docs</a> for more information.</td>
       </tr>
     </table>
 
