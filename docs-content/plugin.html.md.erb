@@ -13,26 +13,23 @@ The CLI plugin can be used to subscribe to topics that are published by a variet
 
 ##<a id='installing'></a> Installing
 
+Download and install the plugin from Pivotal Network. It is currently only available to admins.
 ```
-# To add the CF-Community plugin repo (if not already added)
-cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
-
-# To install latest release
-cf install-plugin -r CF-Community event-alerts
+cf install-plugin <path-to-binary>
 ```
 
 ##<a id='uninstalling'></a> Uninstalling
 
 ```
-cf uninstall-plugin EventAlertsPlugin
+cf uninstall-plugin event-alerts
 ```
 
 ##<a id='uninstalling'></a> Features
 
 ```
 # To list all plugin commands
-cf plugins | grep EventAlertsPlugin
+cf plugins | grep event-alerts
 
 # Individual plugin command help
-cf <command> --help
+cf help <command>
 ```
