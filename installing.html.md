@@ -167,7 +167,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
         <td><strong>MySQL Username</strong></td>
         <td>The external MySQL database username. <strong>Note that if the username that created the database is deleted, 
          MySQL will error due to trigger ownership (MySQL error 1449)</strong>. The username used to connect 
-         to the database may be changed, but the original user can not be deleted. See note <a href="/event-alerts-for-pcf/installing.html#mysql-username">below</a> for required privileges.</td>
+         to the database may be changed, but the original user can not be deleted. See note <a href="#mysql-username">below</a> for required privileges.</td>
       </tr>
       <tr>
         <td><strong>MySQL Password</strong></td>
