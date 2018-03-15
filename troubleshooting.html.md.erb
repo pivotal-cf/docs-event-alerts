@@ -50,16 +50,24 @@ The following table contains a subset of the Event Alerts app metrics:
 </table>
 
 <p class="note warning">
-<strong>IMPORTANT! </strong>
+<strong>WARNING: </strong>
 If an email cannot be sent to both the user and the space, the event is dropped without retrying.
 </p>
 
-##<a id='errors'></a> Known Error Cases
+##<a id="errors"></a> Known Error Cases
 
-1. Event Alerts is unable to communicate with CF Notifications. This can be verified by checking the `eva.notificationsStatus` app metric.
+###<a id="failed-communication"></a> Event Alerts is Unable to Communicate with CF Notifications
+
+To verify this, check the `eva.notificationsStatus` app metric.
 If the value is zero, the last attempt to communicate with CF Notifications failed.
 
-1. Event Alerts keeps getting disconnected from the firehose. This can occur if Event Alerts is a slow consumer, Loggregator will
+###<a id="disconnected"></a> Event Alerts keeps getting disconnected from the firehose. 
+
+This can occur if Event Alerts is a slow consumer, Loggregator will
 close the firehose connection. This can be mitigated by increasing the number of `event-alerts` instances.
 
-1. Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. Please refer to the [Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html) for correctly configuring Loggregator.
+###<a id="metrics-dropped"></a> Firehose Metrics are Dropped
+Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. 
+Please refer to the 
+[Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html) 
+for correctly configuring Loggregator.
