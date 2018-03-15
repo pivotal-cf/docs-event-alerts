@@ -9,8 +9,8 @@ This topic describes how to install and configure PCF Event Alerts.
 
 You must have the following in order to install PCF Event Alerts:
 
-* A Pivotal Cloud Foundry (PCF) deployment v1.12 or later with Ops Manager installed
-* [MySQL for Pivotal Cloud Foundry (PCF) v2.1](https://docs.pivotal.io/p-mysql/2-1/index.html) or later, or external MySQL credentials
+* Ops Manager and Pivotal Application Service (PAS) v2.1 or later 
+* MySQL for Pivotal Cloud Foundry (PCF) v2.3 or later, or external MySQL credentials
 * (Optional) Slack account for Slack integration
 
 ##<a id='install'></a> Download and Install the Tile
@@ -56,7 +56,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
     </tr>
     <tr>
       <td><strong>Network</strong></td>
-      <td>Select a subnet for the PCF Event Alerts errands. Use the subnet that includes the Pivotal Application Service (PAS) (or Elastic Runtime) component VMs.
+      <td>Select a subnet for the PCF Event Alerts errands. Use the subnet that includes the Pivotal Application Service (PAS) component VMs.
       <p class="note"><strong>Note</strong>: The network selected is used only by errand VMs.</p>
       </td>
     </tr>
@@ -104,7 +104,7 @@ Follow the steps below to configure MySQL settings.
 
 PCF Event Alerts can either use the MySQL for PCF v2 service or an external database.
 
-To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.1 or later. For more information, see the MySQL for PCF v2.1 [documentation](https://docs.pivotal.io/p-mysql/2-1/).
+To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.3 or later. 
 
 #### Use the MySQL for PCF v2 Service
 
