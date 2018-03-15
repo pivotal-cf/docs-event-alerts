@@ -5,43 +5,121 @@ owner: PCF Event Alerts
 
 This topic describes how to install and configure PCF Event Alerts.
 
-##<a id='install'></a> Install and Configure PCF Event Alerts
+##<a id='prereqs'></a> Prerequisites
 
-###Prerequisites
+You must have the following in order to install PCF Event Alerts:
 
-1. PCF 1.12+ environment with Ops Manager
-1. PCF MySQL v2 tile installed in Ops Manager or external MySQL credentials
-1. Slack account for optional slack integration
+* A Pivotal Cloud Foundry (PCF) deployment v1.12 or later with Ops Manager installed
+* [MySQL for Pivotal Cloud Foundry (PCF) v2.1](https://docs.pivotal.io/p-mysql/2-1/index.html) or later, or external MySQL credentials
+* (Optional) Slack account for Slack integration
 
+##<a id='install'></a> Download and Install the Tile
 
-###Installation
+Follow the stops below to download and install the PCF Event Alerts tile:
 
-
-1. Download the product file from Pivotal Network.
+1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
 
 1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
 
-![Installation step 1](img/install-step-1.png)
+    ![Adding the Tile to the Ops Manager Installation Dashboard](images/opsman.png)
 
-1. Click the newly added **PCF Event Alerts** tile in orange.
+1. Click the newly added **PCF Event Alerts** tile in orange to open its configuration panes.
 
-![Installation step 1](img/install-step-2.png)
+    ![Configuration Panes](images/config-panes.png)
 
+## <a id="config-tile"></a> Configure the Tile
 
+Follow the stops below to configure the PCF Event Alerts tile.
 
-## <a id="config-tile"></a> Configure PCF Event Alerts
+### <a id="azs"></a> Configure AZs and Networks
 
-Follow the steps below to configure the PCF Event Alerts tile.
-
-###<a id="azs"></a> Configure AZs and Networks
-
-Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts and to select networks.
+Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Alerts and to select networks.
 
 1. Click **Assign AZs and Networks**.
-![Installation step 1](img/install-step-3.png)
+  ![AZ and Network Assignments Section](images/azs-and-network.png)
+
+1. Configure the fields as follows:
+  <table class="nice">
+    <tr>
+      <th>Field</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><strong>Place singleton jobs in</strong></td>
+      <td>Select the AZ for executing the PCF Event Alerts errands. PCF Event Alerts components execute as apps and do not require VMs.</td>
+    </tr>
+    <tr><td><strong>Balance other jobs in</strong></td>
+        <td>Ignore this field.</td>
+    </tr>
+    <tr>
+      <td><strong>Network</strong></td>
+      <td>Select a subnet for the PCF Event Alerts errands. Use the subnet that includes the Pivotal Application Service (PAS) (or Elastic Runtime) component VMs.
+      <p class="note"><strong>Note</strong>: The network selected is used only by errand VMs.</p>
+      </td>
+    </tr>
+  </table>
+1. Click **Save**.
+
+### <a id="event-alerts-alerting-config"></a> (Optional) Configure Alerting Settings
+
+Follow the steps below to optionally configure Slack integration.
+
+1. Click **Alerting**.
+
+1. Navigate to the Slack Incoming WebHooks page at `YOUR-SLACK-DOMAIN/services/new/incoming-webhook`. For example, `https://my.slack.com/services/new/incoming-webhook/`. 
+  ![Slack Incoming WebHooks Page](images/slack-incoming-webhook.png)
+
+1. Click the **create a new channel** link.
+  ![Slack Create a Channel Page](images/slack-create-channel.png)
+
+1. Under **Name**, enter a name for the new channel where the alerts will appear.
+
+1. Optionally add a **Purpose** for the channel and users to **Send invites to**.
+
+1. Click **Create Channel**.
+
+1. In the next page, optionally enter a **Descriptive Label** and choose the username that posts the integration under **Customize Name**.
+  ![Slack Add Descriptive Label and Customize Name](images/slack-final-settings.png)
+
+1. Click **Save**. 
+
+1. Scroll to the **Webhook URL** section.
+  ![Slack Webhook URL](images/slack-webhook-url.png)
+
+1. Click **Copy URL**.
+
+1. Return to the Alerting Settings section of PCF Event Alerts.
+  ![Alerting Settings Section](images/alerting-settings.png)
+
+1. Under **Slack Webhook for All Events**, paste in the copied webhook URL.
+
+1. Click **Save**. 
+
+###<a id="mysql"></a> Configure MySQL Settings
+
+Follow the steps below to configure MySQL settings. 
+
+PCF Event Alerts can either use the MySQL for PCF v2 service or an external database.
+
+To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.1 or later. For more information, see the MySQL for PCF v2.1 [documentation](https://docs.pivotal.io/p-mysql/2-1/).
+
+#### Use the MySQL for PCF v2 Service
+
+1. Click **MySQL Settings**.
+
+1. Select **MySQL Service** and enter the service plan to use. For example, `db-small`.
+  ![MySQL Settings Service Option](images/mysql-settings-service.png)
+
+1. Click **Save**.
+
+#### Use an External MySQL Database
+
+1. Click **MySQL Settings**.
+
+1. Select **External**.
 
 1. Configure the fields as follows:
 
@@ -51,152 +129,44 @@ Follow the steps below to choose an Availability Zone (AZ) to run Event Alerts a
         <th>Description</th>
       </tr>
       <tr>
-        <td><strong>Place singleton jobs in</strong></td>
-        <td>Select the AZ for executing the Event Alerts Errands. All Event Alerts components execute as apps and do not require VMs.</td>
-      </tr>
-      <tr><td><strong>Balance other jobs in</strong></td>
-          <td>Ignore this field.</td>
-      </tr>
-      <tr>
-        <td><strong>Network</strong></td>
-        <td>Select a subnet for the Event Alerts Errands. Use the subnet that includes the Elastic Runtime component VMs.</td>
-      </tr>
-    </table>
-
-    <p class="note"><strong>NOTE</strong>: The network selected is used only by Errand VMs.</p>
-
-![Installation step 1](img/install-step-4.png)
-
-1. Click **Save**.
-
-![Installation step 1](img/install-step-5.png)
-
-
-
-###<a id="event-alerts-alerting-config"></a> Configure Event Alerts Alerting Options
-
-1. Click **Alerting**.
-
-![Installation step 1](img/install-step-6.png)
-
-1. Create an incoming webhook in slack: <https://my.slack.com/services/new/incoming-webhook/>
-
-![Installation step 1](img/install-step-8.png)
-
-1. Click the _**create a new channel**_ link
-
-![Installation step 1](img/install-step-9.png)
-
-1. Fill in the name and purpose then click the _Create Channel_ button
-1. Scroll down and fill in the desccriptive Label and Customize Name fields
-
-![Installation step 1](img/install-step-10a.png)  
-
-1. Scroll to the bottom of the page
-![Installation step 1](img/install-step-10b.png)  
-
-1. Click **Save** (you should see _Your settings have been saved_)
-
-![Installation step 1](img/install-step-10c.png)  
-
-1. Scroll to the Webhook URL section
-
-![Installation step 1](img/install-step-10d.png)  
-
-1. Click **Copy URL** (you should see _Copied!_)
-
-![Installation step 1](img/install-step-10e.png)  
-
-1. Return to Ops Manager Alerting tab and paste in the webhook URL
-
-![Installation step 1](img/install-step-11a.png)  
-
-1. Click **Save** (you should see a _Successfully updated settings_ message)
-
-![Installation step 1](img/install-step-11b.png)  
-
-###<a id="mysql"></a> Configure Event Alerts MySQL Settings
-
-<p class="note">
-    <strong>Note</strong>
-    : PCF Event Alerts can either use the Pivotal MySQLv2 service broker or an external database for
-    database configuration.
-</p>
-
-#### Using the MySQL Service
-1. Click **MySQL Settings**.
-
-1. Select either **MySQL Service** (for use with the Pivotal MySQLv2 tile)
-
-1. Configure the field as follows:
-
-    <table class="nice">
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
-        <td><strong>Service plan to use for the MySQL service</strong></td>
-        <td>The Pivotal MySQLv2 service plan to be used when creating a database. See the <a href="http://docs.pivotal.io/p-mysql/2-0/install-config.html#active">MySQLv2 tile docs</a> for more information.</td>
-      </tr>
-    </table>
-
-1. Click Save (you should see a Successfully updated settings message)
-
-#### Using an External MySQL Database
-1. Click **MySQL Settings**.
-
-1. Select **External** (for an external to PCF database)
-
-1. Configure the field as follows:
-
-    <table class="nice">
-      <tr>
-        <th>Field</th>
-        <th>Description</th>
-      </tr>
-      <tr>
         <td><strong>MySQL Host</strong></td>
-        <td>The external MySQL database host address.</td>
+        <td>Enter the external MySQL database host address.</td>
       </tr>
       <tr>
         <td><strong>MySQL Port</strong></td>
-        <td>The external MySQL database port.</td>
+        <td>Enter the external MySQL database port.</td>
       </tr>
       <tr>
         <td><strong>MySQL Username</strong></td>
-        <td>The external MySQL database username. <strong>Note that if the username that created the database is deleted, 
-         MySQL will error due to trigger ownership (MySQL error 1449)</strong>. The username used to connect 
-         to the database may be changed, but the original user can not be deleted. See note <a href="#mysql-username">below</a> for required privileges.</td>
-      </tr>
+        <td>
+        Enter the external MySQL database username.<br>
+        The user must have the following privileges for the PCF Event Alerts database:
+        <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>, <code>INSERT</code>, <code>LOCK TABLES</code>, <code>REFERENCES</code>, <code>SELECT</code>, <code>UPDATE</code>.
+        <p class="note warning"><strong>WARNING</strong>: Do not delete the user that connects to the database. You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL will error out.
+         </p> 
       <tr>
         <td><strong>MySQL Password</strong></td>
-        <td>The external MySQL database password.</td>
+        <td>Enter the external MySQL database password.</td>
       </tr>
       <tr>
         <td><strong>MySQL Database</strong></td>
-        <td>The external MySQL database name.</td>
+        <td>Enter the external MySQL database name that PCF Event Alerts will use.</td>
       </tr>
     </table>
 
-    <p class="note" id="mysql-username">
-        <strong>Note</strong>
-        : The mysql user needs the following privileges for the PCF Event Alerts database:
-        ALTER, CREATE, DELETE, DROP, INDEX, INSERT, LOCK TABLES, REFERENCES, SELECT, UPDATE
-    </p>
-
-1. Click Save (you should see a Successfully updated settings message)
+1. Click **Save**. 
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
 1. Click **Stemcell**.
 
-1. Verify the settings. If you need to import a new stemcell version, see the _Download Stemcell_ section for your IaaS:
-   [AWS](https://docs.pivotal.io/pivotalcf/customizing/cloudform-er-config.html#stemcell),
-   [Azure](https://docs.pivotal.io/pivotalcf/customizing/azure-er-config.html#stemcell),
-   [GCP](https://docs.pivotal.io/pivotalcf/customizing/gcp-er-config.html#stemcell), or
-   [vSphere](https://docs.pivotal.io/pivotalcf/customizing/config-er-vmware.html#stemcell).
+1. Verify the settings. If PCF Event Alerts cannot detect a stemcell `.tgz` file, the following message displays:
+    ![Stemcell Section](images/stemcell.png)
+    If you need to upload a stemcell, perform the following steps:
+      1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
+      1. Download the appropriate stemcell version targeted for your IaaS.
+      1. Return to the **Stemcell** section and click **Import Stemcell** to import the downloaded stemcell `.tgz` file.
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply changes** to install PCF Event Alerts tile.
+1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install the PCF Event Alerts tile.
