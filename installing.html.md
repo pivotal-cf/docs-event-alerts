@@ -75,11 +75,11 @@ Follow the steps below to optionally configure Slack integration.
 
 1. Under **Name**, enter a name for the new channel where the alerts will appear.
 
-1. Optionally add a **Purpose** for the channel and users to **Send invites to**.
+1. (Optional) Add a **Purpose** for the channel and users to **Send invites to**.
 
 1. Click **Create Channel**.
 
-1. In the next page, optionally enter a **Descriptive Label** and choose the username that posts the integration under **Customize Name**.
+1. (Optional) In the next page, enter a **Descriptive Label** and choose the username that posts the integration under **Customize Name**.
   ![Slack Add Descriptive Label and Customize Name](images/slack-final-settings.png)
 
 1. Click **Save**. 
@@ -106,6 +106,9 @@ To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.3 
 
 #### Use the MySQL for PCF v2 Service
 
+If you have MySQL for PCF v2.3 or later installed and want to use it for PCF Event Alerts,
+follow the steps below.
+
 1. Click **MySQL Settings**.
 
 1. Select **MySQL Service** and enter the service plan to use. For example, `db-small`.
@@ -114,6 +117,8 @@ To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.3 
 1. Click **Save**.
 
 #### Use an External MySQL Database
+
+If you want to use an external database for PCF Event Alerts, follow the steps below.
 
 1. Click **MySQL Settings**.
 
@@ -139,8 +144,10 @@ To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.3 
         <td>
         Enter the external MySQL database username.<br>
         The user must have the following privileges for the PCF Event Alerts database:
-        <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>, <code>INSERT</code>, <code>LOCK TABLES</code>, <code>REFERENCES</code>, <code>SELECT</code>, <code>UPDATE</code>.
-        <p class="note warning"><strong>WARNING</strong>: Do not delete the user that connects to the database. You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL will error out.
+        <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>, 
+        <code>INSERT</code>, <code>LOCK TABLES</code>, <code>REFERENCES</code>, <code>SELECT</code>, and <code>UPDATE</code>.
+        <p class="note warning"><strong>WARNING</strong>: Do not delete the user that connects to the database.
+           You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL will error out.
          </p> 
       <tr>
         <td><strong>MySQL Password</strong></td>
