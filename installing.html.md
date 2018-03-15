@@ -24,8 +24,6 @@ Follow the stops below to download and install the PCF Event Alerts tile:
 1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
 
-    ![Adding the Tile to the Ops Manager Installation Dashboard](images/opsman.png)
-
 1. Click the newly added **PCF Event Alerts** tile in orange to open its configuration panes.
 
     ![Configuration Panes](images/config-panes.png)
