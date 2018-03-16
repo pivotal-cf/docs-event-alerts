@@ -3,24 +3,33 @@ title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to use PCF Event Alerts.
+This topic describes how users receive or unsubscribe from PCF Event Alerts.
 
-##<a id='subscribe'></a> Subscribing to Notifications
+##<a id='subscribe'></a> Send Notifications
 
-In order to receive notifications for Healthwatch events, a user must be configured in the `Alerting` configuration. The default user is `admin`. See [Configure Event Alerts Alerting Options](installing.html#event-alerts-alerting-config).
+In order to send notifications to a user for Healthwatch events, you must configure a user in the Alerting configuration. 
+The default user is `admin`. 
 
-If notifications need to be sent to multiple users, CF users can be added to the configured space.
-By default this space is `event-alerts-users`.  See [Configure Event Alerts Alerting Options](installing.html#event-alerts-alerting-config).
+If you want to send notifications to multiple users, you can add CF users to the configured space.
+By default this space is `event-alerts-users`.  
 
-To add a user to a space, assign a space role to that user as described [here](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
+To add a user to a space, assign a space role to that user. 
+For information on the roles, see [App Space Roles](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
 
-<p class="note"><strong>NOTE</strong>: With the default <a href="installing.html#event-alerts-alerting-config">Alerting</a> settings, the <code>admin</code> user will receive all notifications twice as the admin user account is the default user that notifications are sent to and is also used to create the space for paging (and is a user in that space as a result).</p>
+<p class="note"><strong>NOTE</strong>: With the default alert settings, the admin user receives all 
+notifications twice. This is because the admin user account is the default user for notifications, 
+and is also used to create the space for paging (and therefore is a user in that space). 
+</p>
 
-##<a id='unsubscribe'></a> Unsubscribing from Notifications
+For more information on alerting settings, see [(Optional) Configure Alerting Settings](installing.html#event-alerts-alerting-config).
 
-There are two ways to unsubscribe from emails:
 
-+ Click the unsubscribe link in the email
-+ Go to `https://notifications-ui.<system_domain>`
+##<a id='unsubscribe'></a> Unsubscribe from Notifications
 
-The user who wants to unsubscribe will need to log in with their CF user credentials.
+To unsubscribe from notifications, do the following:
+
+1. Log in with your CF user credentials.
+1. Do one of the following:
+	* Click the unsubscribe link in the email.
+	* Go to `https://notifications-ui.SYSTEM_DOMAIN` and unsubcribe from that page.
+
