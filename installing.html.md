@@ -47,14 +47,16 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
     </tr>
     <tr>
       <td><strong>Place singleton jobs in</strong></td>
-      <td>Select the AZ for executing the PCF Event Alerts errands. PCF Event Alerts components execute as apps and do not require VMs.</td>
+      <td>Select the AZ for executing the PCF Event Alerts errands.
+          PCF Event Alerts components execute as apps and do not require VMs.</td>
     </tr>
     <tr><td><strong>Balance other jobs in</strong></td>
         <td>Ignore this field.</td>
     </tr>
     <tr>
       <td><strong>Network</strong></td>
-      <td>Select a subnet for the PCF Event Alerts errands. Use the subnet that includes the Pivotal Application Service (PAS) component VMs.
+      <td>Select a subnet for the PCF Event Alerts errands.
+          Use the subnet that includes the Pivotal Application Service (PAS) component VMs.
       <p class="note"><strong>Note</strong>: The network selected is used only by errand VMs.</p>
       </td>
     </tr>
@@ -67,7 +69,8 @@ Follow the steps below to optionally configure Slack integration.
 
 1. Click **Alerting**.
 
-1. Navigate to the Slack Incoming WebHooks page at `YOUR-SLACK-DOMAIN/services/new/incoming-webhook`. For example, `https://my.slack.com/services/new/incoming-webhook/`. 
+1. Navigate to the Slack Incoming WebHooks page at `YOUR-SLACK-DOMAIN/services/new/incoming-webhook`.
+   For example, `https://my.slack.com/services/new/incoming-webhook/`. 
   ![Slack Incoming WebHooks Page](images/slack-incoming-webhook.png)
 
 1. Click the **create a new channel** link.
@@ -79,7 +82,8 @@ Follow the steps below to optionally configure Slack integration.
 
 1. Click **Create Channel**.
 
-1. (Optional) In the next page, enter a **Descriptive Label** and choose the username that posts the integration under **Customize Name**.
+1. (Optional) In the next page, enter a **Descriptive Label** and
+   choose the username that posts the integration under **Customize Name**.
   ![Slack Add Descriptive Label and Customize Name](images/slack-final-settings.png)
 
 1. Click **Save**. 
@@ -165,12 +169,12 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 
 1. Click **Stemcell**.
 
-1. Verify the settings. If PCF Event Alerts cannot detect a stemcell `.tgz` file, the following message displays:
+1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, the following message displays:
     ![Stemcell Section](images/stemcell.png)
     If you need to upload a stemcell, perform the following steps:
       1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
       1. Download the appropriate stemcell version targeted for your IaaS.
-      1. Return to the **Stemcell** section and click **Import Stemcell** to import the downloaded stemcell `.tgz` file.
+      1. Return to the **Stemcell** section and click **Import Stemcell** to import the downloaded stemcell TGZ file.
 
 1. Click **Save**.
 
