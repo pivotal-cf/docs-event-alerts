@@ -3,26 +3,25 @@ title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how users receive or unsubscribe from PCF Event Alerts.
+This topic describes how users receive and unsubscribe from Pivotal Cloud Foundry (PCF) Event Alerts.
 
 ##<a id='subscribe'></a> Send Notifications
 
-In order to send notifications to a user for Healthwatch events, you must configure a user in the Alerting configuration. 
+To send notifications to a user for Healthwatch events, you must configure a user in the Alerting configuration. 
 The default user is `admin`. 
 
 If you want to send notifications to multiple users, you can add CF users to the configured space.
-By default this space is `event-alerts-users`.  
+By default, this space is `event-alerts-users`.  
 
 To add a user to a space, assign a space role to that user. 
 For information on the roles, see [App Space Roles](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
 
-<p class="note"><strong>NOTE</strong>: With the default alert settings, the admin user receives all 
+<p class="note"><strong>Note</strong>: With the default alert settings, the admin user receives all 
 notifications twice. This is because the admin user account is the default user for notifications, 
-and is also used to create the space for paging (and therefore is a user in that space). 
+and is also used to create the space for paging and is, therefore, a user in that space. 
 </p>
 
-For more information on alerting settings, see [(Optional) Configure Alerting Settings](installing.html#event-alerts-alerting-config).
-
+For more information about alerting settings, see [(Optional) Configure Alerting Settings](installing.html#event-alerts-alerting-config).
 
 ##<a id='unsubscribe'></a> Unsubscribe from Notifications
 
@@ -31,5 +30,5 @@ To unsubscribe from notifications, do the following:
 1. Log in with your CF user credentials.
 1. Do one of the following:
 	* Click the unsubscribe link in the email.
-	* Go to `https://notifications-ui.SYSTEM_DOMAIN` and unsubcribe from that page.
+	* Go to `https://notifications-ui.SYSTEM-DOMAIN` and unsubcribe from that page.
 
