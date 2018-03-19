@@ -3,18 +3,20 @@ title: Troubleshooting PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to troubleshoot PCF Event Alerts.
+This topic describes how to troubleshoot Pivotal Cloud Foundry (PCF) Event Alerts.
 
 ##<a id='overview'></a> Overview
 
-PCF Event Alerts is deployed as a CF app. By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
-The `event-alerts` app functions as a nozzle for the firehose and sends email notifications to both a user and space with information regarding matched events.
+PCF Event Alerts is deployed as a CF app. 
+By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
+The `event-alerts` app functions as a nozzle for the firehose and sends email 
+notifications to both a user and space with information regarding matched events.
 
 ##<a id='metrics'></a> Event Alerts Metrics
 
 Event Alerts has a metrics endpoint for troubleshooting at `https://event-alerts.{domain}/debug/metrics`.
-In order to get a full view of metrics across the multiple instances of `event-alerts`, [the App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin)
-can be used.
+For a full view of metrics across multiple instances of `event-alerts`, 
+use the [App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin).
 
 The following table contains a subset of the Event Alerts app metrics:
 
@@ -25,19 +27,20 @@ The following table contains a subset of the Event Alerts app metrics:
   </tr>
   <tr>
     <td><strong>nozzle.dropped</strong></td>
-    <td>Event Alerts is dropping metrics from the firehose to keep from reading too slowly. If this number is increasing, increase the number of <code>event-alerts</code> instances.</td>
+    <td>Event Alerts is dropping metrics from the firehose to avoid reading too slowly. 
+      If this number is increasing, increase the number of <code>event-alerts</code> instances.</td>
   </tr>
   <tr>
     <td><strong>notifier.dropped</strong></td>
-    <td>CF Notifications is slowly processing email requests.</td>
+    <td>CF Notifications is processing email requests slowly.</td>
   </tr>
   <tr>
     <td><strong>notifier.userEmails.failed</strong></td>
-    <td>An email was unable to be sent to the user.</td>
+    <td>Event Alerts was unable to send an email to the user.</td>
   </tr>
   <tr>
     <td><strong>notifier.spaceEmails.failed</strong></td>
-    <td>An email was unable to be sent to the space.</td>
+    <td>Event Alerts was unable to send an email to the space.</td>
   </tr>
   <tr>
     <td><strong>ingress.received</strong></td>
@@ -54,20 +57,22 @@ The following table contains a subset of the Event Alerts app metrics:
 If an email cannot be sent to both the user and the space, the event is dropped without retrying.
 </p>
 
-##<a id="errors"></a> Known Error Cases
+##<a id="errors"></a> Troubleshooting Errors
+
+You might experience the following when using Event Alerts.
 
 ###<a id="failed-communication"></a> Event Alerts is Unable to Communicate with CF Notifications
 
 To verify this, check the `eva.notificationsStatus` app metric.
 If the value is zero, the last attempt to communicate with CF Notifications failed.
 
-###<a id="disconnected"></a> Event Alerts keeps getting disconnected from the firehose. 
+###<a id="disconnected"></a> Event Alerts Repeatedly Disconnects from the Firehose
 
-This can occur if Event Alerts is a slow consumer, Loggregator will
-close the firehose connection. This can be mitigated by increasing the number of `event-alerts` instances.
+If Event Alerts is a slow consumer, Loggregator closes the firehose connection. 
+To mitigate this, increase the number of `event-alerts` instances.
 
-###<a id="metrics-dropped"></a> Firehose Metrics are Dropped
-Firehose metrics may be dropped before reaching Event Alerts due to the firehose reliability. 
-Please refer to the 
-[Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html) 
-for correctly configuring Loggregator.
+###<a id="metrics-dropped"></a> Firehose Metrics are Dropped Before Reaching Event Alerts
+
+Firehose metrics might be dropped before reaching Event Alerts due to the firehose reliability. 
+For information about configuring Loggregator, see the
+[Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html).
