@@ -26,13 +26,3 @@ You might experience the following when using Event Alerts.
 To verify this, check the `eva.notificationsStatus` app metric.
 If the value is zero, the last attempt to communicate with CF Notifications failed.
 
-###<a id="disconnected"></a> Event Alerts Repeatedly Disconnects from the Firehose
-
-If Event Alerts is a slow consumer, Loggregator closes the Firehose connection. 
-To mitigate this, increase the number of `event-alerts` instances.
-
-###<a id="metrics-dropped"></a> Firehose Metrics are Dropped Before Reaching Event Alerts
-
-Firehose metrics might be dropped before reaching Event Alerts due to the Firehose reliability. 
-For information about configuring Loggregator, see the
-[Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html).
