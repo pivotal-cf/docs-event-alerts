@@ -9,7 +9,7 @@ This topic describes how to troubleshoot Pivotal Cloud Foundry (PCF) Event Alert
 
 PCF Event Alerts is deployed as a CF app. 
 By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
-The `event-alerts` app functions as a nozzle for the firehose and sends email 
+The `event-alerts` app functions as a nozzle for the Loggregator Firehose and sends email 
 notifications to both a user and space with information regarding matched events.
 
 ##<a id='metrics'></a> Event Alerts Metrics
@@ -27,7 +27,7 @@ The following table contains a subset of the Event Alerts app metrics:
   </tr>
   <tr>
     <td><strong>nozzle.dropped</strong></td>
-    <td>Event Alerts is dropping metrics from the firehose to avoid reading too slowly. 
+    <td>Event Alerts is dropping metrics from the Firehose to avoid reading too slowly. 
       If this number is increasing, increase the number of <code>event-alerts</code> instances.</td>
   </tr>
   <tr>
@@ -44,11 +44,11 @@ The following table contains a subset of the Event Alerts app metrics:
   </tr>
   <tr>
     <td><strong>ingress.received</strong></td>
-    <td>The total number of firehose metrics received.</td>
+    <td>The total number of Firehose metrics received.</td>
   </tr>
   <tr>
     <td><strong>ingress.matched</strong></td>
-    <td>The number of firehose metrics corresponding to predefined events.</td>
+    <td>The number of Firehose metrics corresponding to predefined events.</td>
   </tr>
 </table>
 
@@ -68,11 +68,11 @@ If the value is zero, the last attempt to communicate with CF Notifications fail
 
 ###<a id="disconnected"></a> Event Alerts Repeatedly Disconnects from the Firehose
 
-If Event Alerts is a slow consumer, Loggregator closes the firehose connection. 
+If Event Alerts is a slow consumer, Loggregator closes the Firehose connection. 
 To mitigate this, increase the number of `event-alerts` instances.
 
 ###<a id="metrics-dropped"></a> Firehose Metrics are Dropped Before Reaching Event Alerts
 
-Firehose metrics might be dropped before reaching Event Alerts due to the firehose reliability. 
+Firehose metrics might be dropped before reaching Event Alerts due to the Firehose reliability. 
 For information about configuring Loggregator, see the
 [Loggregator Guide for Cloud Foundry Operators](https://docs.pivotal.io/pivotalcf/loggregator/log-ops-guide.html).
