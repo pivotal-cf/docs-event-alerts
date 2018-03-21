@@ -12,46 +12,6 @@ By default, this app is called `event-alerts` and is deployed in the `event-aler
 The `event-alerts` app functions as a nozzle for the Loggregator Firehose and sends email 
 notifications to both a user and space with information regarding matched events.
 
-##<a id='metrics'></a> Event Alerts Metrics
-
-Event Alerts has a metrics endpoint for troubleshooting at `https://event-alerts.{domain}/debug/metrics`.
-For a full view of metrics across multiple instances of `event-alerts`, 
-use the [App Metrics CF plugin](https://github.com/wfernandes/app-metrics-plugin).
-
-The following table contains a subset of the Event Alerts app metrics:
-
-<table class="nice">
-  <tr>
-    <th>Metric Name</th>
-    <th>Description</th>
-  </tr>
-  <tr>
-    <td><strong>nozzle.dropped</strong></td>
-    <td>Event Alerts is dropping metrics from the Firehose to avoid reading too slowly. 
-      If this number is increasing, increase the number of <code>event-alerts</code> instances.</td>
-  </tr>
-  <tr>
-    <td><strong>notifier.dropped</strong></td>
-    <td>CF Notifications is processing email requests slowly.</td>
-  </tr>
-  <tr>
-    <td><strong>notifier.userEmails.failed</strong></td>
-    <td>Event Alerts was unable to send an email to the user.</td>
-  </tr>
-  <tr>
-    <td><strong>notifier.spaceEmails.failed</strong></td>
-    <td>Event Alerts was unable to send an email to the space.</td>
-  </tr>
-  <tr>
-    <td><strong>ingress.received</strong></td>
-    <td>The total number of Firehose metrics received.</td>
-  </tr>
-  <tr>
-    <td><strong>ingress.matched</strong></td>
-    <td>The number of Firehose metrics corresponding to predefined events.</td>
-  </tr>
-</table>
-
 <p class="note warning">
 <strong>WARNING: </strong>
 If an email cannot be sent to both the user and the space, the event is dropped without retrying.
