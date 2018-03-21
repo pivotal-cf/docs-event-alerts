@@ -7,15 +7,14 @@ This documentation describes Event Alerts for Pivotal Cloud Foundry (PCF).
 
 ## <a id='overview'></a>Overview
 
-PCF Event Alerts is a service that reads events from the Loggregator Firehose and turns them into email notifications,
-which it sends to CF users.
+PCF Event Alerts is a service that sends event alerts as email and Slace notifications.
 
 ## <a id='features'></a>Key Features
 
-The Event Alerts service enables you to:
+The Event Alerts service enables you to notify users about Healthwatch alerts:
 
-* Send alert email to a specific CF user.
-* Send alert email to users within a specific CF space.
+* Send notifications by email to specific users and to distribution lists.
+* Send notifications to Slack channels.
 
 ## <a id="snapshot"></a>Product Snapshot
 
@@ -45,23 +44,6 @@ The following table provides version and version-support information about PCF E
         <td>AWS, Azure, GCP, OpenStack, and vSphere</td>
     </tr>
 </table>
-
-## <a id="reqs"></a>Requirements
-
-PCF Event Alerts has the following requirements:
-
-+ PAS v2.1.x deployed with the following:
-  + `Email Notifications` enabled with SMTP server configured.
-  + `Notifications Errand` and `Notifications UI Errand` run.
-+ MySQL for PCF v2.3 or later, or external MySQL credentials
-+ Slack account (if you are using Slack integration)
-
-## <a id="limitations"></a>Limitations
-
-PCF Event Alerts has the following limitations:
-
-+ Only sends email notifications on Healthwatch events.
-+ Only sends emails to CF users.
 
 ## <a id="feedback"></a>Feedback
 

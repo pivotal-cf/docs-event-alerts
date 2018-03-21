@@ -9,9 +9,11 @@ This topic describes how to install and configure PCF Event Alerts.
 
 You must have the following in order to install PCF Event Alerts:
 
-* Ops Manager and Pivotal Application Service (PAS) v2.1 or later 
-* MySQL for Pivotal Cloud Foundry (PCF) v2.3 or later, or external MySQL credentials
-* (Optional) Slack account for Slack integration
++ PAS v2.1.x deployed with the following:
+  + `Email Notifications` enabled with SMTP server configured.
+  + `Notifications Errand` and `Notifications UI Errand` run.
++ MySQL for PCF v2.3 or later, or external MySQL credentials
++ If you want notifications sent to Slack channels, a Slack account
 
 ##<a id='install'></a> Download and Install the Tile
 
