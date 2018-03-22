@@ -72,7 +72,7 @@ Follow the steps below to optionally configure Scaling settings.
 1. Click **Scaling Settings**.
 
 1. The default instance count for the `event-alerts` app is 2. Environments with a very large number of 
-alerts may need to scale to a larger number of instances. Environments that do not require a high availability
+alerts need to scale to a larger number of instances. Environments that do not require a high availability
 may scale down to 1 instance. 
 
 1. Click **Save**. 
