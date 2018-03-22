@@ -3,32 +3,82 @@ title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how users receive Pivotal Cloud Foundry (PCF) Event Alerts.
+This topic describes how users receive alerts.
 
-##<a id='subscribe'></a> Send Notifications
+##<a id='targets'></a> Targets
+Targets are destinations for alerts. They are unique to each CF user and can be 
+created with the `cf eva-create-target NAME TYPE VALUE` command: 
 
-To send notifications to a user for Healthwatch events, you must configure a user in the Alerting configuration. 
-The default user is `admin`. 
+`cf eva-create-target my-email email johndoe@example.com`
 
-If you want to send notifications to multiple users, you can add CF users to the configured space.
-By default, this space is `event-alerts-users`.  
+This creates a target for the **email** address "johndoe@example.com". Email addresses that do not 
+match the currently logged in CF user must be verified. A verification email containing a link will 
+be sent in these cases. Verification must take place before the target will receive any alerts.
 
-To add a user to a space, assign a space role to that user. 
-For information on the roles, see [App Space Roles](https://docs.cloudfoundry.org/adminguide/cli-user-management.html#space-roles).
+To see a list of targets use the `cf eva-targets`
 
-<p class="note"><strong>Note</strong>: With the default alert settings, the admin user receives all 
-notifications twice. This is because the admin user account is the default user for notifications, 
-and is also used to create the space for paging and is, therefore, a user in that space. 
-</p>
+In addition to email, `slack` and `webhook` target types are also supported. 
+Create a **slack** target with:
 
-For more information about alerting settings, see [(Optional) Configure Alerting Settings](installing.html#event-alerts-alerting-config).
+`cf eva-create-target my-slack-channel slack https://hooks.slack.com/services/XXX/XXX/XXX`
 
-##<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
+You can find out how to setup an incoming slack webhook in the 
+[slack docs](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack). 
+
+Create a **webhook** target with:
+
+`cf eva-create-target my-webhook webhook https://example.com/pcf-events/foundation-prod`
+
+Event Alerts will `POST` JSON to https://example.com/pcf-events/foundation-prod 
+in the following format:
+
+```
+{
+  "publisher": "healthwatch",
+  "topic": "system.cpu.user",
+  "timestamp": "2018-03-22T10:41:31-06:00",
+  "metadata": {
+    "level": "CRITICAL",
+    "foundation": "pcf.example.com",
+    "job": "router"
+  },
+  "subject": "CRITICAL Threshold Event: VM Memory Used: router; pcf.example.com",
+  "body": "<b>level: CRITICAL</b>"
+}
+```
+
+Webhook targets open up many possibilities for utilization of alerts. For example, a simple 
+webserver could forward events to Pager Duty, New Relic, Datadog, etc. Alerts could also be 
+logged or stored for auditing purposes. Keep in mind that the `metadata` keys (`level`, 
+`foundation`, and `job`) 
+of the webhook body represent what the publisher (e.g. healthwatch) sends to Event Alerts 
+and may be different for each topic (system.cpu.user).  
+
+##<a id='targets'></a> Subscriptions
+In order for a target to start receiving alerts it must subscribe to topics. To subscribe 
+the target `my-email` to all `healthwatch` topics:
+
+`cf eva-subscribe my-email healthwatch --all`
+
+To subscribe to a smaller set of topics (e.g. `system.mem.percent` and `system.cpu.user` 
+only) specify them individually:
+
+`cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user`
+
+A complete list of topics is available via the `cf eva-topics` command.
+
+If you would like to stop getting `system.cpu.user` alerts, unsubscribe:
+
+`cf eva-unsubscribe my-email --topics system.cpu.user`
+
+`system.mem.percent` alerts will continue to be delivered.
+
+###<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
 
 1. Create a webhook target named webhook-ops:
 
 	```
-	cf eva-create-target webhook-ops webhook http://example.com/healthwatch
+	cf eva-create-target webhook-ops webhook http://example.com/healthwatch-events/foundation-prod
 	```
 
 2. Verify that the target is created correctly with `cf eva-targets`.
@@ -39,10 +89,13 @@ For more information about alerting settings, see [(Optional) Configure Alerting
 	cf eva-subscribe webhook-ops healthwatch --all
 	```
 
-4. Publish a sample message to a healthwatch topic. This requires one of ("notifications.write", "cloud_controller.admin", "network.admin") scopes.
+4. Publish a sample message to a healthwatch topic. This requires one of "notifications.write",
+ "cloud_controller.admin", or "network.admin" scopes. **Any** target subscribed to the 
+ `system.healthy` topic will receive a sample alert.
 
 	```
 	cf eva-sample-publish healthwatch system.healthy
 	```
 
-5. Verify a webhook message was posted to the webhook-ops URL (eg http://example.com/healthwatch)
+5. Verify a webhook message was posted to the webhook-ops 
+URL (e.g. http://example.com/healthwatch-events/foundation-prod)
