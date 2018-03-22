@@ -65,40 +65,15 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
   </table>
 1. Click **Save**.
 
-### <a id="event-alerts-alerting-config"></a> (Optional) Configure Alerting Settings
+### <a id="event-alerts-alerting-config"></a> (Optional) Configure Scaling Settings
 
-Follow the steps below to optionally configure Slack integration.
+Follow the steps below to optionally configure Scaling settings.
 
-1. Click **Alerting**.
+1. Click **Scaling Settings**.
 
-1. Navigate to the Slack Incoming WebHooks page at `YOUR-SLACK-DOMAIN/services/new/incoming-webhook`.
-   For example, `https://my.slack.com/services/new/incoming-webhook/`. 
-  ![Slack Incoming WebHooks Page](images/slack-incoming-webhook.png)
-
-1. Click the **create a new channel** link.
-  ![Slack Create a Channel Page](images/slack-create-channel.png)
-
-1. Under **Name**, enter a name for the new channel where the alerts will appear.
-
-1. (Optional) Add a **Purpose** for the channel and users to **Send invites to**.
-
-1. Click **Create Channel**.
-
-1. (Optional) In the next page, enter a **Descriptive Label** and
-   choose the username that posts the integration under **Customize Name**.
-  ![Slack Add Descriptive Label and Customize Name](images/slack-final-settings.png)
-
-1. Click **Save**. 
-
-1. Scroll to the **Webhook URL** section.
-  ![Slack Webhook URL](images/slack-webhook-url.png)
-
-1. Click **Copy URL**.
-
-1. Return to the Alerting Settings section of PCF Event Alerts.
-  ![Alerting Settings Section](images/alerting-settings.png)
-
-1. Under **Slack Webhook for All Events**, paste in the copied webhook URL.
+1. The default instance count for the `event-alerts` app is 2. Environments with a very large number of 
+alerts may need to scale to a larger number of instances. Environments that do not require a high availability
+may scale down to 1 instance. 
 
 1. Click **Save**. 
 
