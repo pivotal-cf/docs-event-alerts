@@ -12,7 +12,7 @@ You must have the following in order to install PCF Event Alerts:
 + PAS v2.1.x deployed with the following:
   + `Email Notifications` enabled with SMTP server configured.
   + `Notifications Errand` and `Notifications UI Errand` run.
-+ MySQL for PCF v2.3 or later, or external MySQL credentials
++ MySQL for PCF v2.0 or later, or external MySQL credentials
 + If you want notifications sent to Slack channels, a Slack account
 
 ##<a id='install'></a> Download and Install the Tile
@@ -83,11 +83,11 @@ Follow the steps below to configure MySQL settings.
 
 PCF Event Alerts can either use the MySQL for PCF v2 service or an external database.
 
-To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.3 or later. 
+To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.0 or later. 
 
 #### Use the MySQL for PCF v2 Service
 
-If you have MySQL for PCF v2.3 or later installed and want to use it for PCF Event Alerts,
+If you have MySQL for PCF v2.0 or later installed and want to use it for PCF Event Alerts,
 follow the steps below.
 
 1. Click **MySQL Settings**.
@@ -128,7 +128,7 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
         <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>, 
         <code>INSERT</code>, <code>LOCK TABLES</code>, <code>REFERENCES</code>, <code>SELECT</code>, and <code>UPDATE</code>.
         <p class="note warning"><strong>WARNING</strong>: Do not delete the user that connects to the database.
-           You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL will error out.
+           You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL errors out.
          </p> 
       <tr>
         <td><strong>MySQL Password</strong></td>
