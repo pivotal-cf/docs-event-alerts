@@ -35,3 +35,27 @@ cf plugins | grep event-alerts
 # Individual plugin command help
 cf help <command>
 ```
+
+###<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
+
+1. Create a webhook target named webhook-ops:
+
+```
+cf eva-create-target webhook-ops webhook http://example.com/healthwatch
+```
+
+2. Verify that the target is created correctly with `cf eva-targets`.
+
+3. Subscribe the newly created target to all healthwatch topics:
+
+```
+cf eva-subscribe webhook-ops healthwatch --all
+```
+
+4. Publish a sample message to a healthwatch topic. This requires one of ("notifications.write", "cloud_controller.admin", "network.admin") scopes.
+
+```
+cf eva-sample-publish healthwatch system.healthy
+```
+
+5. Verify a webhook message was posted to the webhook-ops URL (eg http://example.com/healthwatch)
