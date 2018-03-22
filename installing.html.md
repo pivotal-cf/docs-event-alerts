@@ -3,7 +3,7 @@ title: Installing and Configuring PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to install and configure PCF Event Alerts.
+This topic describes how to install and configure PCF Event Alerts. For information on how to use this product, see [Using PCF Event Alerts](./using.html).
 
 ##<a id='prereqs'></a> Prerequisites
 
@@ -181,3 +181,34 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 1. Click **Save**.
 
 1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install the PCF Event Alerts tile.
+
+##<a id="plugin"></a> Install the PCF Event Alerts Plugin
+
+You must install the PCF Event Alerts Plugin in order to configure notifications.
+This cf CLI plugin is used to subscribe to topics published by a variety of publishers, such as Healthwatch.
+
+
+###<a id='installing'></a> Install the Plugin
+
+The plugin is currently only available to admins.
+
+To install the plugin, do the following:
+
+1. Download the plugin binary from Pivotal Network.
+
+1. To install the plugin, run the command `cf install-plugin PATH-TO-BINARY`.
+
+###<a id='uninstalling'></a> Uninstall the Plugin
+
+To uninstall the plugin, run the command `cf uninstall-plugin event-alerts`.
+
+###<a id='help'></a> Get Help with Plugin Commands
+
+Run the following commands to get help on the plugin.
+
+* List all plugin commands: `cf plugins | grep event-alerts`
+
+* Get help on a specific command: `cf help COMMAND`
+
+
+
