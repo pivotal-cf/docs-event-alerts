@@ -3,65 +3,92 @@ title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how users receive alerts.
+This topic describes how to set up and subscribe to alerts.
 
-##<a id='targets'></a> Create Targets
-Targets are destinations for alerts. They are unique to each CF user and can be 
-created with the `cf eva-create-target NAME TYPE VALUE` command.
+##<a id='targets'></a> Create Targets for Alerts
 
-To see a list of targets use the `cf eva-targets`
+Targets are destinations for alerts and are unique to each user.
 
-In addition to email, `slack` and `webhook` target types are also supported. 
+To create an alert target, do the following:
 
-### <a id='email_targets'></a> Email Targets
+1. Run the command:
 
-Create an email target with:
+    `cf eva-create-target NAME TARGET_TYPE VALUE`<br><br>
+    Where:<br>
+    * `NAME` is a unique name for this target
+    * `TARGET_TYPE` is one of the following:
+      * email
+      * slack
+      * webhook
+    * `VALUE` is an appropriate value for the target type, for example, an email address
 
-`cf eva-create-target my-email email johndoe@example.com`
+Below are examples of using this command for creating these target types.
 
-This creates a target for the **email** address "johndoe@example.com". Email addresses that do not 
-match the currently logged in CF user must be verified. A verification email containing a link will 
-be sent in these cases. Verification must take place before the target will receive any alerts.
 
-### <a id='slack_targets'></a> Slack Targets
+### <a id='email_targets'></a> Create Email Targets
 
-Create a **Slack** target with:
+To create an email target, do the following:
 
-`cf eva-create-target my-slack-channel slack https://hooks.slack.com/services/XXX/XXX/XXX`
+1. Run the command `cf eva-create-target NAME email EMAIL_ADDRESS`. <br><br>
+    For example, to create an email target for John Doe, run this command:
 
-You can find out how to setup an incoming slack webhook in the 
-[slack docs](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).
+    <pre class="terminal">$ cf eva-create-target jd-email email johndoe@example.com</pre>
 
-### <a id='webhook_targets'></a> Webhook Targets
+    This creates a target named `jd-email` for the email address `johndoe@example.com`. Email addresses that do not 
+    match the currently logged in user are verified by sending an email containing a link. 
+    The target receives alerts after the user verifies the email.
 
-Create a **webhook** target with:
+### <a id='slack_targets'></a> Create Slack Targets
 
-`cf eva-create-target my-webhook webhook https://example.com/pcf-events/foundation-prod`
+To create a Slack target, do the following:
 
-Event Alerts will `POST` JSON to https://example.com/pcf-events/foundation-prod 
-in the following format:
+1. Create an incoming Slack webhook using the instructions in the 
+[Slack documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).<br><br>
+  Note the Slack webhook URL, which is used in the next step.
 
-```
-{
-  "publisher": "healthwatch",
-  "topic": "system.cpu.user",
-  "timestamp": "2018-03-22T10:41:31-06:00",
-  "metadata": {
-    "level": "CRITICAL",
-    "foundation": "pcf.example.com",
-    "job": "router"
-  },
-  "subject": "CRITICAL Threshold Event: VM Memory Used: router; pcf.example.com",
-  "body": "<b>level: CRITICAL</b>"
-}
-```
+1. Run the command `cf eva-create-target NAME slack URL`.<br><br>
+    For example:<br>
+    <pre class="terminal">
+    $ cf eva-create-target my-slack-channel slack https<span>:</span>//hooks.slack.com/services/T024LQKAS/B9XFKQG59/YPwmF0cEXAMPLEc7T2iEr0b
+    </pre>
 
-Webhook targets open up many possibilities for utilization of alerts. For example, a simple 
-webserver could forward events to Pager Duty, New Relic, Datadog, etc. Alerts could also be 
-logged or stored for auditing purposes. Keep in mind that the `metadata` keys (`level`, 
-`foundation`, and `job`) 
-of the webhook body represent what the publisher (e.g. healthwatch) sends to Event Alerts 
-and may be different for each topic (system.cpu.user).  
+    This creates a target named `my-slack-channel` where alerts go to the Slack webhook URL in the command. 
+
+
+### <a id='webhook_targets'></a> Create Webhook Targets
+
+Webhook targets provide many possibilities for using event alerts. For example, a simple 
+webserver could forward events to Pager Duty, New Relic, Datadog, or other products. You can also use webhook targets to 
+log or store alerts for auditing purposes.
+
+To create a webhook target, do the following:
+
+1. Run the command `cf eva-create-target NAME webhook URL`<br><br>
+  For example:
+  <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
+
+    This creates a target call `my-webhook`, where event alerts will `POST` JSON to `https://example.com/pcf-events/foundation-prod`
+    in the following format:
+
+    ```
+    {
+      "publisher": "healthwatch",
+      "topic": "system.cpu.user",
+      "timestamp": "2018-03-22T10:41:31-06:00",
+      "metadata": {
+        "level": "CRITICAL",
+        "foundation": "pcf.example.com",
+        "job": "router"
+      },
+      "subject": "CRITICAL Threshold Event: VM Memory Used: router; pcf.example.com",
+      "body": "<b>level: CRITICAL</b>"
+    }
+    ```
+
+    In the above example:<br>
+      * `healthwatch` is the alert publisher.
+      * `system.cpu.user` is the alert topic.
+      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts and may be different for each alert topic.  
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
 In order for a target to start receiving alerts, it must subscribe to topics. Topics are the various events
@@ -134,3 +161,7 @@ For example, to stop receiving `system.cpu.user` alerts from Healthwatch, run:
 
 5. Verify a webhook message was posted to the webhook-ops 
 URL (e.g. http://example.com/healthwatch-events/foundation-prod)
+
+## <a id="commands"></a> Event Alert Commands
+
+To see a list of existing alert targets run the command `cf eva-targets`.
