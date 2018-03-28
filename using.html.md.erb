@@ -63,26 +63,52 @@ logged or stored for auditing purposes. Keep in mind that the `metadata` keys (`
 of the webhook body represent what the publisher (e.g. healthwatch) sends to Event Alerts 
 and may be different for each topic (system.cpu.user).  
 
-##<a id='targets'></a> Subscriptions
-In order for a target to start receiving alerts it must subscribe to topics. To subscribe 
-the target `my-email` to all `healthwatch` topics:
+##<a id='subscribe_topics'></a> Subscribe to Alert Topics
+In order for a target to start receiving alerts, it must subscribe to topics. Topics are the various events
+for which you might want to receive alerts. 
 
-`cf eva-subscribe my-email healthwatch --all`
+To see a list of topics, run the <code>cf eva-topics</code> command:
+<pre class="terminal">
+$ cf eva-topics
+Getting topics as admin...
+OK
+Publisher      Topic                            Description
+event-alerts   smoke-test                       Smoke Test Message
+event-alerts   installation.started             Installation Started
+event-alerts   installation.succeeded           Installation Succeeded
+event-alerts   installation.failed              Installation Failed
+event-alerts   http.3xx                         Api 3xx errors
+event-alerts   http.4xx                         Api 4xx errors
+event-alerts   http.5xx                         Api 5xx errors
+healthwatch    system.mem.percent               VM Memory Used
+healthwatch    system.cpu.user                  VM CPU Utilization
+healthwatch    system.disk.persistent.percent   VM Persistent Disk Used
+healthwatch    system.disk.ephemeral.percent    VM Ephemeral Disk Used
+healthwatch    system.disk.system.percent       VM Disk Used
+healthwatch    system.healthy                   VM Health Check
+</pre>
 
-To subscribe to a smaller set of topics (e.g. `system.mem.percent` and `system.cpu.user` 
-only) specify them individually:
+To subscribe a target to a topic, use the 
+<code>cf eva-subscribe TARGET\_NAME PUBLISHER TOPIC\_NAME\_OR\_ALL</code> command.
 
-`cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user`
+For example, to subscribe the target `my-email` to all `healthwatch` topics:
 
-A complete list of topics is available via the `cf eva-topics` command.
+<pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
 
-If you would like to stop getting `system.cpu.user` alerts, unsubscribe:
+To subscribe to a smaller set of topics, specify them individually:
 
-`cf eva-unsubscribe my-email --topics system.cpu.user`
+<pre class="terminal">$ cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
 
-`system.mem.percent` alerts will continue to be delivered.
+##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
 
-###<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
+To unsubscribe a target from one or more alert topics, use the 
+<code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --topics TOPIC\_NAME1,TOPIC\_NAME2,...</code>command.
+
+For example, to stop receiving `system.cpu.user` alerts from Healthwatch, run:
+
+<pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --topics system.cpu.user</pre>
+
+##<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
 
 1. Create a webhook target named webhook-ops:
 
