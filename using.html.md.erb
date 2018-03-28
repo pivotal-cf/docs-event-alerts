@@ -5,9 +5,17 @@ owner: PCF Event Alerts
 
 This topic describes how users receive alerts.
 
-##<a id='targets'></a> Targets
+##<a id='targets'></a> Create Targets
 Targets are destinations for alerts. They are unique to each CF user and can be 
-created with the `cf eva-create-target NAME TYPE VALUE` command: 
+created with the `cf eva-create-target NAME TYPE VALUE` command.
+
+To see a list of targets use the `cf eva-targets`
+
+In addition to email, `slack` and `webhook` target types are also supported. 
+
+### <a id='email_targets'></a> Email Targets
+
+Create an email target with:
 
 `cf eva-create-target my-email email johndoe@example.com`
 
@@ -15,15 +23,16 @@ This creates a target for the **email** address "johndoe@example.com". Email add
 match the currently logged in CF user must be verified. A verification email containing a link will 
 be sent in these cases. Verification must take place before the target will receive any alerts.
 
-To see a list of targets use the `cf eva-targets`
+### <a id='slack_targets'></a> Slack Targets
 
-In addition to email, `slack` and `webhook` target types are also supported. 
-Create a **slack** target with:
+Create a **Slack** target with:
 
 `cf eva-create-target my-slack-channel slack https://hooks.slack.com/services/XXX/XXX/XXX`
 
 You can find out how to setup an incoming slack webhook in the 
-[slack docs](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack). 
+[slack docs](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).
+
+### <a id='webhook_targets'></a> Webhook Targets
 
 Create a **webhook** target with:
 
