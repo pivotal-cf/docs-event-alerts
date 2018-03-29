@@ -177,13 +177,6 @@ To install the plugin, do the following:
 
 To uninstall the plugin, run the command `cf uninstall-plugin event-alerts`.
 
-###<a id='help'></a> Get Help with Plugin Commands
-
-Run the following commands to get help on the plugin.
-
-* List all plugin commands: `cf plugins | grep event-alerts`
-
-* Get help on a specific command: `cf help COMMAND`
 
 
 
