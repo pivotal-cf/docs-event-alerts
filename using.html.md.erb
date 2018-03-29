@@ -2,7 +2,6 @@
 title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
-
 This topic describes how to set up alert destinations and subscribe to alerts. 
 This includes setting up the alert destinations as targets, and subscribing those targets to alert topics.
 An example [workflow](#example-workflow-webhook) is included below these procedures.
@@ -25,7 +24,6 @@ To create an alert target, do the following:
     * `VALUE` is an appropriate value for the target type, for example, an email address
 
 Below are examples of using this command for creating these target types.
-
 
 ### <a id='email_targets'></a> Create Email Targets
 
@@ -55,7 +53,6 @@ To create a Slack target, do the following:
     </pre>
 
     This creates a target named `my-slack-channel` where alerts go to the Slack webhook URL in the command. 
-
 
 ### <a id='webhook_targets'></a> Create Webhook Targets
 
@@ -135,8 +132,6 @@ To subscribe a target to one or more alert topics, do the following:
 
     <pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
 
-
-
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
 
 To unsubscribe a target from alert topics, do the following:
@@ -157,7 +152,6 @@ To unsubscribe a target from alert topics, do the following:
     Or, to unsubscribe the target `my-email` from all topics from the publisher `healthwatch`, run:
 
     <pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --all</pre>
-
 
 ##<a id='example-workflow-webhook'></a> Example Workflow: Send all Healthwatch Alerts to a Webhook
 
@@ -188,16 +182,93 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 
     **All** targets subscribed to the `system.healthy` topic receive a sample alert.
 
-
 5. Verify a webhook message was posted to the webhook-ops 
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
+##<a id='command_help'></a> Event Alert CLI Commands
 
-##<a id='help'></a> Get Help with Event Alert CLI Commands
+Use the following EVA CLI commands to perform various tasks related to event alerts. 
 
-Run the following commands to get help on Evant Alert commands.
+<table>
+  <tr>
+    <td><strong>eva-api</strong></td>
+    <td>
+    Displays the endpoint and version of the Event Alerts API server.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-create-target</strong></td>
+    <td>
+    Creates a target.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-delete-target</strong></td>
+    <td>
+    Deletes a target.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-publishers</strong></td>
+    <td>
+    Displays a list of publishers.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-sample-publish</strong></td>
+    <td>
+    Publishes a sample event to all subscribers of the specified topic. This requires a UAA notification.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-smoke</strong></td>
+    <td>
+    Runs a smoke test against event alerts.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-subscribe</strong></td>
+    <td>
+    Subscribes to topics for a publisher.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-subscriptions</strong></td>
+    <td>
+    Displays a list of current subscriptions.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-targets</strong></td>
+    <td>
+    Displays a list of targets.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-topics</strong></td>
+    <td>
+    Displays a list of topics.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-unsubscribe</strong></td>
+    <td>
+    Unsubscribes from all topics from a specific publisher.
+    </td>
+  </tr>
+  <tr>
+    <td><strong>eva-update-target</strong></td>
+    <td>
+    Updates a target name.
+    </td>
+  </tr>
+</table> 
 
-* List all event alert commands: `cf plugins | grep event-alerts`
+For help directly in the terminal window while you're working with EVA, run:
 
-* Get help on a specific command: `cf help COMMAND`
+* `cf plugins | grep event-alerts` to list all event alert commands in your terminal window. 
+
+* `cf help COMMAND` to get help with a specific command.
+
+
 
