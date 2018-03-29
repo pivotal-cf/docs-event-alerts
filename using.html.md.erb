@@ -3,7 +3,9 @@ title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to set up and subscribe to alerts.
+This topic describes how to set up alert destinations and subscribe to alerts. 
+This includes setting up the alert destinations as targets, and subscribing those targets to alert topics.
+An example [workflow](#example-workflow-webhook) is included below these procedures.
 
 ##<a id='targets'></a> Create Targets for Alerts
 
@@ -13,7 +15,7 @@ To create an alert target, do the following:
 
 1. Run the command:
 
-    `cf eva-create-target NAME TARGET_TYPE VALUE`<br><br>
+    `cf eva-create-target TARGET_NAME TARGET_TYPE VALUE`<br><br>
     Where:<br>
     * `NAME` is a unique name for this target
     * `TARGET_TYPE` is one of the following:
@@ -29,7 +31,7 @@ Below are examples of using this command for creating these target types.
 
 To create an email target, do the following:
 
-1. Run the command `cf eva-create-target NAME email EMAIL_ADDRESS`. <br><br>
+1. Run the command `cf eva-create-target TARGET_NAME email EMAIL_ADDRESS`. <br><br>
     For example, to create an email target for John Doe, run this command:
 
     <pre class="terminal">$ cf eva-create-target jd-email email johndoe@example.com</pre>
@@ -46,7 +48,7 @@ To create a Slack target, do the following:
 [Slack documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).<br><br>
   Note the Slack webhook URL, which is used in the next step.
 
-1. Run the command `cf eva-create-target NAME slack URL`.<br><br>
+1. Run the command `cf eva-create-target TARGET_NAME slack URL`.<br><br>
     For example:<br>
     <pre class="terminal">
     $ cf eva-create-target my-slack-channel slack https<span>:</span>//hooks.slack.com/services/T024LQKAS/B9XFKQG59/YPwmF0cEXAMPLEc7T2iEr0b
@@ -63,7 +65,7 @@ log or store alerts for auditing purposes.
 
 To create a webhook target, do the following:
 
-1. Run the command `cf eva-create-target NAME webhook URL`<br><br>
+1. Run the command `cf eva-create-target TARGET_NAME webhook URL`<br><br>
   For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
@@ -91,76 +93,104 @@ To create a webhook target, do the following:
       * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts and may be different for each alert topic.  
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
-In order for a target to start receiving alerts, it must subscribe to topics. Topics are the various events
-for which you might want to receive alerts. 
+In order for a target to start receiving alerts, you must subscribe it to available alert topics. 
 
-To see a list of topics, run the <code>cf eva-topics</code> command:
-<pre class="terminal">
-$ cf eva-topics
-Getting topics as admin...
-OK
-Publisher      Topic                            Description
-event-alerts   smoke-test                       Smoke Test Message
-event-alerts   installation.started             Installation Started
-event-alerts   installation.succeeded           Installation Succeeded
-event-alerts   installation.failed              Installation Failed
-event-alerts   http.3xx                         Api 3xx errors
-event-alerts   http.4xx                         Api 4xx errors
-event-alerts   http.5xx                         Api 5xx errors
-healthwatch    system.mem.percent               VM Memory Used
-healthwatch    system.cpu.user                  VM CPU Utilization
-healthwatch    system.disk.persistent.percent   VM Persistent Disk Used
-healthwatch    system.disk.ephemeral.percent    VM Ephemeral Disk Used
-healthwatch    system.disk.system.percent       VM Disk Used
-healthwatch    system.healthy                   VM Health Check
-</pre>
+To subscribe a target to one or more alert topics, do the following: 
 
-To subscribe a target to a topic, use the 
-<code>cf eva-subscribe TARGET\_NAME PUBLISHER TOPIC\_NAME\_OR\_ALL</code> command.
+1. To see a list of available topics, run the <code>cf eva-topics</code> command:
+  <pre class="terminal">
+  $ cf eva-topics
+  Getting topics as admin...
+  OK
+  Publisher      Topic                            Description
+  event-alerts   smoke-test                       Smoke Test Message
+  event-alerts   installation.started             Installation Started
+  event-alerts   installation.succeeded           Installation Succeeded
+  event-alerts   installation.failed              Installation Failed
+  event-alerts   http.3xx                         Api 3xx errors
+  event-alerts   http.4xx                         Api 4xx errors
+  event-alerts   http.5xx                         Api 5xx errors
+  healthwatch    system.mem.percent               VM Memory Used
+  healthwatch    system.cpu.user                  VM CPU Utilization
+  healthwatch    system.disk.persistent.percent   VM Persistent Disk Used
+  healthwatch    system.disk.ephemeral.percent    VM Ephemeral Disk Used
+  healthwatch    system.disk.system.percent       VM Disk Used
+  healthwatch    system.healthy                   VM Health Check
+  </pre>
 
-For example, to subscribe the target `my-email` to all `healthwatch` topics:
+1. To subscribe a target to a topic, use either of the commands below. <br><br>
+    * To subscribe a target to one or more topics from a publisher:
+      <code>cf eva-subscribe TARGET\_NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
+    * To subscribe a target to all topics from a publisher:
+      <code>cf eva-subscribe TARGET\_NAME PUBLISHER --all</code>
 
-<pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
+    Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step. 
+    Enter topic names in the command separated by commas.<br><br> 
 
-To subscribe to a smaller set of topics, specify them individually:
+    For example, to subscribe the target `my-email` to two topics from the publisher `healthwatch`, run:<br>
 
-<pre class="terminal">$ cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
+    <pre class="terminal">$ cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
+    
+    Or, to subscribe the target `my-email` to all topics from the publisher `healthwatch`, run:
+
+    <pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
+
+
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
 
-To unsubscribe a target from one or more alert topics, use the 
-<code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --topics TOPIC\_NAME1,TOPIC\_NAME2,...</code>command.
+To unsubscribe a target from alert topics, do the following:
 
-For example, to stop receiving `system.cpu.user` alerts from Healthwatch, run:
+1. Use either of the commands below. <br><br>
+    * To unsubscribe a target from one or more topics from a publisher:
+      <code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
+    * To unsubscribe a target from all topics from a publisher:
+      <code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --all</code>
 
-<pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --topics system.cpu.user</pre>
+    To find `PUBLISHER` and `TOPIC` name(s) run <code>cf eva-topics</code>. The resulting [list](#subscribe_topics) is shown in the procedure above. 
+    Enter topic names in the command separated by commas.<br><br> 
 
-##<a id='example-workflow-webhook'></a> Example Workflow: Sending all Healthwatch alerts to a webhook
+    For example, to unsubscribe the target `my-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:<br>
 
-1. Create a webhook target named webhook-ops:
+    <pre class="terminal">$ cf eva-subscribe my-email healthwatch --topics system.cpu.user</pre>
+    
+    Or, to unsubscribe the target `my-email` from all topics from the publisher `healthwatch`, run:
 
-	```
-	cf eva-create-target webhook-ops webhook http://example.com/healthwatch-events/foundation-prod
-	```
+    <pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --all</pre>
 
-2. Verify that the target is created correctly with `cf eva-targets`.
 
-3. Subscribe the newly created target to all healthwatch topics:
+##<a id='example-workflow-webhook'></a> Example Workflow: Send all Healthwatch Alerts to a Webhook
 
-	```
-	cf eva-subscribe webhook-ops healthwatch --all
-	```
+In this example workflow, you create a webhook target named `webhook-ops` that has the URL `http://example.com/healthwatch-events/foundation-prod`.
+You then subsribe this target to all alert topics from the publisher `healthwatch`, and you publish a test alert to one of the `healthwatch` topics.
 
-4. Publish a sample message to a healthwatch topic. This requires one of "notifications.write",
- "cloud_controller.admin", or "network.admin" scopes. **Any** target subscribed to the 
- `system.healthy` topic will receive a sample alert.
+1. Create a webhook target named `webhook-ops`:
 
-	```
+	<pre class="terminal">
+	$ cf eva-create-target webhook-ops webhook http://example.com/healthwatch-events/foundation-prod
+	</pre>
+
+2. To verify that the target is created correctly, run `cf eva-targets`.
+
+3. Subscribe the `webhook-ops` target to all healthwatch topics:
+
+	<pre class="terminal">
+	$ cf eva-subscribe webhook-ops healthwatch --all
+	</pre>
+
+4. Publish a sample message to a healthwatch topic. This requires that you have one of the following scopes:
+ `notifications.write`,
+ `cloud_controller.admin`, or `network.admin`. 
+
+	<pre class="terminal">
 	cf eva-sample-publish healthwatch system.healthy
-	```
+	</pre>
+
+    **All** targets subscribed to the `system.healthy` topic receive a sample alert.
+
 
 5. Verify a webhook message was posted to the webhook-ops 
-URL (e.g. http://example.com/healthwatch-events/foundation-prod)
+URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
 ## <a id="commands"></a> Event Alert Commands
 
