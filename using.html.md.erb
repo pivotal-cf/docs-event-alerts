@@ -24,7 +24,7 @@ To create an alert target, do the following:
       * webhook
     * `VALUE` is an appropriate value for the target type, for example, an email address
 
-Below are examples of using this command for creating these target types.
+Examples for using this command to create each of these targets appear below.
 
 ### <a id='email_targets'></a> Create Email Targets
 
@@ -58,8 +58,8 @@ To create a Slack target, do the following:
 ### <a id='webhook_targets'></a> Create Webhook Targets
 
 Webhook targets provide many possibilities for using event alerts. For example, a simple 
-webserver could forward events to Pager Duty, New Relic, Datadog, or other products. You can also use webhook targets to 
-log or store alerts for auditing purposes.
+webserver could forward events to Pager Duty, New Relic, Datadog, or other products. 
+You can also use webhook targets to log or store alerts for auditing purposes.
 
 To create a webhook target, do the following:
 
@@ -67,7 +67,7 @@ To create a webhook target, do the following:
   For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
-    This creates a target call `my-webhook`, where event alerts will `POST` JSON to `https://example.com/pcf-events/foundation-prod`
+    This creates a target named `my-webhook`, where event alerts will `POST` JSON to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
     ```
@@ -265,10 +265,9 @@ Use the following EVA CLI commands to perform various tasks related to event ale
   </tr>
 </table> 
 
-For help directly in the terminal window while you're working with EVA, run the following commands:
+You can also use commands to get help directly in the terminal window while working with EVA.
 
-* To list all event alert commands in your terminal window: `cf plugins | grep event-alerts`. 
-
+* To list all event alert commands: `cf plugins | grep event-alerts`.
 * To get help with a specific command: `cf help COMMAND`.
 
 
