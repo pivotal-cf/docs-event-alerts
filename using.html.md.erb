@@ -15,10 +15,10 @@ To create an alert target, do the following:
 
 1. Run the command:
 
-    `cf eva-create-target TARGET_NAME TARGET_TYPE VALUE`<br><br>
+    `cf eva-create-target TARGET-NAME TARGET-TYPE VALUE`<br><br>
     Where:<br>
     * `NAME` is a unique name for this target
-    * `TARGET_TYPE` is one of the following:
+    * `TARGET-TYPE` is one of the following:
       * email
       * slack
       * webhook
@@ -30,7 +30,7 @@ Below are examples of using this command for creating these target types.
 
 To create an email target, do the following:
 
-1. Run the command `cf eva-create-target TARGET_NAME email EMAIL_ADDRESS`. <br><br>
+1. Run the command `cf eva-create-target TARGET-NAME email EMAIL-ADDRESS`. <br><br>
     For example, to create an email target for John Doe, run this command:
 
     <pre class="terminal">$ cf eva-create-target jd-email email johndoe@example.com</pre>
@@ -47,7 +47,7 @@ To create a Slack target, do the following:
 [Slack documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).<br><br>
   Note the Slack webhook URL, which is used in the next step.
 
-1. Run the command `cf eva-create-target TARGET_NAME slack URL`.<br><br>
+1. Run the command `cf eva-create-target TARGET-NAME slack URL`.<br><br>
     For example:<br>
     <pre class="terminal">
     $ cf eva-create-target my-slack-channel slack https<span>:</span>//hooks.slack.com/services/T024LQKAS/B9XFKQG59/YPwmF0cEXAMPLEc7T2iEr0b
@@ -63,7 +63,7 @@ log or store alerts for auditing purposes.
 
 To create a webhook target, do the following:
 
-1. Run the command `cf eva-create-target TARGET_NAME webhook URL`<br><br>
+1. Run the command `cf eva-create-target TARGET-NAME webhook URL`<br><br>
   For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
@@ -118,9 +118,9 @@ To subscribe a target to one or more alert topics, do the following:
 
 1. To subscribe a target to a topic, use either of the commands below. <br><br>
     * To subscribe a target to one or more topics from a publisher:
-      <code>cf eva-subscribe TARGET\_NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
+      <code>cf eva-subscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
     * To subscribe a target to all topics from a publisher:
-      <code>cf eva-subscribe TARGET\_NAME PUBLISHER --all</code>
+      <code>cf eva-subscribe TARGET-NAME PUBLISHER --all</code>
 
     Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step. 
     Enter topic names in the command separated by commas.<br><br> 
@@ -139,9 +139,9 @@ To unsubscribe a target from alert topics, do the following:
 
 1. Use either of the commands below. <br><br>
     * To unsubscribe a target from one or more topics from a publisher:
-      <code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
+      <code>cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
     * To unsubscribe a target from all topics from a publisher:
-      <code>cf eva-unsubscribe TARGET\_NAME PUBLISHER --all</code>
+      <code>cf eva-unsubscribe TARGET-NAME PUBLISHER --all</code>
 
     To find `PUBLISHER` and `TOPIC` name(s) run <code>cf eva-topics</code>. The resulting [list](#subscribe_topics) is shown in the procedure above. 
     Enter topic names in the command separated by commas.<br><br> 
@@ -267,9 +267,9 @@ Use the following EVA CLI commands to perform various tasks related to event ale
 
 For help directly in the terminal window while you're working with EVA, run the following commands:
 
-* to list all event alert commands in your terminal window: `cf plugins | grep event-alerts`. 
+* To list all event alert commands in your terminal window: `cf plugins | grep event-alerts`. 
 
-* to get help with a specific command: `cf help COMMAND`.
+* To get help with a specific command: `cf help COMMAND`.
 
 
 
