@@ -137,6 +137,9 @@ To subscribe a target to one or more alert topics, do the following:
 
     <pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
 
+    <p class="note"><strong>Note: </strong>If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
+    a single topic from that publisher. That is, you must subscribe to a specific topic or topics, or subscribe to <code>all</code>.</p>
+
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
 
 To unsubscribe a target from alert topics, do the following:
