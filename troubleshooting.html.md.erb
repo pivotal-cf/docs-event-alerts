@@ -20,7 +20,7 @@ To monitor the performance of PCF Event Alerts or to retrieve troubleshooting in
   and transmits custom app metrics through Loggregator to the service.
   For more information, see [Metrics Forwarder for PCF](https://docs.pivotal.io/metrics-forwarder/).  
 
-##<a id="scaling"></a> Scaling PCF Event Alerts
+##<a id="scale"></a> Scale PCF Event Alerts
 
 You might need to scale PCF Event Alerts to improve performance.
 
@@ -40,7 +40,9 @@ To scale PCF Event Alerts, perform the following steps:
 	If you are running very large PCF deployments with frequent threshold events,
         you might need to increase the instance count above two. 
 
-If PCF Event Alerts is receiving frequent event transmissions, you can also do one or both of the following:
+##<a id="reduce-notifications"></a> Reduce Notifications
+
+If PCF Event Alerts is receiving frequent event notifications, you can do one or both of the following:
 
 * Unsubscribe from alerts that have minimal action.
 * Increase threshold values to supply better indicators for action.
