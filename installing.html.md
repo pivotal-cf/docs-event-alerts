@@ -159,7 +159,7 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 
 ##<a id="plugin"></a> Install the PCF Event Alerts Plugin
 
-You must install the PCF Event Alerts Plugin in order to configure notifications.
+You must install the PCF Event Alerts plugin in order to configure notifications.
 You can use this cf CLI plugin to subscribe to topics published by a variety of publishers, such as [PCF Healthwatch(http://docs.pivotal.io/pcf-healthwatch/1-2/index.html).
 
 ###<a id='installing'></a> Install the Plugin
