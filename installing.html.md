@@ -146,7 +146,7 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 
 1. Click **Stemcell**.
 
-1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, the following message displays:
+1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, the following message appears:
     ![Stemcell Section](images/stemcell.png)
     If you need to upload a stemcell, perform the following steps:
       1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
