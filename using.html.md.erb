@@ -42,6 +42,9 @@ To create an email target, do the following:
     match the currently logged in user are verified by sending an email containing a link. 
     The target receives alerts after the user verifies the email.
 
+    <p class="note"><strong>Note:</strong> You can use any email address as an alert target; email alert recipients do not
+    necessarily have to be other admins or cf users.</p>
+
 ### <a id='slack_targets'></a> Create Slack Targets
 
 To create a Slack target, do the following:
@@ -68,9 +71,9 @@ To create a webhook target, do the following:
 
 1. Run the command `cf eva-create-target TARGET-NAME webhook URL`<br><br>
   For example:
-  <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
+  <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>.
 
-    This creates a target named `my-webhook`, where event alerts will `POST` JSON to `https://example.com/pcf-events/foundation-prod`
+    This creates a target named `my-webhook`, where event alerts will `POST` a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
     ```
@@ -91,7 +94,11 @@ To create a webhook target, do the following:
     In the above example:<br>
       * `healthwatch` is the alert publisher.
       * `system.cpu.user` is the alert topic.
-      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts and may be different for each alert topic.  
+      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
+       and may be different for each alert topic. 
+
+ <p class="note"><strong>Note:</strong> Ensure that the url you specify in the <code>cf-eva-create-target</code> command
+ is configured to receive webhook requests.</p>
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
 In order for a target to start receiving alerts, you must subscribe it to available alert topics.
@@ -137,7 +144,7 @@ To subscribe a target to one or more alert topics, do the following:
 
     <pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
 
-    <p class="note"><strong>Note: </strong>If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
+    <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
     a single topic from that publisher. That is, you must subscribe to a specific topic or topics, or subscribe to <code>all</code>.</p>
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
