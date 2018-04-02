@@ -11,9 +11,14 @@ PCF Event Alerts is deployed as an app in PCF. By default, this app is called `e
 
 To monitor the performance of PCF Event Alerts or to retrieve troubleshooting information, you can do one or more of the following:
 
-* Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app. For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html). 
-* Use the PCF Metrics service. For more information, see [PCF Metrics](https://docs.pivotal.io/pcf-metrics/index.html).
-* Use the Metrics Forwarder for PCF service. The `event-alerts` app detects if you have an available instance of Metrics Forwarder for PCF, and transmits custom app metrics through Loggregator to the service. For more information, see [Metrics Forwarder for PCF](https://docs.pivotal.io/metrics-forwarder/).  
+* Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
+  For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html). 
+* Use the PCF Metrics service.
+  For more information, see [PCF Metrics](https://docs.pivotal.io/pcf-metrics/index.html).
+* Use the Metrics Forwarder for PCF service.
+  The `event-alerts` app detects if you have an available instance of Metrics Forwarder for PCF,
+  and transmits custom app metrics through Loggregator to the service.
+  For more information, see [Metrics Forwarder for PCF](https://docs.pivotal.io/metrics-forwarder/).  
 
 ##<a id="scaling"></a> Scaling PCF Event Alerts
 
@@ -28,9 +33,12 @@ To scale PCF Event Alerts, perform the following steps:
 	Password>
 	</pre>
 1. When prompted, select the `system` org and the `event-alerts` space.
-1. Scale up the number of instances of the `event-alerts` app. Two instances should adequately handle most alerting workloads from PCF Healthwatch. For example:
+1. Scale up the number of instances of the `event-alerts` app.
+   Two instances should adequately handle most alerting workloads from PCF Healthwatch.
+   For example:
 	<pre class="terminal">$ cf scale event-alerts -i 2</pre>
-	If you are running very large PCF deployments with frequent threshold events, you might need to increase the instance count above two. 
+	If you are running very large PCF deployments with frequent threshold events,
+        you might need to increase the instance count above two. 
 
 If PCF Event Alerts is receiving frequent event transmissions, you can also do one or both of the following:
 
