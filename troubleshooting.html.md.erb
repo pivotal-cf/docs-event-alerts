@@ -17,7 +17,7 @@ To monitor the performance of PCF Event Alerts or to retrieve troubleshooting in
 
 ##<a id="scaling"></a> Scaling PCF Event Alerts
 
-You may need to scale PCF Event Alerts to improve performance.
+You might need to scale PCF Event Alerts to improve performance.
 
 To scale PCF Event Alerts, perform the following steps:
 
@@ -30,7 +30,7 @@ To scale PCF Event Alerts, perform the following steps:
 1. When prompted, select the `system` org and the `event-alerts` space.
 1. Scale up the number of instances of the `event-alerts` app. Two instances should adequately handle most alerting workloads from PCF Healthwatch. For example:
 	<pre class="terminal">$ cf scale event-alerts -i 2</pre>
-	If you are running very large PCF deployments with frequent threshold events, you may need to increase the instance count above two. 
+	If you are running very large PCF deployments with frequent threshold events, you might need to increase the instance count above two. 
 
 If PCF Event Alerts is receiving frequent event transmissions, you can also do one or both of the following:
 
