@@ -4,7 +4,7 @@ owner: PCF Event Alerts
 ---
 This topic describes how to configure alert destinations and subscribe to alerts. 
 It explains how to set alert destinations as targets, and how to subscribe those targets to alert topics.
-An example workflow is included below these procedures: the [webhook workflow](#example-workflow-webhook).
+An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
 
 PCF Users with admin permissions can run event alert commands and subscribe to alerts. 
 Admins can configure event alerts using the CF CLI.
@@ -200,9 +200,9 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 5. Verify a webhook message was posted to the webhook-ops 
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
-##<a id='command_help'></a> Event Alert CLI Commands
+##<a id='command_help'></a> PCF Event Alert Plugin Commands
 
-Use the following EVA CLI commands to perform various tasks related to event alerts. 
+Use the following PCF Event Alert plugin commands to perform various tasks related to event alerts. 
 
 <table>
   <tr>
@@ -279,7 +279,7 @@ Use the following EVA CLI commands to perform various tasks related to event ale
   </tr>
 </table> 
 
-You can also use commands to get help directly in the terminal window while working with EVA.
+You can also use commands to get help directly in the terminal window while working with the PCF Event Alerts plugin.
 
 * To list all event alert commands: `cf plugins | grep event-alerts`.
 * To get help with a specific command: `cf help COMMAND`.
