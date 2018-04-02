@@ -160,8 +160,7 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 ##<a id="plugin"></a> Install the PCF Event Alerts Plugin
 
 You must install the PCF Event Alerts Plugin in order to configure notifications.
-This cf CLI plugin is used to subscribe to topics published by a variety of publishers, such as Healthwatch.
-
+You can use this cf CLI plugin to subscribe to topics published by a variety of publishers, such as [PCF Healthwatch(http://docs.pivotal.io/pcf-healthwatch/1-2/index.html).
 
 ###<a id='installing'></a> Install the Plugin
 
@@ -171,7 +170,7 @@ To install the plugin, do the following:
 
 1. Download the plugin binary from Pivotal Network.
 
-1. To install the plugin, run the command `cf install-plugin PATH-TO-BINARY`.
+1. Run the command `cf install-plugin PATH-TO-BINARY`.
 
 ###<a id='uninstalling'></a> Uninstall the Plugin
 
