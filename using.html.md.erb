@@ -71,7 +71,7 @@ To create a webhook target, do the following:
 
 1. Run the command `cf eva-create-target TARGET-NAME webhook URL`<br><br>
   For example:
-  <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>.
+  <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
     This creates a target named `my-webhook`, where event alerts will `POST` a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
