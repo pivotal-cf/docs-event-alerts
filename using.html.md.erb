@@ -218,6 +218,10 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
 
 <table>
   <tr>
+    <th>Command</th>
+    <th>Action</th>
+  </tr>
+  <tr>
     <td><strong>eva-api</strong></td>
     <td>
     Displays the endpoint and version of the Event Alerts API server.
@@ -244,7 +248,11 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
   <tr>
     <td><strong>eva-sample-publish</strong></td>
     <td>
-    Publishes a sample event to all subscribers of the specified topic. To issue this command, you must have <code>cloud_controller.admin</code>, <code>network.admin</code>, or <code>notifications.write</code> <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">UAA privileges</a>.
+    Publishes a sample event to all subscribers of the specified topic.
+    To issue this command, you must have <code>cloud_controller.admin</code>, <code>network.admin</code>,
+    or <code>notifications.write</code> UAA privileges.
+    For information about these UAA privileges,
+    see <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Scopes</a>. 
     </td>
   </tr>
   <tr>
