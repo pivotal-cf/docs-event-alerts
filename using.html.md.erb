@@ -199,9 +199,7 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 	$ cf eva-subscribe webhook-ops healthwatch --all
 	</pre>
 
-4. Publish a sample message to a healthwatch topic. This requires that you have one of the following scopes:
- `notifications.write`,
- `cloud_controller.admin`, or `network.admin`. 
+4. Publish a sample message to a healthwatch topic. This requires that you have the `notifications.write` scope.
 
 	<pre class="terminal">
 	cf eva-sample-publish healthwatch system.healthy
@@ -249,8 +247,7 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
     <td><strong>eva-sample-publish</strong></td>
     <td>
     Publishes a sample event to all subscribers of the specified topic.
-    To issue this command, you must have <code>cloud_controller.admin</code>, <code>network.admin</code>,
-    or <code>notifications.write</code> UAA privileges.
+    To issue this command, you must have the <code>notifications.write</code> UAA scope.
     For information about these UAA privileges,
     see <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Scopes</a>. 
     </td>
