@@ -3,7 +3,8 @@ title: Installing and Configuring PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to install and configure PCF Event Alerts. For information on how to use this product, see [Using PCF Event Alerts](./using.html).
+This topic describes how to install and configure PCF Event Alerts. For information on how to use this product, 
+see [Using PCF Event Alerts](./using.html).
 
 ##<a id='prereqs'></a> Prerequisites
 
@@ -38,7 +39,7 @@ Follow the stops below to configure the PCF Event Alerts tile.
 
 Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Alerts and to select networks.
 
-1. Click **Assign AZs and Networks**.
+1. Click the **Assign AZs and Networks** tab. 
   ![AZ and Network Assignments Section](images/azs-and-network.png)
 
 1. Configure the fields as follows:
@@ -53,7 +54,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
           PCF Event Alerts components execute as apps and do not require VMs.</td>
     </tr>
     <tr><td><strong>Balance other jobs in</strong></td>
-        <td>Ignore this field.</td>
+        <td>Select any field. This selection has no effect but is required.</td>
     </tr>
     <tr>
       <td><strong>Network</strong></td>
@@ -68,32 +69,31 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
 ### <a id="event-alerts-alerting-config"></a> (Optional) Configure Scaling Settings
 
 You can scale PCF event alerts by adding additional instances of the app. 
-Follow the steps below to optionally configure Scaling settings.
+Follow the steps below to optionally configure scaling settings.
 
-1. Click **Scaling Settings**.
+1. Click the **Scale** tab.
 
-1. Set the number of app instances. The default instance count for the `event-alerts` app is two. Environments with a very large number of 
-alerts may need to scale to a larger number of instances. Environments that do not require high availability
+1. In the **PCF Event Alerts Instance Count**, set the number of `event-alerts` app instances. Environments with a very large number of 
+alerts may need a large number of instances. Environments that do not require high availability
 may scale down to one instance. 
 
 1. Click **Save**. 
 
 ###<a id="mysql"></a> Configure MySQL Settings
 
+PCF Event Alerts can either use the MySQL for PCF v2 service or an external MySQL database.
+To use the MySQL for PCF v2 service, you must have MySQL for PCF v2.0 or later installed. 
+
 Follow the steps below to configure MySQL settings. 
-
-PCF Event Alerts can either use the MySQL for PCF v2 service or an external database.
-
-To use the MySQL for PCF v2 service, you must have installed MySQL for PCF v2.0 or later. 
 
 #### Use the MySQL for PCF v2 Service
 
 If you have MySQL for PCF v2.0 or later installed and want to use it for PCF Event Alerts,
 follow the steps below.
 
-1. Click **MySQL Settings**.
+1. Click the **MySQL Settings** tab.
 
-1. Select **MySQL Service** and enter the service plan to use. For example, `db-small`.
+1. Select **Pivotal MySQL Service** and enter the service plan to use. For example, `db-small`.
   ![MySQL Settings Service Option](images/mysql-settings-service.png)
 
 1. Click **Save**.
@@ -102,7 +102,7 @@ follow the steps below.
 
 If you want to use an external database for PCF Event Alerts, follow the steps below.
 
-1. Click **MySQL Settings**.
+1. Click the **MySQL Settings** tab.
 
 1. Select **External**.
 
@@ -145,14 +145,15 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 
 ###<a id="stemcell"></a> Verify Stemcell Version
 
-1. Click **Stemcell**.
+1. Click the **Stemcell** tab.
 
-1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, the following message appears:
+1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, 
+a message similar to the following appears (the version numbers shown may be different):
     ![Stemcell Section](images/stemcell.png)
-    If you need to upload a stemcell, perform the following steps:
+    If you need to upload a stemcell, do the following:
       1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
       1. Download the appropriate stemcell version targeted for your IaaS.
-      1. Return to the **Stemcell** section and click **Import Stemcell** to import the downloaded stemcell TGZ file.
+      1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
 
 1. Click **Save**.
 
@@ -170,7 +171,9 @@ The plugin is currently only available to admins.
 
 To install the plugin, do the following:
 
-1. Download the `pcf-event-alerts-cli-plugin-binary` file from Pivotal Network.
+1. Download one of the following files from Pivotal Network, depending on your operating system (OS).
+    * `pcf-event-alerts-cli-plugin-OS-binary`
+    * `pcf-event-alerts-cli-plugin-OS-exe`
 
 1. Run the command `cf install-plugin PATH-TO-BINARY-FILE`.
 
