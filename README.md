@@ -10,8 +10,9 @@ The book file that publishes this content is at [https://github.com/pivotal-cf/d
 
 ## About product name
 
-The name of this product is **PCF Event Alerts**. The plugin is the **PCF Event Alerts plugin**, which users can install from pivnet.
-When you are referring generically to an alert as a concept, use the term "alerts" consistently.
+The name of this product is **PCF Event Alerts**. The plugin is the **PCF Event Alerts plugin**, which users can install from Pivnet.
+
+When you are referring generically to an alert as a concept (rather than referring to the actual product), use the term "alerts" consistently.
 
 ## About branches 
 
