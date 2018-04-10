@@ -6,7 +6,7 @@ This repo contains the documentation for PCF Event Alerts.
 
 The contents of this repo are currently published at [docs-pcf-staging.cfapps.io/event-alerts/](https://docs-pcf-staging.cfapps.io/event-alerts/).
 
-The book file that publishes this content is at [https://github.com/pivotal-cf/docs-event-alerts](https://github.com/pivotal-cf/docs-event-alerts).
+The book file that publishes this content is at [https://github.com/pivotal-cf/docs-book-event-alerts](https://github.com/pivotal-cf/docs-event-alerts).
 
 ## About product name
 
