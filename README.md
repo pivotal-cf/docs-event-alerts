@@ -16,10 +16,11 @@ When you are referring generically to an alert as a concept (rather than referri
 
 ## About branches 
 
-Currently, the **master** branch is for unreleased, v1.1.0, documentation. 
-Make changes or PRs relevant to v1.1.0 on that branch.
+Currently, the **master** branch is for beta, v1.1.2, documentation. 
+Make changes or PRs relevant to v1.1.x on that branch.
 
-v1.1.0 is a closed beta. A link to the doc does not appear on the docs.pivotal.io home page.
+v1.1.2 is a closed beta.
+A link to the doc does not appear on the docs.pivotal.io home page.
 
 **Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
 
