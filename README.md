@@ -16,7 +16,7 @@ When you are referring generically to an alert as a concept (rather than referri
 
 ## About branches 
 
-Currently, the **master** branch is for beta, v1.1.2, documentation. 
+Currently, the **master** branch is for beta, v1.1.x, documentation. 
 Make changes or PRs relevant to v1.1.x on that branch.
 
 v1.1.2 is a closed beta.
