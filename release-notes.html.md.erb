@@ -8,48 +8,24 @@ These are release notes for PCF Event Alerts.
 ##<a id="ver-1.2"></a> v1.2
 
 **Release Date:** June X, 2018
-
-##<a id="ver-1-1-4"></a> v1.1.4
-
-**Release Date:** June 5, 2018
-
-### <a id="fixes113"></a> Fixed Issues
-
-This release fixes the following issue:
-
-* Installation no longer fails when the Notifications client requires HTTPS.
-
-### <a id="known113"></a> Known Issues
-
-There are no known issues for this release.
-
-##<a id="ver-1-1-3"></a> v1.1.3
-
-**Release Date:** May 17, 2018
-
-### <a id="features113"></a> Features
+ 
+### Features
 
 New features and changes in this release:
 
-* PCF Event Alerts now uses its own client instead of other clients.
-  This change has no user impact.
+* In order to view Healthwatch topics, you must have Healthwatch v1.3 installed. (Need link to Healthwatch 1.3 docs)
 
-### <a id="known113"></a> Known Issues
+* This release removes dependence on notifications.
 
-Some users are unable to install PCF Event Alerts when the Notifications client requires HTTPS.
-This issue is fixed in v1.1.4.
+* This release makes email configuration optional during installation.
+  <p class="note"><strong>Note</strong>: Email notification is still required if you want notifications sent by email.</p> 
 
-##<a id="ver"></a> v1.1.2
+* All email addresses now receive messages confirming that they have been validated. Previously, if the email address provided was the same as the one used to create the target, the address would be verified automatically but no message was sent.
 
-**Release Date:** April 25, 2018
+### Security Fixes
 
-### <a id="features"></a> Features
 
-Features included in this release:
+### Fixed Issues
 
-* Sends Slack and email notifications of events that [PCF Healthwatch](http://docs.pivotal.io/pcf-healthwatch/1-2/index.html) has alerted on.
 
-### <a id="known"></a> Known Issues
-
-There are no known issues for this release.
-
+### Known Issues
