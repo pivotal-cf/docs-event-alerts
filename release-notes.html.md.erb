@@ -9,19 +9,21 @@ These are release notes for PCF Event Alerts.
 
 **Release Date:** August 7, 2018
 
-### <a id="fixes115"></a> Features
+### <a id="features116"></a> Features
 
 New features and changes in this release:
 
-* Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol.
-* Maintenance update of the following product dependencies
+* Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol
+* Maintenance update of the following product dependencies:
     * Flyway Command-line now v.5.1.4
     * Golang now v1.10.3
     * Product stemcell now v3541
 
-### <a id="known115"></a> Known Issues
+### <a id="known116"></a> Known Issues
 
-* **[Known Issue]** when saving the MySQL settings page with Azure style usernames: 'userId@serverName'. This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, it is most likely an issue with the configuration of the MySQL database connection details.
+* **[Known Issue]** when saving the MySQL settings page with Azure style usernames: 'userId@serverName'. 
+This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, 
+it is most likely an issue with the configuration of the MySQL database connection details.
 
 ##<a id="ver-1-1-5"></a> v1.1.5
 
@@ -35,7 +37,8 @@ This release fixes the following issue:
 
 ### <a id="known115"></a> Known Issues
 
-* **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authenticating will not work. This is fixed in PCF Event Alerts 1.1.6.
+* **[Bug Identified]** When using an external Azure MySQL database or other databases 
+where usernames contain the '@' symbol, authentication will not work. This issue is fixed in PCF Event Alerts 1.1.6.
 
 ##<a id="ver-1-1-4"></a> v1.1.4
 
