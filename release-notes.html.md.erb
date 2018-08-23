@@ -3,25 +3,6 @@ title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-##<a id="ver-1-2-2"></a> v1.2.2
-
-**Release Date: August 7, 2018**
-
-### <a id="features121"></a> Features
-
-New features and changes in this release:
-
-* **[Bug Fix]** Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol. 
-* SMTP verification is no longer required. To skip SMTP verification, simply bypass that step in the set up process. 
-* Maintenance update of the following product dependencies
-    * Flyway Command-line now v.5.1.4
-    * Golang now v1.10.3
-    * Product stemcell now Ubuntu Xenial v97.3
-
-### <a id="known121"></a> Known Issues
-
-* **[Known Issue]** When saving the MySQL settings page with Azure style usernames: 'userId@serverName'. This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, it is most likely an issue with the configuration of the MySQL database connection details.
-
 ##<a id="ver-1-2-1"></a> v1.2.1
 
 **Release Date: July 17, 2018**
@@ -40,7 +21,7 @@ New features and changes in this release:
 
 ### <a id="known121"></a> Known Issues
 
-* **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authenticating will not work. This is fixed in PCF Event Alerts 1.2.2.
+There are no known issues for this release.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
