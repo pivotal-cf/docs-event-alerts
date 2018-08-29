@@ -13,16 +13,15 @@ New features and changes in this release:
 
 * **[Bug Fix]** Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol. 
 * SMTP verification is no longer required. To skip SMTP verification, simply bypass that step in the set up process. 
-* Maintenance update of the following product dependencies
+* Maintenance update of the following product dependencies:
     * Flyway Command-line is now v.5.1.4
     * Golang is now v1.10.3
     * Product stemcell is now Ubuntu Xenial v97.x
-    	* Before using PCF Event Alerts v1.2.2, you must update any BOSH add-ons.
-    	For more information, see [Prerequisites](./installing.html#prereqs)
-
-<p class="note breaking"><strong>Breaking Change: </strong> PCF Event Alerts v1.2.2 and later use a Xenial stemcell.
-These need to be manually downloaded and added to your Ops Manager.
-Any update automation you have set up around deployments using Trusty stemcells will break.</p>
+    	* Before using PCF Event Alerts v1.2.2, you must update any BOSH add-ons to support Xenial stemcells.
+    	For more information, see [Prerequisites](./installing.html#prereqs).
+<p class="note breaking"><strong>Breaking Change: </strong>PCF Event Alerts v1.2.2 and later require a Xenial stemcell.
+You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying PCF Event Alerts.
+Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells may break.</p>
 
 ### <a id="known121"></a> Known Issues
 
