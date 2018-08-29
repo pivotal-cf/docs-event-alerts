@@ -5,7 +5,7 @@ owner: PCF Event Alerts
 
 ##<a id="ver-1-2-2"></a> v1.2.2
 
-**Release Date: August 7, 2018**
+**Release Date: September XX, 2018**
 
 ### <a id="features121"></a> Features
 
@@ -14,9 +14,15 @@ New features and changes in this release:
 * **[Bug Fix]** Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol. 
 * SMTP verification is no longer required. To skip SMTP verification, simply bypass that step in the set up process. 
 * Maintenance update of the following product dependencies
-    * Flyway Command-line now v.5.1.4
-    * Golang now v1.10.3
-    * Product stemcell now Ubuntu Xenial v97.3
+    * Flyway Command-line is now v.5.1.4
+    * Golang is now v1.10.3
+    * Product stemcell is now Ubuntu Xenial v97.x
+    	* Before using PCF Event Alerts v1.2.2, you must update any BOSH add-ons.
+    	For more information, see [Prerequisites](./installing.html#prereqs)
+
+<p class="note breaking"><strong>Breaking Change: </strong> PCF Event Alerts v1.2.2 and later use a Xenial stemcell.
+These need to be manually downloaded and added to your Ops Manager.
+Any update automation you have set up around deployments using Trusty stemcells will break.</p>
 
 ### <a id="known121"></a> Known Issues
 
