@@ -3,11 +3,11 @@ title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-##<a id="ver-1-2-2"></a> v1.2.2
+##<a id="ver-1-2-3"></a> v1.2.3
 
 **Release Date: September XX, 2018**
 
-### <a id="features121"></a> Features
+### <a id="features123"></a> Features
 
 New features and changes in this release:
 
@@ -17,13 +17,13 @@ New features and changes in this release:
     * Flyway Command-line is now v.5.1.4
     * Golang is now v1.10.3
     * Product stemcell is now Ubuntu Xenial v97.x
-    	* Before using PCF Event Alerts v1.2.2, you must update any BOSH add-ons to support Xenial stemcells.
+    	* Before using PCF Event Alerts v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
     	For more information, see [Prerequisites](./installing.html#prereqs).
-<p class="note breaking"><strong>Breaking Change: </strong>PCF Event Alerts v1.2.2 and later require a Xenial stemcell.
+<p class="note breaking"><strong>Breaking Change: </strong>PCF Event Alerts v1.2.3 and later require a Xenial stemcell.
 You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying PCF Event Alerts.
 Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells may break.</p>
 
-### <a id="known121"></a> Known Issues
+### <a id="known123"></a> Known Issues
 
 * **[Known Issue]** When saving the MySQL settings page with Azure style usernames: 'userId@serverName'. This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, it is most likely an issue with the configuration of the MySQL database connection details.
 
