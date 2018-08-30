@@ -14,6 +14,10 @@ You must have the following in order to install PCF Event Alerts:
 + MySQL for PCF v2.0 or later, or external MySQL credentials
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the Event Alerts tile
++ Updated any BOSH add-ons being used in your PCF deployment to support Xenial stemcells
+  + To update the File Integrity Monitoring for PCF Add-on, see [Updating FIM Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-fim/updating-for-xenial.html).
+  + To update the ClamAV for PCF Add-on, see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/updating-for-xenial.html).
+  + To update the IPsec for PCF Add-on, see [Updating IPsec Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-ipsec/updating-for-xenial.html).
 
 ##<a id='install'></a> Download and Install the PCF Event Alerts Tile
 
@@ -189,6 +193,7 @@ a message similar to the following appears (the version numbers shown may be dif
       1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
       1. Download the appropriate stemcell version targeted for your IaaS.
       1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
+      <p class="note"><strong>Note: </strong> PCF Event Alerts v1.2.3 and later require a Xenial stemcell. To download a Xenial stemcell from Pivotal Network, see [Stemcells for PCF (Ubuntu Xenial)](https://network.pivotal.io/products/stemcells-ubuntu-xenial/).</p>
 
 1. Click **Save**.
 
