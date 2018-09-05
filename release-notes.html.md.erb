@@ -13,6 +13,7 @@ New features and changes in this release:
 
 * **[Bug Fix]** Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol. 
 * SMTP verification is no longer required. To skip SMTP verification, simply bypass that step in the set up process. 
+* Escape characters are no longer required to be used in configuration passwords. 
 * Maintenance update of the following product dependencies:
     * Flyway Command-line is now v.5.1.4
     * Golang is now v1.10.3
@@ -45,7 +46,7 @@ New features and changes in this release:
 
 ### <a id="known121"></a> Known Issues
 
-* There are no known issues for this release.
+* **[Bug Identified]** Users of Event Alerts 1.2.1 are required to use escape characters in configuration passwords. This is no longer required in Event Alerts 1.2.3 and future releases.  
 
 ## <a id="view"></a> View Release Notes for Another Version
 
