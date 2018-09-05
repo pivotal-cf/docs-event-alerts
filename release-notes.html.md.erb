@@ -26,8 +26,6 @@ Any automation you have set up to update your PCF Event Alerts deployments using
 
 ### <a id="known123"></a> Known Issues
 
-* **[Known Issue]** When saving the MySQL settings page with Azure style usernames: 'userId@serverName'. This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, it is most likely an issue with the configuration of the MySQL database connection details.
-
 ##<a id="ver-1-2-1"></a> v1.2.1
 
 **Release Date: July 17, 2018**
@@ -46,7 +44,8 @@ New features and changes in this release:
 
 ### <a id="known121"></a> Known Issues
 
-* **[Bug Identified]** Users of Event Alerts v1.2.1 are required to use escape characters in configuration passwords. This is no longer required in Event Alerts v1.2.3 and later releases.  
+* **[Bug Identified]** Users of Event Alerts v1.2.1 are required to use escape characters in configuration passwords. This is no longer required in Event Alerts v1.2.3 and later releases. 
+* **[Known Issue]** When saving the MySQL settings page with Azure style usernames (for example: 'userId@serverName), you may see an error message due to non-support of the `@` character. This is resolved in Event Alerts 1.2.3
 
 ## <a id="view"></a> View Release Notes for Another Version
 
