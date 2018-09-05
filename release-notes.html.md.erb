@@ -25,6 +25,7 @@ You must manually download and import a new stemcell into the Ops Manager Stemce
 Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells may break.</p>
 
 ### <a id="known123"></a> Known Issues
+* **[Known Issue]** When saving the MySQL settings page with Azure style usernames (for example, 'userId@serverName), you may see an error message due to non-support of the `@` character. You can ignore this message and successfully authenticate.
 
 ##<a id="ver-1-2-1"></a> v1.2.1
 
@@ -45,7 +46,8 @@ New features and changes in this release:
 ### <a id="known121"></a> Known Issues
 
 * **[Bug Identified]** Users of Event Alerts v1.2.1 are required to use escape characters in configuration passwords. This is no longer required in Event Alerts v1.2.3 and later releases. 
-* **[Known Issue]** When saving the MySQL settings page with Azure style usernames (for example: 'userId@serverName), you may see an error message due to non-support of the `@` character. This is resolved in Event Alerts 1.2.3
+* **[Bug Identified]** When using an external Azure MySQL database or other databases 
+where usernames contain the '@' symbol, authentication will not work. This issue is fixed in PCF Event Alerts 1.1.6.
 
 ## <a id="view"></a> View Release Notes for Another Version
 
