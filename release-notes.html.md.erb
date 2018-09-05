@@ -21,9 +21,7 @@ New features and changes in this release:
 
 ### <a id="known116"></a> Known Issues
 
-* **[Known Issue]** when saving the MySQL settings page with Azure style usernames: 'userId@serverName'. 
-This error can be ignored when deploying. If the MySQL verification error appears with non-Azure style usernames, 
-it is most likely an issue with the configuration of the MySQL database connection details.
+* **[Known Issue]** When saving the MySQL settings page with Azure style usernames (for example, 'userId@serverName), you may see an error message due to non-support of the `@` character. You can ignore this message and successfully authenticate.
 
 ##<a id="ver-1-1-5"></a> v1.1.5
 
@@ -37,8 +35,7 @@ This release fixes the following issue:
 
 ### <a id="known115"></a> Known Issues
 
-* **[Bug Identified]** When using an external Azure MySQL database or other databases 
-where usernames contain the '@' symbol, authentication will not work. This issue is fixed in PCF Event Alerts 1.1.6.
+* **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authentication will not work. This issue is fixed in PCF Event Alerts 1.1.6.
 
 ##<a id="ver-1-1-4"></a> v1.1.4
 
