@@ -2,6 +2,30 @@
 title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
+##<a id="ver-1-2-3"></a> v1.2.3
+
+**Release Date: October 3, 2018**
+
+### <a id="features123"></a> Features
+
+* Maintenance update of the following product dependencies:
+    * `cflinuxfs2` now `cfslinuxfs3`, cflinuxfs2 will continue to work when PCF Event Alerts is installed on a PCF 2.2 environment.
+    * 
+
+### <a id="fixed123"></a> Fixed Issues
+
+This release fixes the following issue:
+
+* In prior versions of PCF Event Alerts tile metadata was not matched with the release number of PCF Event Alerts. These version numbers are now aligned. 
+
+### <a id="known123"></a> Known Issues
+
+This release has the following issue:
+
+* When saving the MySQL settings page with Azure style usernames (for example, `userId@serverName`),
+  you might see an error message due to non-support of the `@` character.
+  You can ignore this message and successfully authenticate.
+
 
 ##<a id="ver-1-2-3"></a> v1.2.3
 
