@@ -2,21 +2,21 @@
 title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
-##<a id="ver-1-2-3"></a> v1.2.3
+##<a id="ver-1-2-5"></a> v1.2.5
 
 **Release Date: October 3, 2018**
 
 ### <a id="features123"></a> Features
 
 * Maintenance update of the following product dependencies:
-    * `cflinuxfs2` now `cfslinuxfs3`, cflinuxfs2 will continue to work when PCF Event Alerts is installed on a PCF 2.2 environment.
-    * 
+    * `cflinuxfs2` now `cfslinuxfs3`, `cflinuxfs2` will continue to work when PCF Event Alerts is installed on a PCF 2.2 environment.
 
 ### <a id="fixed123"></a> Fixed Issues
 
 This release fixes the following issue:
 
-* In prior versions of PCF Event Alerts tile metadata was not matched with the release number of PCF Event Alerts. These version numbers are now aligned. 
+* In prior versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts. These version numbers are now aligned.
+* This version of PCF Event Alerts supports using BOSH DNS in conjunction with IPSec Add-On when using an internal database.
 
 ### <a id="known123"></a> Known Issues
 
@@ -64,6 +64,8 @@ This release has the following issue:
 * When saving the MySQL settings page with Azure style usernames (for example, `userId@serverName`),
   you might see an error message due to non-support of the `@` character.
   You can ignore this message and successfully authenticate.
+* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts will not function. This issue is fixed in PCF Event Alerts v1.2.5.
+* The tile version in the tile metadata may not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts 1.2.5.
 
 ##<a id="ver-1-2-1"></a> v1.2.1
 
@@ -94,6 +96,9 @@ This release has the following issues:
 * When using an external Azure MySQL database or other databases 
   where usernames contain the `@` symbol, authentication does not work.
   This issue is fixed in PCF Event Alerts v1.1.6.
+* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts will not function. This issue is fixed in PCF Event Alerts v1.2.5.
+* The tile version in the tile metadata may not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts 1.2.5.
+
 
 ## <a id="view"></a> View Release Notes for Another Version
 
