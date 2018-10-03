@@ -8,24 +8,22 @@ owner: PCF Event Alerts
 
 ### <a id="features123"></a> Features
 
-* Maintenance update of the following product dependencies:
-    * `cflinuxfs2` now `cfslinuxfs3`, `cflinuxfs2` will continue to work when PCF Event Alerts is installed on a PCF 2.2 environment.
+* Maintenance update for the following product dependencies:
+    * `cflinuxfs2` is now `cfslinuxfs3`. `cflinuxfs2` still works when PCF Event Alerts is installed on a PCF 2.2 environment.
 
 ### <a id="fixed123"></a> Fixed Issues
 
-This release fixes the following issue:
+This release fixes the following issues:
 
-* In prior versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts. These version numbers are now aligned.
-* This version of PCF Event Alerts supports using BOSH DNS in conjunction with IPSec Add-On when using an internal database.
+* In prior versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts. The version numbers now match.
+* This version of PCF Event Alerts supports using BOSH DNS in conjunction with the IPSec Add-On when using an internal database.
 
 ### <a id="known123"></a> Known Issues
 
 This release has the following issue:
 
-* When saving the MySQL settings page with Azure style usernames (for example, `userId@serverName`),
-  you might see an error message due to non-support of the `@` character.
-  You can ignore this message and successfully authenticate.
-
+* When saving the MySQL Settings page with Azure-style usernames (for example, `userId@serverName`),
+  you may see an error message saying use of the  `@` character is not supported. Disregard this message. You are still able to authenticate. 
 
 ##<a id="ver-1-2-3"></a> v1.2.3
 
