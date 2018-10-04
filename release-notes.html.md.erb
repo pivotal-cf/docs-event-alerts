@@ -4,19 +4,26 @@ owner: PCF Event Alerts
 ---
 ##<a id="ver-1-2-5"></a> v1.2.5
 
-**Release Date: October 3, 2018**
+**Release Date: October 5, 2018**
 
 ### <a id="features123"></a> Features
 
-* Maintenance update for the following product dependencies:
-    * PCF Event Alerts uses `cflinuxfs3` as the default stack when available. `cflinuxfs2` is used when PCF Event Alerts is installed on an environment that does not have `cflinuxfs3`, for example, a PCF 2.2 environment.
+Change in this release:
+
+* PCF Event Alerts now uses `cflinuxfs3` as the default stack when available.
+
+     `cflinuxfs2` is used when PCF Event Alerts is installed on an environment that does not have `cflinuxfs3`,
+      for example, a PCF v2.2 environment.
 
 ### <a id="fixed123"></a> Fixed Issues
 
 This release fixes the following issues:
 
-* In prior versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts. The version numbers now match.
-* This version of PCF Event Alerts supports using BOSH DNS in conjunction with the IPSec Add-On when using an internal database.
+* In earlier versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts.
+  The version numbers now match.
+
+* This version of PCF Event Alerts supports using BOSH DNS in conjunction
+  with the IPsec Add-on for PCF when using an internal database.
 
 ### <a id="known123"></a> Known Issues
 
