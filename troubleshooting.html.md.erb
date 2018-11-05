@@ -19,9 +19,10 @@ To monitor the performance of PCF Event Alerts or to retrieve troubleshooting in
   The `event-alerts` app detects if you have an available instance of Metrics Forwarder for PCF
   and transmits custom app metrics through Loggregator to the service.
   For more information, see [Metrics Forwarder for PCF](https://docs.pivotal.io/metrics-forwarder/).  
-  <p class="note"><strong>Note:</strong> When no Metrics Forwarder is installed Event Alerts produces an error. 
-  This is meant to highlight the fact that no custom metrics are being published to the firehose
-   and does not indicate a problem with the system.</p>
+  <p class="note"><strong>Note:</strong> When Metrics Forwarder is not installed,
+     Event Alerts produces an error.
+     This indicates that no custom metrics are being published to the Firehose.
+     It does not indicate a problem with the system.</p>
 
 ##<a id="scale"></a> Scale PCF Event Alerts
 
