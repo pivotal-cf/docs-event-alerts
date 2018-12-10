@@ -2,7 +2,7 @@
 
 This repo contains the documentation for PCF Event Alerts.
 
-**Note**: Please use PRs to contribute new content or make fixes to this PCF Event Alerts documentation.
+**IMPORTANT**: Use PRs to contribute new content or make fixes to this PCF Event Alerts documentation.
 
 The contents of this repo are currently published at [docs-pcf-staging.cfapps.io/event-alerts/](https://docs-pcf-staging.cfapps.io/event-alerts/).
 
