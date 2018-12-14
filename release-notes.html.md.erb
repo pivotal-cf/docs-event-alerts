@@ -5,6 +5,24 @@ owner: PCF Event Alerts
 
 These are release notes for PCF Event Alerts.
 
+##<a id="ver-1-1-7"></a> v1.1.7
+
+**Release Date:** December 14, 2018
+
+### <a id="features116"></a> Features
+
+New features and changes in this release:
+
+* Maintenance update of the following product dependencies:
+    * Flyway Command-line now v5.2.4
+    * Golang now v1.11
+    * cf-cli now 6.41.0
+
+### <a id="known116"></a> Known Issues
+
+* **[Known Issue]** When saving the MySQL settings page with Azure style usernames (for example, 'userId@serverName), you may see an error message due to non-support of the `@` character. You can ignore this message and successfully authenticate.
+
+
 ##<a id="ver-1-1-6"></a> v1.1.6
 
 **Release Date:** August 7, 2018
@@ -15,7 +33,7 @@ New features and changes in this release:
 
 * Adds support for external Azure MySQL databases and other cases where usernames contain the '@' symbol
 * Maintenance update of the following product dependencies:
-    * Flyway Command-line now v.5.1.4
+    * Flyway Command-line now v5.1.4
     * Golang now v1.10.3
     * Product stemcell now v3541
 
