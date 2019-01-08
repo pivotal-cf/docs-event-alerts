@@ -11,8 +11,9 @@ see [Using PCF Event Alerts](./using.html).
 You must have the following in order to install PCF Event Alerts:
 
 + PAS v2.1.x or later
-+ MySQL for PCF v2.0 or later, or external MySQL credentials
-  + Note: MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
++ MySQL for PCF v2 or external MySQL credentials
+  <p class="note"><strong>Note:</strong> You cannot use a MariaDB database because it cannot set a <code>DATETIME</code> column to <code>CURRENT_TIMESTAMP</code>.
+  For more information, see <a href="https://jira.mariadb.org/browse/MCOL-1039"> DATE / DATETIME should support CURRENT\_TIMESTAMP</a> the MariaDB ColumnStore issues.</p>
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the PCF Event Alerts tile
 + Updated and properly configured any BOSH add-ons used in your PCF deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
@@ -228,7 +229,3 @@ To install the plugin, do the following:
 ###<a id='uninstalling'></a> Uninstall the Plugin
 
 To uninstall the plugin, run the command `cf uninstall-plugin event-alerts`.
-
-
-
-
