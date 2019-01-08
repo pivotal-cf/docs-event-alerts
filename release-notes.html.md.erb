@@ -24,6 +24,7 @@ New features and changes in this release:
     `userId@serverName`, you might see an error message saying that the use of the `@` character is not supported.
     Disregard this message.
     You are still able to authenticate.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
 
 ##<a id="ver-1-1-6"></a> v1.1.6
@@ -46,6 +47,7 @@ New features and changes in this release:
     `userId@serverName`, you might see an error message saying that the use of the `@` character is not supported.
     Disregard this message.
     You are still able to authenticate.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
 ##<a id="ver-1-1-5"></a> v1.1.5
 
@@ -60,6 +62,7 @@ This release fixes the following issue:
 ### <a id="known115"></a> Known Issues
 
 * **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authentication will not work. This issue is fixed in PCF Event Alerts 1.1.6.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
 ##<a id="ver-1-1-4"></a> v1.1.4
 
@@ -74,6 +77,7 @@ This release fixes the following issue:
 ### <a id="known114"></a> Known Issues
 
 * **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authenticating will not work. This is fixed in PCF Event Alerts 1.1.6.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
 ##<a id="ver-1-1-3"></a> v1.1.3
 
@@ -90,6 +94,7 @@ New features and changes in this release:
 
 * **[Bug Identified]** Some users are unable to install PCF Event Alerts when the Notifications client requires HTTPS. This issue is fixed in v1.1.4.
 * **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authenticating will not work. This is fixed in PCF Event Alerts 1.1.6.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
 ##<a id="ver"></a> v1.1.2
 
@@ -104,4 +109,5 @@ Features included in this release:
 ### <a id="known"></a> Known Issues
 
 * **[Bug Identified]** When using an external Azure MySQL database or other databases where usernames contain the '@' symbol, authenticating will not work. This is fixed in PCF Event Alerts 1.1.6.
+* **[Known Incompatibility]** MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
 
