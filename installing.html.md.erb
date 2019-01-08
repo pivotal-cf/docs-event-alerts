@@ -13,8 +13,9 @@ You must have the following in order to install PCF Event Alerts:
 + PAS v2.1.x deployed with the following:
   + `Email Notifications` enabled with SMTP server configured.
   + `Notifications Errand` and `Notifications UI Errand` run.
-+ MySQL for PCF v2.0 or later, or external MySQL credentials
-  + Note: MariaDB is not currently supported due to [it not being able](https://jira.mariadb.org/browse/MCOL-1039) to set a `DATETIME` column to `CURRENT_TIMESTAMP`.
++ MySQL for PCF v2 or external MySQL credentials
+  <p class="note"><strong>Note:</strong> You cannot use a MariaDB database because it cannot set a <code>DATETIME</code> column to <code>CURRENT_TIMESTAMP</code>.
+  For more information, see <a href="https://jira.mariadb.org/browse/MCOL-1039"> DATE / DATETIME should support CURRENT\_TIMESTAMP</a> the MariaDB ColumnStore issues.</p>
 + If you want notifications sent to Slack channels, a Slack account
 
 ##<a id='install'></a> Download and Install the PCF Event Alerts Tile
@@ -181,7 +182,3 @@ To install the plugin, do the following:
 ###<a id='uninstalling'></a> Uninstall the Plugin
 
 To uninstall the plugin, run the command `cf uninstall-plugin event-alerts`.
-
-
-
-
