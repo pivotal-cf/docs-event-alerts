@@ -44,9 +44,9 @@ To create an email target, do the following:
 1. Run the command `cf eva-create-target TARGET-NAME email EMAIL-ADDRESS`. <br><br>
     For example, to create an email target for John Doe, run this command:
 
-    <pre class="terminal">$ cf eva-create-target jd-email email johndoe@example.com</pre>
+    <pre class="terminal">$ cf eva-create-target jdoe-email email johndoe@example.com</pre>
 
-    This creates a target named `jd-email` for the email address `johndoe@example.com`. Email addresses that do not 
+    This creates a target named `jdoe-email` for the email address `johndoe@example.com`. Email addresses that do not
     match the currently logged in user are verified by sending an email containing a link. 
     The target receives alerts after the user verifies the email.
 
@@ -143,13 +143,13 @@ To subscribe a target to one or more alert topics, do the following:
     Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step. 
     Enter topic names in the command separated by commas.<br><br> 
 
-    For example, to subscribe the target `my-email` to two topics from the publisher `healthwatch`, run:<br>
+    For example, to subscribe the target `jdoe-email` to two topics from the publisher `healthwatch`, run:<br>
 
-    <pre class="terminal">$ cf eva-subscribe my-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
+    <pre class="terminal">$ cf eva-subscribe jdoe-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
     
-    Or, to subscribe the target `my-email` to all topics from the publisher `healthwatch`, run:
+    Or, to subscribe the target `jdoe-email` to all topics from the publisher `healthwatch`, run:
 
-    <pre class="terminal">$ cf eva-subscribe my-email healthwatch --all</pre>
+    <pre class="terminal">$ cf eva-subscribe jdoe-email healthwatch --all</pre>
 
     <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
     a single topic from that publisher. That is, you must subscribe to a specific topic or topics, or subscribe to <code>all</code>.</p>
@@ -169,13 +169,13 @@ To unsubscribe a target from alert topics, do the following:
 
     Enter topic names in the command separated by commas.<br><br> 
 
-    For example, to unsubscribe the target `my-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:<br>
+    For example, to unsubscribe the target `jdoe-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:<br>
 
-    <pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --topics system.cpu.user</pre>
+    <pre class="terminal">$ cf eva-unsubscribe jdoe-email healthwatch --topics system.cpu.user</pre>
     
-    Or, to unsubscribe the target `my-email` from all topics from the publisher `healthwatch`, run:
+    Or, to unsubscribe the target `jdoe-email` from all topics from the publisher `healthwatch`, run:
 
-    <pre class="terminal">$ cf eva-unsubscribe my-email healthwatch --all</pre>
+    <pre class="terminal">$ cf eva-unsubscribe jdoe-email healthwatch --all</pre>
 
 ##<a id='example-workflow-webhook'></a> Example Workflow: Send all Healthwatch Alerts to a Webhook
 
