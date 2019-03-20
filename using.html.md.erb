@@ -42,11 +42,11 @@ Examples for using this command to create each of these targets appear below.
 To create an email target, do the following:
 
 1. Run the command `cf eva-create-target TARGET-NAME email EMAIL-ADDRESS`. <br><br>
-    For example, to create an email target for John Doe, run this command:
+    For example, to create an email target for J. Doe, run this command:
 
-    <pre class="terminal">$ cf eva-create-target jdoe-email email johndoe@example.com</pre>
+    <pre class="terminal">$ cf eva-create-target jdoe-email email jdoe@example.com</pre>
 
-    This creates a target named `jdoe-email` for the email address `johndoe@example.com`. Email addresses that do not
+    This creates a target named `jdoe-email` for the email address `jdoe@example.com`. Email addresses that do not
     match the currently logged in user are verified by sending an email containing a link. 
     The target receives alerts after the user verifies the email.
 
@@ -297,6 +297,3 @@ You can also use commands to get help directly in the terminal window while work
 
 * To list all event alert commands: `cf plugins | grep event-alerts`.
 * To get help with a specific command: `cf help COMMAND`.
-
-
-
