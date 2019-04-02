@@ -2,11 +2,11 @@
 title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
-This topic describes how to configure alert destinations and subscribe to alerts. 
+This topic describes how to configure alert destinations and subscribe to alerts.
 It explains how to set alert destinations as targets, and how to subscribe those targets to alert topics.
 An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
 
-PCF users with admin permissions can run event alert commands and subscribe to alerts. 
+PCF users with admin permissions can run event alert commands and subscribe to alerts.
 Admins can configure event alerts using the CF CLI.
 
 ##<a id='prerequisite'></a> Prerequisite
@@ -19,14 +19,16 @@ You must install both the PCF Event Alerts tile and plugin as described in the f
 
 ##<a id='targets'></a> Create Targets for Alerts
 
-Targets are destinations for alerts and are unique to each user. 
+Targets are destinations for alerts and are unique to each user.
 A target can be an email address, a Slack channel, or a webhook.
 
 To create an alert target, do the following:
 
 1. Run the command:
 
-    `cf eva-create-target TARGET-NAME TARGET-TYPE VALUE`<br><br>
+    ```
+    cf eva-create-target TARGET-NAME TARGET-TYPE VALUE
+    ```
     Where:<br>
     * `TARGET-NAME` is a unique name for this target
     * `TARGET-TYPE` is one of the following:
@@ -41,13 +43,17 @@ Examples for using this command to create each of these targets appear below.
 
 To create an email target, do the following:
 
-1. Run the command `cf eva-create-target TARGET-NAME email EMAIL-ADDRESS`. <br><br>
+1. Run the command:
+
+    ```
+    cf eva-create-target TARGET-NAME email EMAIL-ADDRESS
+    ```
     For example:
 
     <pre class="terminal">$ cf eva-create-target user-email email user@example.com</pre>
 
     This creates a target named `user-email` for the email address `user@example.com`. Email addresses that do not
-    match the currently logged in user are verified by sending an email containing a link. 
+    match the currently logged in user are verified by sending an email containing a link.
     The target receives alerts after the user verifies the email.
 
     <p class="note"><strong>Note:</strong> You can use any email address as an alert target; email alert recipients do not
@@ -57,17 +63,21 @@ To create an email target, do the following:
 
 To create a Slack target, do the following:
 
-1. Create an incoming Slack webhook using the instructions in the 
+1. Create an incoming Slack webhook using the instructions in the
 [Slack documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).<br><br>
   Note the Slack webhook URL, which is used in the next step.
 
-1. Run the command `cf eva-create-target TARGET-NAME slack URL`.<br><br>
+1. Run the command:
+
+    ```
+    cf eva-create-target TARGET-NAME slack URL
+    ```
     For example:<br>
     <pre class="terminal">
     $ cf eva-create-target my-slack-channel slack https<span>:</span>//hooks.slack.com/services/T024LQKAS/B9XFKQG59/YPwmF0cEXAMPLEc7T2iEr0b
     </pre>
 
-    This creates a target named `my-slack-channel` where alerts go to the Slack webhook URL in the command. 
+    This creates a target named `my-slack-channel` where alerts go to the Slack webhook URL in the command.
 
 Event alerts to a Slack channel, for example a **Critical Threshold Event** alert and a **Healthy Threshold Event** alert, might appear as follows:
 
@@ -75,13 +85,17 @@ Event alerts to a Slack channel, for example a **Critical Threshold Event** aler
 
 ### <a id='webhook_targets'></a> Create Webhook Targets
 
-Webhook targets provide many possibilities for using event alerts. For example, a simple 
-webserver could forward events to Pager Duty, New Relic, Datadog, or other products. 
+Webhook targets provide many possibilities for using event alerts. For example, a simple
+webserver could forward events to Pager Duty, New Relic, Datadog, or other products.
 You can also use webhook targets to log or store alerts for auditing purposes.
 
 To create a webhook target, do the following:
 
-1. Run the command `cf eva-create-target TARGET-NAME webhook URL`<br><br>
+1. Run the command:
+
+    ```
+    cf eva-create-target TARGET-NAME webhook URL
+    ```
   For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
@@ -107,18 +121,18 @@ To create a webhook target, do the following:
       * `healthwatch` is the alert publisher.
       * `system.cpu.user` is the alert topic.
       * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
-       and may be different for each alert topic. 
+       and may be different for each alert topic.
 
  <p class="note"><strong>Note:</strong> Ensure that the URL you specify in the <code>cf eva-create-target</code> command
  is configured to receive webhook requests.</p>
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
 In order for a target to start receiving alerts, you must subscribe it to available alert topics.
-A topic is an event that is relevant to your system. 
+A topic is an event that is relevant to your system.
 
 <p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1, you <strong>must</strong> have PCF Healthwatch v1.3 installed if you want to set up and subscribe to Healthwatch topics.</p>
 
-To subscribe a target to one or more alert topics, do the following: 
+To subscribe a target to one or more alert topics, do the following:
 
 1. To see a list of available topics, run the <code>cf eva-topics</code> command:
   <pre class="terminal">
@@ -134,19 +148,25 @@ To subscribe a target to one or more alert topics, do the following:
   healthwatch    system.healthy                   VM Health Check
   </pre>
 
-1. To subscribe a target to a topic, use either of the commands below. <br><br>
+1. To subscribe a target to a topic, use either of the commands below.
     * To subscribe a target to one or more topics from a publisher:
-      <code>cf eva-subscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
-    * To subscribe a target to all topics from a publisher:
-      <code>cf eva-subscribe TARGET-NAME PUBLISHER --all</code>
 
-    Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step. 
-    Enter topic names in the command separated by commas.<br><br> 
+        ```
+        cf eva-subscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...
+        ```
+    * To subscribe a target to all topics from a publisher:
+
+        ```
+        cf eva-subscribe TARGET-NAME PUBLISHER --all
+        ```
+
+    Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step.
+    Enter topic names in the command separated by commas.<br><br>
 
     For example, to subscribe the target `user-email` to two topics from the publisher `healthwatch`, run:<br>
 
     <pre class="terminal">$ cf eva-subscribe user-email healthwatch --topics system.mem.percent,system.cpu.user</pre>
-    
+
     Or, to subscribe the target `user-email` to all topics from the publisher `healthwatch`, run:
 
     <pre class="terminal">$ cf eva-subscribe user-email healthwatch --all</pre>
@@ -154,25 +174,31 @@ To subscribe a target to one or more alert topics, do the following:
     <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
     a single topic from that publisher. That is, you must subscribe to a specific topic or topics, or subscribe to <code>all</code>.</p>
 
-##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics 
+##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics
 
 To unsubscribe a target from alert topics, do the following:
 
 1. Use either of the commands below. <br><br>
     * To unsubscribe a target from one or more topics from a publisher:
-      <code>cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...</code><br><br>
+
+        ```
+        cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...
+        ```
     * To unsubscribe a target from all topics from a publisher:
-      <code>cf eva-unsubscribe TARGET-NAME PUBLISHER --all</code>
+
+        ```
+        cf eva-unsubscribe TARGET-NAME PUBLISHER --all
+        ```
 
     To find `PUBLISHER` and `TOPIC` name(s) run <code>cf eva-topics</code>.
-    The resulting list is shown in the procedure, [Subscribe to Alert Topics](#subscribe_topics), above. 
+    The resulting list is shown in the procedure, [Subscribe to Alert Topics](#subscribe_topics), above.
 
-    Enter topic names in the command separated by commas.<br><br> 
+    Enter topic names in the command separated by commas.<br><br>
 
     For example, to unsubscribe the target `user-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:<br>
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --topics system.cpu.user</pre>
-    
+
     Or, to unsubscribe the target `user-email` from all topics from the publisher `healthwatch`, run:
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --all</pre>
@@ -204,12 +230,12 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 
     **All** targets subscribed to the `system.healthy` topic receive a sample alert.
 
-5. Verify a webhook message was posted to the webhook-ops 
+5. Verify a webhook message was posted to the webhook-ops
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
 ##<a id='command_help'></a> PCF Event Alert Plugin Commands
 
-Use the following PCF Event Alert plugin commands to perform various tasks related to event alerts. 
+Use the following PCF Event Alert plugin commands to perform various tasks related to event alerts.
 
 <table>
   <tr>
@@ -246,7 +272,7 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
     Publishes a sample event to all subscribers of the specified topic.
     To issue this command, you must have the <code>notifications.write</code> UAA scope.
     For information about these UAA privileges,
-    see <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Scopes</a>. 
+    see <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Scopes</a>.
     </td>
   </tr>
   <tr>
@@ -291,9 +317,17 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
     Updates a target name.
     </td>
   </tr>
-</table> 
+</table>
 
 You can also use commands to get help directly in the terminal window while working with the PCF Event Alerts plugin.
 
-* To list all event alert commands: `cf plugins | grep event-alerts`.
-* To get help with a specific command: `cf help COMMAND`.
+* To list all event alert commands:
+
+    ```
+    cf plugins | grep event-alerts
+    ```
+* To get help with a specific command:
+
+    ```
+    cf help COMMAND
+    ```
