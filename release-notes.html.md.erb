@@ -22,7 +22,7 @@ This release has the following issues:
 * When saving the MySQL settings page with Azure-style usernames, for example,
   `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
   Disregard this message.
-  You are still able to authenticate. 
+  You are still able to authenticate.
 
 <%= partial "mariadb-ki" %>
 
@@ -57,7 +57,7 @@ This release has the following issue:
   `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
   Disregard this message.
   You are still able to authenticate.
-  
+
 <%= partial "mariadb-ki" %>
 
 ##<a id="ver-1-2-3"></a> v1.2.3
@@ -68,10 +68,12 @@ This release has the following issue:
 
 New features and changes in this release:
 
-* Added support for SMTP servers without auth. Credentials are no longer required when configuring SMTP server settings.
-  In order to connect to a SMTP server without auth, the SMTP username and password fields have to be empty.
+* Added support for SMTP servers without authentication.
+  Credentials are no longer required when configuring SMTP server settings.
+  To connect to a SMTP server without authentication, leave the SMTP username
+  and password fields empty.
 
-* Escape characters are no longer required in configuration passwords. 
+* Escape characters are no longer required in configuration passwords.
 
 * Maintenance update of the following product dependencies:
     * Flyway Command-line is now v5.1.4
@@ -115,9 +117,9 @@ New features and changes in this release:
 
 * Dependence on notifications has been removed.
 
-* Email configuration is now an option. 
+* Email configuration is now an option.
   <p class="note"><strong>Note</strong>: Specifying email configuration settings is required if you want notifications sent by email.</p>
-    For more information, see [Configure Email Notifications](installing.html#email_settings).   
+    For more information, see [Configure Email Notifications](installing.html#email_settings).
 
 * All destination email addresses now receive validation messages.
   Before v1.2.1, if the notification email address was the same as the account creating the target, the email address was verified automatically.
@@ -127,9 +129,9 @@ New features and changes in this release:
 This release has the following issues:
 
 * Users of Event Alerts v1.2.1 are required to use escape characters in configuration passwords.
-  This is no longer required in Event Alerts v1.2.3 and later releases. 
+  This is no longer required in Event Alerts v1.2.3 and later releases.
 
-* When using an external Azure MySQL database or other databases 
+* When using an external Azure MySQL database or other databases
   where usernames contain the `@` symbol, authentication does not work.
   This issue is fixed in PCF Event Alerts v1.2.1.
 * When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts will not function. This issue is fixed in PCF Event Alerts v1.2.5.
@@ -139,5 +141,5 @@ This release has the following issues:
 
 ## <a id="view"></a> View Release Notes for Another Version
 
-To view the release notes for another product version, select the version from 
+To view the release notes for another product version, select the version from
 the drop-down list at the top of this page.
