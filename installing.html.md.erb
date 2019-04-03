@@ -3,7 +3,7 @@ title: Installing and Configuring PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
-This topic describes how to install and configure PCF Event Alerts. For information on how to use this product, 
+This topic describes how to install and configure PCF Event Alerts. For information on how to use this product,
 see [Using PCF Event Alerts](./using.html).
 
 ##<a id='prereqs'></a> Prerequisites
@@ -27,7 +27,7 @@ Follow the procedures below to download and install the PCF Event Alerts tile:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file. 
+1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
@@ -44,7 +44,7 @@ Follow the stops below to configure the PCF Event Alerts tile.
 
 Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Alerts and to select networks.
 
-1. Click the **Assign AZs and Networks** tab. 
+1. Click the **Assign AZs and Networks** tab.
   ![AZ and Network Assignments Section](images/azs-and-network.png)
 
 1. Configure the fields as follows:
@@ -73,23 +73,23 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
 
 ### <a id="event-alerts-alerting-config"></a> (Optional) Configure Scaling Settings
 
-You can scale PCF Event Alerts by adding additional instances of the app. 
+You can scale PCF Event Alerts by adding additional instances of the app.
 Follow the steps below to optionally configure scaling settings.
 
 1. Click the **Scale** tab.
 
-1. In the **PCF Event Alerts Instance Count**, set the number of `event-alerts` app instances. Environments with a very large number of 
+1. In the **PCF Event Alerts Instance Count**, set the number of `event-alerts` app instances. Environments with a very large number of
 alerts may need a large number of instances. Environments that do not require high availability
-may scale down to one instance. 
+may scale down to one instance.
 
-1. Click **Save**. 
+1. Click **Save**.
 
 ### <a id="mysql"></a> Configure MySQL Settings
 
 PCF Event Alerts can either use the MySQL for PCF v2 service or an external MySQL database.
-To use the MySQL for PCF v2 service, you must have MySQL for PCF v2.0 or later installed. 
+To use the MySQL for PCF v2 service, you must have MySQL for PCF v2.0 or later installed.
 
-Follow the steps below to configure MySQL settings. 
+Follow the steps below to configure MySQL settings.
 
 #### Use the MySQL for PCF v2 Service
 
@@ -131,11 +131,11 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
         <td>
         Enter the external MySQL database username.<br>
         The user must have the following privileges for the PCF Event Alerts database:
-        <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>, 
+        <code>ALTER</code>, <code>CREATE</code>, <code>DELETE</code>, <code>DROP</code>, <code>INDEX</code>,
         <code>INSERT</code>, <code>LOCK TABLES</code>, <code>REFERENCES</code>, <code>SELECT</code>, and <code>UPDATE</code>.
         <p class="note warning"><strong>WARNING</strong>: Do not delete the user that connects to the database.
            You can change the username, but the original user cannot be deleted. If the user is deleted, MySQL errors out.
-         </p> 
+         </p>
       <tr>
         <td><strong>MySQL Password</strong></td>
         <td>Enter the external MySQL database password.</td>
@@ -146,15 +146,15 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
       </tr>
     </table>
 
-1. Click **Save**. 
+1. Click **Save**.
 
 ### <a id="email_settings"></a> Configure Email Notifications
 
 Follow the steps below to configure settings for Event Alerts email notifications.
 
-1. Click the **Email Configuration** tab. 
+1. Click the **Email Configuration** tab.
 
-1. Under **SMTP**, select **Enabled**. 
+1. Under **SMTP**, select **Enabled**.
   ![Enable Email](images/email-config-details.png)
 
 1. Configure the fields as follows:
@@ -175,14 +175,17 @@ Follow the steps below to configure settings for Event Alerts email notification
       <tr>
         <td><strong>SMTP Server Port</strong></td>
         <td>The SMTP server port for the outgoing email account.</td>
-      </tr>  
+      </tr>
       <tr>
         <td><strong>SMTP Server Credentials</strong></td>
-        <td>The Username and Password for the outgoing email account.</td>
+        <td>The Username and Password for the outgoing email account.
+          <p class="note"><strong>Note: </strong>To connect to a SMTP server without authentication, leave the SMTP
+          username and password fields empty.</p>
+        </td>
       </tr>
     </table>
 
-1. Click **Save**. 
+1. Click **Save**.
 
 ### <a id="stemcell"></a> Verify Stemcell Version
 
@@ -190,7 +193,7 @@ To verify that you have the correct stemcell version for the Event Alerts tile, 
 
 1. Click the **Stemcell** tab.
 
-1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file, 
+1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file,
 a message similar to the following appears:
     ![Stemcell Section](images/stemcell-library-xenial.png)
     If you need to upload a stemcell, do the following:
@@ -203,7 +206,7 @@ a message similar to the following appears:
 
 1. Return to the Ops Manager Installation Dashboard.
 
-1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**. 
+1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**.
 For more information about this Ops Manager page, see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
 
 1. Click **Apply Changes** to install the PCF Event Alerts tile.
