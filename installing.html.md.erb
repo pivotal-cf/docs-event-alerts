@@ -120,7 +120,7 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
       </tr>
       <tr>
         <td><strong>MySQL Host</strong></td>
-        <td>Enter the external MySQL database host address.</td>
+        <td>Enter the external MySQL database hostname or IP address.</td>
       </tr>
       <tr>
         <td><strong>MySQL Port</strong></td>
@@ -143,6 +143,32 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
       <tr>
         <td><strong>MySQL Database</strong></td>
         <td>Enter the external MySQL database name that PCF Event Alerts will use.</td>
+      </tr>
+      <tr>
+        <td><strong>Enable MySQL TLS</strong></td>
+        <td>Select this option if the external MySQL database requires TLS or mutual TLS.</td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Server CA Cert</strong></td>
+        <td>Enter the CA certificate for the external MySQL database.<br>
+          This field is required if the certificate used by the external MySQL
+          database is self-signed.
+          If you do not require TLS hostname validation, select <strong>Skip MySQL TLS Validation</strong> below.</td>
+      </tr>
+      <tr>
+        <td><strong>Skip MySQL TLS Validation</strong></td>
+        <td>Select this option if you do not require TLS hostname validation.
+        <p class="note"><strong>Note</strong>: If you are using Google Cloud Platform
+          SQL with mutual TLS, you must select this option.
+          The certificate on the MySQL server does not contain any IP
+          <!-- spell out SAN -->
+          SANs to validate the server IP address provided.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>MySQL Client Certificate and Private Keys</strong></td>
+        <td>Enter the external MySQL database client certificate and private key.<br>
+        These fields are required if the server requires mutual TLS.</td>
       </tr>
     </table>
 
