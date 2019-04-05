@@ -34,8 +34,6 @@ This adds the tile to your staging area.
 
 1. Click the newly added **PCF Event Alerts** tile to open its configuration panes.
 
-    ![Configuration Panes](images/config-panes-2-1.png)
-
 ## <a id="config-tile"></a> Configure the Tile
 
 Follow the stops below to configure the PCF Event Alerts tile.
@@ -45,7 +43,6 @@ Follow the stops below to configure the PCF Event Alerts tile.
 Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Alerts and to select networks.
 
 1. Click the **Assign AZs and Networks** tab.
-  ![AZ and Network Assignments Section](images/azs-and-network.png)
 
 1. Configure the fields as follows:
   <table class="nice">
@@ -99,7 +96,6 @@ follow the steps below.
 1. Click the **MySQL Settings** tab.
 
 1. Select **Pivotal MySQL Service** and enter the service plan to use. For example, `db-small`.
-  ![MySQL Settings Service Option](images/mysql-settings-service.png)
 
 1. Click **Save**.
 
@@ -180,7 +176,6 @@ Follow the steps below to configure settings for Event Alerts email notification
 1. Click the **Email Configuration** tab.
 
 1. Under **SMTP**, select **Enabled**.
-  ![Enable Email](images/email-config-details.png)
 
 1. Configure the fields as follows:
 
@@ -219,8 +214,8 @@ To verify that you have the correct stemcell version for the Event Alerts tile, 
 1. Click the **Stemcell** tab.
 
 1. Verify the settings. If PCF Event Alerts cannot detect a stemcell TGZ file,
-a message similar to the following appears:
-    ![Stemcell Section](images/stemcell-library-xenial.png)
+the option to **Import Stemcell** will show up in the PCF Event Alerts Row.
+
     If you need to upload a stemcell, do the following:
       1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
       1. Download the appropriate stemcell version targeted for your IaaS.
