@@ -21,7 +21,19 @@ New features and changes in this release:
 
 ### <a id="known130"></a> Known Issues
 
-There are no known issues for this release.
+This release has the following issues:
+
+#### MySQL Migrations With External Database Fail Due to log_bin_trust_function_creators
+
+If the Deploy PCF Event Alerts errand fails with the error `You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)`,
+the next time Deploy PCF Event Alerts errand runs, it will fail due to the migration trying to recreate existing tables.
+
+The only way to resolve this is issue is to:
+  1. Drop the Event Alerts database and recreate it
+  2. In addition, either:
+     * Disable Binary Logging in the database
+     * Or set the `log_bin_trust_function_creators` variable in the database to `true`
+  3. Re-run the Deploy PCF Event Alerts errand
 
 ## <a id="view"></a> View Release Notes for Another Version
 
