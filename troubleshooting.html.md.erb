@@ -52,3 +52,31 @@ If PCF Event Alerts is receiving frequent event notifications, you can do one or
 * Increase threshold values to supply better indicators for action.
 
 For more information about unsubscribing from alerts and increasing threshold values, see [Using PCF Event Alerts](using.html). 
+
+##<a id="t-shoot-errors"></a> Troubleshooting Errors
+
+This section provides information on how to troubleshooting specific errors or error messages.
+
+###<a id="t-shoot-errors"></a>  External MySQL Database Migrations Fail 
+
+This problem happens when migrating external MySQL databases because  `log_bin_trust_function_creators` [DOES A THING].
+
+####Symptom
+
+You see in [WHAT] that the **Deploy PCF Event Alerts** errand fails with the following error:
+<pre class="terminal">
+You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+</pre>
+If you run the **Deploy PCF Event Alerts** errand again, it continues to fail.
+
+####Explanation
+The **Deploy PCF Event Alerts** fails the second time because the external MySQL database migration is trying to recreate existing tables.
+
+####Solution
+To solve this issue, do the following:
+
+  1. Drop the PCF Event Alerts database and recreate it
+  2. Do one of the following:
+     * Disable Binary Logging in the database
+     * Set the `log_bin_trust_function_creators` variable in the database to `true`
+  3. Re-run the **Deploy PCF Event Alerts** errand

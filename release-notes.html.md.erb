@@ -3,37 +3,25 @@ title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
 
+<%= modified_date %>
 ##<a id="ver-1-3-0"></a> v1.3.x
 
-**Release Date: MMM XX, 2018**
+**Release Date: MMM XX, 2019**
 
 ### <a id="features130"></a> Features
 
 New features and changes in this release:
 
-* To view Healthwatch topics, you must have [PCF Healthwatch v.1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
-* Dependence on notifications has been removed.
-* Email configuration is now an option.
-  <p class="note"><strong>Note</strong>: Specifying email configuration settings is required if you want notifications sent by email.</p>
-    For more information, see [Configure Email Notifications](installing.html#email_settings).
-* All destination email addresses now receive validation messages.
-  Before v1.2.1, if the notification email address was the same as the account creating the target, the email address was verified automatically.
-
 ### <a id="known130"></a> Known Issues
 
 This release has the following issues:
 
-#### MySQL Migrations With External Database Fail Due to log_bin_trust_function_creators
++ **External MySQL Database Migrations Fail:** If the Deploy PCF Event Alerts errand
 
-If the Deploy PCF Event Alerts errand fails with the error `You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)`,
-the next time Deploy PCF Event Alerts errand runs, it will fail due to the migration trying to recreate existing tables.
+ Due to log\_bin\_trust\_function\_creators
 
-The only way to resolve this is issue is to:
-  1. Drop the Event Alerts database and recreate it
-  2. In addition, either:
-     * Disable Binary Logging in the database
-     * Or set the `log_bin_trust_function_creators` variable in the database to `true`
-  3. Re-run the Deploy PCF Event Alerts errand
+If the Deploy PCF Event Alerts errand fails with the error:
+`You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)`
 
 ## <a id="view"></a> View Release Notes for Another Version
 
