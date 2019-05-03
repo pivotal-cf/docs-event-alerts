@@ -57,26 +57,33 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information on how to troubleshooting specific errors or error messages.
 
-###<a id="t-shoot-errors"></a>  External MySQL Database Migrations Fail 
+###<a id="mysql"></a>  External MySQL Database Migrations Fail 
 
-This problem happens when migrating external MySQL databases because  `log_bin_trust_function_creators` [DOES A THING].
+This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
 
 ####Symptom
 
-You see in [WHAT] that the **Deploy PCF Event Alerts** errand fails with the following error:
-<pre class="terminal">
-You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
-</pre>
+You see in the Ops Manager installation pane that the **Deploy PCF Event Alerts** errand fails with the following error:
+
+```
+You do not have the SUPER privilege and 
+binary logging is enabled (you *might* want to use the less safe
+log_bin_trust_function_creators variable)
+```
+
 If you run the **Deploy PCF Event Alerts** errand again, it continues to fail.
 
 ####Explanation
-The **Deploy PCF Event Alerts** fails the second time because the external MySQL database migration is trying to recreate existing tables.
+
+For information about the above error message, see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html) in the open source MySQL documentation. 
+
+The **Deploy PCF Event Alerts** errand fails the second time because the external MySQL database is trying to recreate existing tables during the migration.
 
 ####Solution
 To solve this issue, do the following:
 
-  1. Drop the PCF Event Alerts database and recreate it
+  1. Drop the PCF Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
   2. Do one of the following:
-     * Disable Binary Logging in the database
-     * Set the `log_bin_trust_function_creators` variable in the database to `true`
-  3. Re-run the **Deploy PCF Event Alerts** errand
+     * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation. 
+     * In the database, set `log_bin_trust_function_creators` to `true`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation. 
+  3. In Ops Manager, apply changes with the **Deploy PCF Event Alerts** errand checked.
