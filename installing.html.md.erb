@@ -13,7 +13,7 @@ see [Using PCF Event Alerts](./using.html).
 You must have the following in order to install PCF Event Alerts:
 
 + PAS v2.1.x or later
-+ MySQL for PCF v2 or credentials for an external MySQL database v5.7 or later
++ MySQL for PCF v2 or credentials for an external MySQL database v5.7 or later with a database already created for PCF Event Alerts to use
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the PCF Event Alerts tile
 + Updated and properly configured any BOSH add-ons used in your PCF deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
@@ -142,7 +142,8 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
       </tr>
       <tr>
         <td><strong>MySQL Database</strong></td>
-        <td>Enter the external MySQL database name that PCF Event Alerts will use.</td>
+        <td>Enter the external MySQL database name that PCF Event Alerts will use.
+        This database must already have been created as PCF Event Alerts does not create a new database.</td>
       </tr>
       <tr>
         <td><strong>Enable MySQL TLS</strong></td>
