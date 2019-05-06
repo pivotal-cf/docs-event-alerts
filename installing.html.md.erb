@@ -13,8 +13,8 @@ see [Using PCF Event Alerts](./using.html).
 You must have the following in order to install PCF Event Alerts:
 
 + PAS v2.1.x or later
-+ MySQL for PCF v2 or credentials for an external MySQL database v5.7 or later
-  + If binary logging is enabled, the user will need SUPER privileges or the global variable `log_bin_trust_function_creators` needs to be set to `1`
++ MySQL for PCF v2 or credentials for an existing external MySQL database v5.7 or later.  
+  + If binary logging is enabled, the user must have `SUPER` privileges or the global variable `log_bin_trust_function_creators` must be set to `1`.
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the PCF Event Alerts tile
 + Updated and properly configured any BOSH add-ons used in your PCF deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
@@ -106,9 +106,7 @@ follow the steps below.
 
 #### Use an External MySQL Database
 
-<p class="note warning"><strong>Warning</strong>: If the MySQL instance has binary logging enabled,
- the user will need SUPER privileges or the global variable `log_bin_trust_function_creators` needs to be set to `1`
-</p>
+<p class="note warning"><strong>Warning:</strong> If your external MySQL database  has binary logging enabled, the user must have <code>SUPER</code> privileges or the global variable <code>log_bin_trust_function_creators</code> must be set to <code>1</code>.</p>
 
 If you want to use an external database for PCF Event Alerts, follow the steps below.
 
@@ -147,8 +145,8 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
       </tr>
       <tr>
         <td><strong>MySQL Database</strong></td>
-        <td>Enter the external MySQL database name that PCF Event Alerts will use.
-        This database must already have been created as PCF Event Alerts does not create a new database.</td>
+        <td>Enter the external MySQL database name for PCF Event Alerts to use.
+        This database must already exist. PCF Event Alerts does not create a new database.</td>
       </tr>
       <tr>
         <td><strong>Enable MySQL TLS</strong></td>
