@@ -84,5 +84,5 @@ To solve this issue, do the following:
   1. Drop the PCF Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
   2. Do one of the following:
      * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation. 
-     * In the database, set `log_bin_trust_function_creators` to `true`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation. 
+     * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation. 
   3. In Ops Manager, **Apply Changes** with the **Deploy PCF Event Alerts** errand checked.
