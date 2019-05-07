@@ -57,13 +57,14 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information on how to troubleshooting specific errors or error messages.
 
-###<a id="mysql"></a>  External MySQL Database Migrations Fail 
+###<a id="errand"></a>  Deploy PCF Event Alerts Errand Fails
 
 This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
+If you do not resolve this issue, PCF Event Alerts is not deployed.
 
 ####Symptom
 
-You see in the Ops Manager installation pane that the **Deploy PCF Event Alerts** errand fails with the following error:
+When you **Apply Changes***, you see in the Ops Manager installation pane that the **Deploy PCF Event Alerts** errand fails with the following error:
 
 ```
 You do not have the SUPER privilege and 
@@ -71,13 +72,11 @@ binary logging is enabled (you *might* want to use the less safe
 log_bin_trust_function_creators variable)
 ```
 
-If you run the **Deploy PCF Event Alerts** errand again, it continues to fail.
-
 ####Explanation
 
-For information about the above error message, see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html) in the open source MySQL documentation. 
-
-The **Deploy PCF Event Alerts** errand fails the second time because the external MySQL database is trying to recreate existing tables during the migration.
+For information about the above error message, 
+see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html) 
+in the open source MySQL documentation. 
 
 ####Solution
 To solve this issue, do the following:
@@ -86,4 +85,4 @@ To solve this issue, do the following:
   2. Do one of the following:
      * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation. 
      * In the database, set `log_bin_trust_function_creators` to `true`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation. 
-  3. In Ops Manager, apply changes with the **Deploy PCF Event Alerts** errand checked.
+  3. In Ops Manager, **Apply Changes** with the **Deploy PCF Event Alerts** errand checked.
