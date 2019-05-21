@@ -17,7 +17,7 @@ You must have the following in order to install PCF Event Alerts:
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the PCF Event Alerts tile
 + Updated and properly configured any BOSH add-ons used in your PCF deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
-  + ClamAV Add-on for PCF v1.2.22 and later. For information on how to update this add-on, see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/updating-for-xenial.html).
+  + ClamAV Add-on for PCF v1.2.22 and later. For information on how to update this add-on, see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/1-4/updating-for-xenial.html).
   + File Integrity Monitoring Add-on for PCF v1.4.28 and later. For information on how to update this add-on, see [Updating FIM Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-fim/updating-for-xenial.html).
   + IPsec Add-on for PCF v1.9.9 and later. For information on how to update this add-on, see [Updating IPsec Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-ipsec/updating-for-xenial.html).
 
@@ -25,7 +25,7 @@ You must have the following in order to install PCF Event Alerts:
 
 Follow the procedures below to download and install the PCF Event Alerts tile:
 
-1. Download the product file from [Pivotal Network](https://network.pivotal.io/).
+1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-event-alerts/).
 
 1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
 
@@ -165,9 +165,14 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
         </td>
       </tr>
       <tr>
-        <td><strong>MySQL Client Certificate and Private Keys</strong></td>
-        <td>Enter the external MySQL database client certificate and private key.<br>
-        These fields are required if the server requires mutual TLS.</td>
+        <td><strong>MySQL Client Certificate</strong></td>
+        <td>Enter the external MySQL database client certificate.<br>
+        This field is required if the server requires mutual TLS.</td>
+      </tr>
+      <tr>
+        <td><strong>Private Keys</strong></td>
+        <td>Enter the external MySQL database private key.<br>
+        This field is required if the server requires mutual TLS.</td>
       </tr>
     </table>
 
