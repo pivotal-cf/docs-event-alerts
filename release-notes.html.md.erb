@@ -2,6 +2,30 @@
 title: Release Notes for PCF Event Alerts
 owner: PCF Event Alerts
 ---
+##<a id="ver-1-2-7"></a> v1.2.7
+
+**Release Date: XXX XX, 2019**
+
+### <a id="features127"></a> Features
+
+New features and changes in this release:
+
+* Adds support for proxy settings. 
+For more information about configuring proxy settings, see [Configuring Proxy Settings for All Applications
+](https://docs.pivotal.io/pivotalcf/opsguide/config-proxy.html).
+* Improves log error messages when alerts fail to send.
+* Adds option to disable Metrics Forwarder for PCF integration.
+* Adds support for disabling SMTP TLS. For more information, see [Configure Email Notifications](./installing.html#email_settings)
+* Maintenance update of the following product dependencies:
+    * CF CLI is now v6.44.1
+
+### <a id="known127"></a> Known Issues
+
+This release has the following issue:
+
++ **Deploy PCF Event Alerts Errand Fails:** If you have binary logging enabled, the **Deploy PCF Event Alerts** errand fails when `log_bin_trust_function_creators` is not set to `1`. If you do not resolve this issue, PCF Event Alerts is not deployed. For instructions on solving this issue, 
+see [Deploy PCF Event Alerts Errand Fails](./troubleshooting.html#t-shoot-errors). 
+
 ##<a id="ver-1-2-6"></a> v1.2.6
 
 **Release Date: December 7, 2018**
