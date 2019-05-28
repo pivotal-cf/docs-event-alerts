@@ -176,32 +176,32 @@ To subscribe a target to one or more alert topics, do the following:
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics
 
-To unsubscribe a target from alert topics, do the following:
+To unsubscribe a target from alert topics, do one of the following:
 
-1. Use either of the commands below. <br><br>
-    * To unsubscribe a target from one or more topics from a publisher:
+* Unsubscribe a target from one or more topics from a publisher by running the following command:
 
-        ```
-        cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...
-        ```
-    * To unsubscribe a target from all topics from a publisher:
-
-        ```
-        cf eva-unsubscribe TARGET-NAME PUBLISHER --all
-        ```
-
-    To find `PUBLISHER` and `TOPIC` name(s) run <code>cf eva-topics</code>.
-    The resulting list is shown in the procedure, [Subscribe to Alert Topics](#subscribe_topics), above.
-
-    Enter topic names in the command separated by commas.<br><br>
-
-    For example, to unsubscribe the target `user-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:<br>
+    ```
+    cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...
+    ```
+    <br>
+    For example, to unsubscribe the target `user-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run the following command:
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --topics system.cpu.user</pre>
 
-    Or, to unsubscribe the target `user-email` from all topics from the publisher `healthwatch`, run:
+    <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you can unsubscribe from
+    a single topic from that publisher using the above command. If you want to resubscribe to the topic, run <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>    
+* Unsubscribe a target from all topics from a publisher by running the following command:
+
+    ```
+    cf eva-unsubscribe TARGET-NAME PUBLISHER --all
+    ```
+    <br>
+    For example, to unsubscribe the target `user-email` from all topics from the publisher `healthwatch`, run the following command:
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --all</pre>
+
+To find `PUBLISHER` and `TOPIC` names run <code>cf eva-topics</code>.
+The resulting list is shown in the procedure, [Subscribe to Alert Topics](#subscribe_topics), above. You must separate topic names with commas in the command.
 
 ##<a id='example-workflow-webhook'></a> Example Workflow: Send all Healthwatch Alerts to a Webhook
 
