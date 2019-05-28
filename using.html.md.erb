@@ -159,6 +159,9 @@ To subscribe a target to one or more alert topics, do the following:
         ```
         cf eva-subscribe TARGET-NAME PUBLISHER --all
         ```
+        
+        <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you can subscribe to
+        a single topic from that publisher by running <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p> 
 
     Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step.
     Enter topic names in the command separated by commas.<br><br>
@@ -171,8 +174,7 @@ To subscribe a target to one or more alert topics, do the following:
 
     <pre class="terminal">$ cf eva-subscribe user-email healthwatch --all</pre>
 
-    <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you cannot subsequently subscribe to, or unsubscribe from,
-    a single topic from that publisher. That is, you must subscribe to a specific topic or topics, or subscribe to <code>all</code>.</p>
+    
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics
 
