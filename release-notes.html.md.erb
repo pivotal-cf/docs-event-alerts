@@ -20,7 +20,10 @@ New features and changes in this release:
 
 ### <a id="known127"></a> Known Issues
 
-There are no known issues for this release:
+This release has the following issue:
+
++ **Deploy PCF Event Alerts Errand Fails:** If you have binary logging enabled, the **Deploy PCF Event Alerts** errand fails when `log_bin_trust_function_creators` is not set to `1`. If you do not resolve this issue, PCF Event Alerts is not deployed. For instructions on solving this issue, 
+see [Deploy PCF Event Alerts Errand Fails](./troubleshooting.html#t-shoot-errors). 
 
 ##<a id="ver-1-2-6"></a> v1.2.6
 
