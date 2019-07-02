@@ -10,8 +10,21 @@ owner: PCF Event Alerts
 
 New features and changes in this release:
 
-* Maintenance update of the following product dependencies:
-    * Bumps CF CLI to v6.45.0
+* Updates the cf CLI to v6.45.0
+
+###<a id="known128"></a> Known Issues
+
+This release has the following issues:
+
++ **Deploy PCF Event Alerts Errand Fails:** If you have binary logging enabled, the **Deploy PCF Event Alerts** errand fails when `log_bin_trust_function_creators` is not set to `1`. If you do not resolve this issue, PCF Event Alerts is not deployed. For instructions on solving this issue, 
+see [Deploy PCF Event Alerts Errand Fails](./troubleshooting.html#t-shoot-errors). 
+
+* When saving the MySQL settings page with Azure-style usernames, for example,
+  `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
+  Disregard this message.
+  You are still able to authenticate.
+
+<%= partial "mariadb-ki" %>
 
 ##<a id="ver-1-2-7"></a> v1.2.7
 
@@ -33,10 +46,17 @@ For more information about configuring proxy settings, see [Configuring Proxy Se
 
 ### <a id="known127"></a> Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 + **Deploy PCF Event Alerts Errand Fails:** If you have binary logging enabled, the **Deploy PCF Event Alerts** errand fails when `log_bin_trust_function_creators` is not set to `1`. If you do not resolve this issue, PCF Event Alerts is not deployed. For instructions on solving this issue, 
 see [Deploy PCF Event Alerts Errand Fails](./troubleshooting.html#t-shoot-errors). 
+
+* When saving the MySQL settings page with Azure-style usernames, for example,
+  `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
+  Disregard this message.
+  You are still able to authenticate.
+
+<%= partial "mariadb-ki" %>
 
 ##<a id="ver-1-2-6"></a> v1.2.6
 
@@ -87,7 +107,7 @@ This release fixes the following issues:
 
 ### <a id="known125"></a> Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 * When saving the MySQL settings page with Azure-style usernames, for example,
   `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
@@ -130,7 +150,7 @@ This release fixes the following issue:
 
 ### <a id="known123"></a> Known Issues
 
-This release has the following issue:
+This release has the following issues:
 
 * When saving the MySQL settings page with Azure-style usernames, for example,
   `userId@serverName`, you might see an error message saying use of the `@` character is not supported.
