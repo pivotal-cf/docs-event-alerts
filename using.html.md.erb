@@ -2,6 +2,9 @@
 title: Using PCF Event Alerts
 owner: PCF Event Alerts
 ---
+
+<strong><%= modified_date %></strong>
+
 This topic describes how to configure alert destinations and subscribe to alerts.
 It explains how to set alert destinations as targets, and how to subscribe those targets to alert topics.
 An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
@@ -191,7 +194,7 @@ To unsubscribe a target from alert topics, do one of the following:
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --topics system.cpu.user</pre>
 
     <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you can unsubscribe from
-    a single topic from that publisher using the above command. If you want to resubscribe to the topic, run <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>    
+    a single topic from that publisher using the above command. If you want to resubscribe to the topic, run <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>
 * Unsubscribe a target from all topics from a publisher by running the following command:
 
     ```
