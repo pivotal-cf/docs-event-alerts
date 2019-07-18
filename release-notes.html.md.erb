@@ -13,8 +13,8 @@ owner: PCF Event Alerts
 
 New features and changes in this release:
 
-* Updates the cf CLI to v6.45.0
-* Updates the golang to v1.12
+* cf CLI is now v6.45.0
+* Go is now v1.12
 
 
 ###<a id="known128"></a> Known Issues
@@ -43,7 +43,7 @@ For more information about configuring proxy settings, see [Configuring Proxy Se
 * Adds support for disabling SMTP TLS. For more information, see [Configure Email Notifications](./installing.html#email_settings)
 * If you subscribed to `-all` topics, you can selectively unsubscribe from individual topics. You can also selectively subscribe to individual topics. For more information, see [Unsubscribe from Alert Topics](./using.html#unsubscribe_topics) and [Subscribe to Alert Topics](./using.html#subscribe_topics).
 * Maintenance update of the following product dependencies:
-    * CF CLI is now v6.44.1
+    * cf CLI is now v6.44.1
 
 ### <a id="known127"></a> Known Issues
 
@@ -65,8 +65,8 @@ New features and changes in this release:
 
 * Maintenance update of the following product dependencies:
     * Flyway Command-line is now v5.2.1
-    * Golang is now v1.11
-    * CF CLI is now v6.40.1
+    * Go is now v1.11
+    * cf CLI is now v6.40.1
 
 ### <a id="known126"></a> Known Issues
 
@@ -124,7 +124,7 @@ New features and changes in this release:
 
 * Maintenance update of the following product dependencies:
     * Flyway Command-line is now v5.1.4
-    * Golang is now v1.10.3
+    * Go is now v1.10.3
     * Product stemcell is now Ubuntu Xenial v97.x
 
 * Before using PCF Event Alerts v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
@@ -145,8 +145,8 @@ This release has the following issues:
 
 <%= partial 'azure-usernames-ki' %>
 
-* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts will not function. This issue is fixed in PCF Event Alerts v1.2.5.
-* The tile version in the tile metadata may not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts 1.2.5.
+* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts do not function. This issue is fixed in PCF Event Alerts v1.2.5.
+* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
 
 <%= partial "mariadb-ki" %>
 
@@ -158,7 +158,7 @@ This release has the following issues:
 
 New features and changes in this release:
 
-* To view Healthwatch topics, you must have [PCF Healthwatch v.1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
+* To view Healthwatch topics, you must have [PCF Healthwatch v1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
 
 * Dependence on notifications has been removed.
 
@@ -178,11 +178,11 @@ This release has the following issues:
 
 <%= partial 'azure-usernames-ki' %>
 
-* The tile version in the tile metadata may not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts 1.2.5.
+* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
 
 <%= partial "mariadb-ki" %>
 
 ## <a id="view"></a> View Release Notes for Another Version
 
 To view the release notes for another product version, select the version from
-the drop-down list at the top of this page.
+the dropdown at the top of this page.
