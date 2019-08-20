@@ -88,3 +88,18 @@ To solve this issue, do the following:
      * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
      * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
   3. In Ops Manager, **Apply Changes** with the **Deploy PCF Event Alerts** errand checked.
+
+###<a id="ip-binding"></a> Event Alerts Fails to Release IP Binding on Mysql Upgrade
+
+####Symptom
+When upgrading from Pivotal Mysql 2.4.x to 2.5.x all service bindings need to be changed from IP based to hostname based bindings.
+Event Alerts sometimes fails to release the IP binding when following this [documentation](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
+
+####Explanation
+The cause of this issue is unknown.
+
+####Solution
+This issue can be solved by recreating the service key using the following command:
+`cf create-service-key pcf-event-alerts-db migrations_service_key -c '{ "username": "migrations_user" }'`
+It is important to note the explicit setting of the username `migrations_user`, without this a random name will be generated and break
+Event Alerts.
