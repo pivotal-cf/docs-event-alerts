@@ -64,9 +64,9 @@ This section provides information on how to troubleshooting specific errors or e
 This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
 If you do not resolve this issue, PCF Event Alerts is not deployed.
 
-####Symptom
+#### Symptom
 
-When you **Apply Changes**, you see in the Ops Manager installation pane that the 
+When you **Apply Changes**, you see in the Ops Manager installation pane that the
 **Deploy PCF Event Alerts** errand fails with the following error:
 
 <pre class="terminal">
@@ -75,13 +75,14 @@ binary logging is enabled (you *might* want to use the less safe
 log_bin_trust_function_creators variable)
 </pre>
 
-####Explanation
+#### Explanation
 
 For information about the above error message,
 see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
 in the open source MySQL documentation.
 
-####Solution
+#### Solution
+
 To solve this issue, do the following:
 
   1. Drop the PCF Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
@@ -90,26 +91,26 @@ To solve this issue, do the following:
      * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
   3. In Ops Manager, **Apply Changes** with the **Deploy PCF Event Alerts** errand checked.
 
-###<a id="ip-binding"></a> Event Alerts Fails to Release IP Binding on MySQL Upgrade
+###<a id="ip-binding"></a> Event Alerts Fails to Release IP Address Bindings on MySQL Upgrade
 
-####Symptom
+#### Symptom
 
-When upgrading from MySQL for PCF v2.4.x to v2.5.x all service bindings need to be changed from 
-IP based to hostname based bindings.
-Event Alerts sometimes fails to release the IP binding when following the solution in
+When upgrading from MySQL for PCF v2.4 to v2.5, all service bindings must be changed from
+IP address based bindings to hostname based bindings.
+Event Alerts sometimes fails to release IP address bindings after following the procedure in
 [Deprecated Service Bindings Found (Upgrade Error)](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
 
-####Explanation
+#### Explanation
 
 The cause of this issue is unknown.
 
-####Solution
+#### Solution
 
 Recreate the service key by running:
 
 <p class="note warning">
-  <strong>Warning: </strong> You must use the username `migrations_user` in the command below. 
-  Without this a random name is generated that causes Event Alerts to fail.
+  <strong>Warning: </strong> You must use the username <code>migrations_user</code> in the command below.
+  Without this, a random name is generated that causes Event Alerts to fail.
 </p>
 
 ```
