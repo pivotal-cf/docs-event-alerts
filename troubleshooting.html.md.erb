@@ -66,13 +66,14 @@ If you do not resolve this issue, PCF Event Alerts is not deployed.
 
 ####Symptom
 
-When you **Apply Changes**, you see in the Ops Manager installation pane that the **Deploy PCF Event Alerts** errand fails with the following error:
+When you **Apply Changes**, you see in the Ops Manager installation pane that the 
+**Deploy PCF Event Alerts** errand fails with the following error:
 
-```
+<pre class="terminal">
 You do not have the SUPER privilege and
 binary logging is enabled (you *might* want to use the less safe
 log_bin_trust_function_creators variable)
-```
+</pre>
 
 ####Explanation
 
@@ -92,14 +93,25 @@ To solve this issue, do the following:
 ###<a id="ip-binding"></a> Event Alerts Fails to Release IP Binding on Mysql Upgrade
 
 ####Symptom
-When upgrading from Pivotal Mysql 2.4.x to 2.5.x all service bindings need to be changed from IP based to hostname based bindings.
-Event Alerts sometimes fails to release the IP binding when following this [documentation](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
+
+When upgrading from MySQL for PCF v2.4.x to v2.5.x all service bindings need to be changed from 
+IP based to hostname based bindings.
+Event Alerts sometimes fails to release the IP binding when following the solution in
+[Deprecated Service Bindings Found (Upgrade Error)](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
 
 ####Explanation
+
 The cause of this issue is unknown.
 
 ####Solution
-This issue can be solved by recreating the service key using the following command:
-`cf create-service-key pcf-event-alerts-db migrations_service_key -c '{ "username": "migrations_user" }'`
-It is important to note the explicit setting of the username `migrations_user`, without this a random name will be generated and break
-Event Alerts.
+
+Recreate the service key by running:
+
+<p class="note warning">
+  <strong>Warning: </strong> You must use the username `migrations_user` in the command below. 
+  Without this a random name is generated that causes Event Alerts to fail.
+</p>
+
+```
+cf create-service-key pcf-event-alerts-db migrations_service_key -c '{ "username": "migrations_user" }'
+```
