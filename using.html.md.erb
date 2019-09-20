@@ -88,13 +88,23 @@ Event alerts to a Slack channel, for example a **Critical Threshold Event** aler
 
 ### <a id='webhook_targets'></a> Create Webhook Targets
 
-Webhook targets provide many possibilities for using event alerts. For example, a simple
-webserver could forward events to Pager Duty, New Relic, Datadog, or other products.
+Webhook targets provide many possibilities for using Event Alerts. For example, a simple
+webserver proxy could forward events to Pager Duty, New Relic, Datadog, or other products.
 You can also use webhook targets to log or store alerts for auditing purposes.
+
+<p class="note"><strong>Note: </strong>Webhook requests are not a standardized format. This means that the request body
+from Event Alerts will need to be transformed to a format compatible with the webhook receiver. For example, transforming
+from Event Alerts' JSON request payload (described below) to the format required for
+[PagerDuty webhooks](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview). This is typically accomplished via a
+simple webserver proxy receives the webhook request from Event Alerts, transforms the request payload to the desired
+format, and finally forwards the request to the end receiver (PagerDuty in the above example).</p>
 
 To create a webhook target, do the following:
 
 1. Run the command:
+
+    <p class="note"><strong>Note:</strong> If using a proxy as described above, the `URL` given below should be the
+    _proxy_ application, not the end receiver (e.g. PagerDuty).</p>
 
     ```
     cf eva-create-target TARGET-NAME webhook URL
@@ -126,14 +136,11 @@ To create a webhook target, do the following:
       * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
        and may be different for each alert topic.
 
- <p class="note"><strong>Note:</strong> Ensure that the URL you specify in the <code>cf eva-create-target</code> command
- is configured to receive webhook requests.</p>
-
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
 In order for a target to start receiving alerts, you must subscribe it to available alert topics.
 A topic is an event that is relevant to your system.
 
-<p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1, you <strong>must</strong> have PCF Healthwatch v1.3 installed if you want to set up and subscribe to Healthwatch topics.</p>
+<p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1, you <strong>must</strong> have Pivotal Healthwatch v1.3+ installed if you want to set up and subscribe to Healthwatch topics.</p>
 
 To subscribe a target to one or more alert topics, do the following:
 
