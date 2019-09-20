@@ -114,10 +114,8 @@ To create a webhook target, do the following:
     cf eva-create-target TARGET-NAME webhook URL
     ```
 
-    Where:
-    * `TARGET-NAME` is the  
-    * `URL` is the URL of the end receiver or, if you are using a proxy, it is the URL of the proxy app.
-       See [About Webhook Request Formats](#formats) above.  
+    Where `URL` is the URL of the end receiver or, if you are using a proxy, it is the URL of the proxy app.
+    See [About Webhook Request Formats](#formats) above.<br><br>
 
     For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
@@ -142,16 +140,22 @@ To create a webhook target, do the following:
     ```
 
     In the above example:
-    + `healthwatch` is the alert publisher.
-    + `system.cpu.user` is the alert topic.
-    + The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
-       and may be different for each alert topic.
+    <ul>
+      <li> <code>healthwatch</code> is the alert publisher.</li>
+      <li> <code>system.cpu.user</code> is the alert topic.</li>
+      <li> The <code>metadata</code> keys shown, <code>level</code> <code>foundation</code> and <code>job</code>,
+           represent what the publisher sends to PCF Event Alerts
+           and can be different for each alert topic.</li>
+    </ul>
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
 In order for a target to start receiving alerts, you must subscribe it to available alert topics.
 A topic is an event that is relevant to your system.
 
-<p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1, you <strong>must</strong> have Pivotal Healthwatch v1.3+ installed if you want to set up and subscribe to Healthwatch topics.</p>
+<p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1,
+you <strong>must</strong> have Pivotal Healthwatch v1.3 or later installed
+if you want to set up and subscribe to Healthwatch topics.
+</p>
 
 To subscribe a target to one or more alert topics, do the following:
 
