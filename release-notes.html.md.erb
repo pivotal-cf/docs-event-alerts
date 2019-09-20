@@ -1,6 +1,6 @@
 ---
-title: Release Notes for PCF Event Alerts
-owner: PCF Event Alerts
+title: Release Notes for Pivotal Event Alerts
+owner: Pivotal Event Alerts
 ---
 
 <strong><%= modified_date %></strong>
@@ -41,7 +41,7 @@ New features and changes in this release:
 For more information about configuring proxy settings, see [Configuring Proxy Settings for All Applications
 ](https://docs.pivotal.io/pivotalcf/opsguide/config-proxy.html).
 * Improves log error messages when alerts fail to send.
-* Adds option to disable Metrics Forwarder for PCF integration.
+* Adds option to disable Metrics Forwarder for PAS integration.
 * Adds support for disabling SMTP TLS. For more information, see [Configure Email Notifications](./installing.html#email_settings)
 * If you subscribed to `-all` topics, you can selectively unsubscribe from individual topics. You can also selectively subscribe to individual topics. For more information, see [Unsubscribe from Alert Topics](./using.html#unsubscribe_topics) and [Subscribe to Alert Topics](./using.html#subscribe_topics).
 * Maintenance update of the following product dependencies:
@@ -90,20 +90,20 @@ This release has the following issues:
 
 Change in this release:
 
-* PCF Event Alerts now uses `cflinuxfs3` as the default stack when available.
+* Pivotal Event Alerts now uses `cflinuxfs3` as the default stack when available.
 
-     `cflinuxfs2` is used when PCF Event Alerts is installed on an environment that does not have `cflinuxfs3`,
-      for example, a PCF v2.2 environment.
+     `cflinuxfs2` is used when Pivotal Event Alerts is installed on an environment that does not have `cflinuxfs3`,
+      for example, a PAS v2.2 environment.
 
 ### <a id="fixed125"></a> Fixed Issues
 
 This release fixes the following issues:
 
-* In earlier versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts.
+* In earlier versions of Pivotal Event Alerts, the tile version in the tile metadata did not match the version of Pivotal Event Alerts.
   The version numbers now match.
 
-* This version of PCF Event Alerts supports using BOSH DNS in conjunction
-  with the IPsec Add-on for PCF when using an internal database.
+* This version of Pivotal Event Alerts supports using BOSH DNS in conjunction
+  with Pivotal IPsec when using an internal database.
 
 ### <a id="known125"></a> Known Issues
 
@@ -135,11 +135,11 @@ New features and changes in this release:
     * Go is now v1.10.3
     * Product stemcell is now Ubuntu Xenial v97.x
 
-* Before using PCF Event Alerts v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
+* Before using Pivotal Event Alerts v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
     For more information, see [Prerequisites](./installing.html#prereqs).
-<p class="note breaking"><strong>Breaking Change: </strong>PCF Event Alerts v1.2.3 and later require a Xenial stemcell.
-You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying PCF Event Alerts.
-Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells might break.</p>
+<p class="note breaking"><strong>Breaking Change: </strong>Pivotal Event Alerts v1.2.3 and later require a Xenial stemcell.
+You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying Pivotal Event Alerts.
+Any automation you have set up to update your Pivotal Event Alerts deployments using Trusty stemcells might break.</p>
 
 ### <a id="fixed123"></a> Fixed Issues
 
@@ -153,8 +153,8 @@ This release has the following issues:
 
 <%= partial 'azure-usernames-ki' %>
 
-* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts do not function. This issue is fixed in PCF Event Alerts v1.2.5.
-* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
+* When using Pivotal Event Alerts and BOSH DNS in conjunction with Pivotal IPSec and an internal database, Pivotal Event Alerts do not function. This issue is fixed in Pivotal Event Alerts v1.2.5.
+* The tile version in the tile metadata might not match the version of Pivotal Event Alerts. These version numbers are aligned as of Pivotal Event Alerts v1.2.5.
 
 <%= partial "mariadb-ki" %>
 
@@ -168,7 +168,7 @@ This release has the following issues:
 
 New features and changes in this release:
 
-* To view Healthwatch topics, you must have [PCF Healthwatch v1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
+* To view Healthwatch topics, you must have [Pivotal Healthwatch v1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
 
 * Dependence on notifications has been removed.
 
@@ -188,7 +188,7 @@ This release has the following issues:
 
 <%= partial 'azure-usernames-ki' %>
 
-* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
+* The tile version in the tile metadata might not match the version of Pivotal Event Alerts. These version numbers are aligned as of Pivotal Event Alerts v1.2.5.
 
 <%= partial "mariadb-ki" %>
 

@@ -1,6 +1,6 @@
 ---
-title: Using PCF Event Alerts
-owner: PCF Event Alerts
+title: Using Pivotal Event Alerts
+owner: Pivotal Event Alerts
 ---
 
 <strong><%= modified_date %></strong>
@@ -9,15 +9,15 @@ This topic describes how to configure alert destinations and subscribe to alerts
 It explains how to set alert destinations as targets, and how to subscribe those targets to alert topics.
 An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
 
-PCF users with admin permissions can run event alert commands and subscribe to alerts.
+Pivotal Platform users with admin permissions can run event alert commands and subscribe to alerts.
 Admins can configure event alerts using the CF CLI.
 
 ##<a id='prerequisite'></a> Prerequisite
 
-You must install both the PCF Event Alerts tile and plugin as described in the following sections:
+You must install both the Pivotal Event Alerts tile and plugin as described in the following sections:
 
-* [Download and Install the PCF Event Alerts Tile](./installing.html#install)
-* [Install the PCF Event Alerts Plugin](./installing.html#plugin)
+* [Download and Install the Pivotal Event Alerts Tile](./installing.html#install)
+* [Install the Pivotal Event Alerts Plugin](./installing.html#plugin)
 
 
 ##<a id='targets'></a> Create Targets for Alerts
@@ -123,7 +123,7 @@ To create a webhook target, do the following:
     In the above example:<br>
       * `healthwatch` is the alert publisher.
       * `system.cpu.user` is the alert topic.
-      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
+      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to Pivotal Event Alerts
        and may be different for each alert topic.
 
  <p class="note"><strong>Note:</strong> Ensure that the URL you specify in the <code>cf eva-create-target</code> command
@@ -133,7 +133,7 @@ To create a webhook target, do the following:
 In order for a target to start receiving alerts, you must subscribe it to available alert topics.
 A topic is an event that is relevant to your system.
 
-<p class="note"><strong>Note:</strong> For PCF Event Alerts v1.2.1, you <strong>must</strong> have PCF Healthwatch v1.3 installed if you want to set up and subscribe to Healthwatch topics.</p>
+<p class="note"><strong>Note:</strong> For Pivotal Event Alerts v1.2.1, you <strong>must</strong> have Pivotal Healthwatch v1.3+ installed if you want to set up and subscribe to Healthwatch topics.</p>
 
 To subscribe a target to one or more alert topics, do the following:
 
@@ -238,9 +238,9 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 5. Verify a webhook message was posted to the webhook-ops
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
-##<a id='command_help'></a> PCF Event Alert Plugin Commands
+##<a id='command_help'></a> Pivotal Event Alerts Plugin Commands
 
-Use the following PCF Event Alert plugin commands to perform various tasks related to event alerts.
+Use the following Pivotal Event Alerts plugin commands to perform various tasks related to event alerts.
 
 <table>
   <tr>
@@ -324,7 +324,7 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
   </tr>
 </table>
 
-You can also use commands to get help directly in the terminal window while working with the PCF Event Alerts plugin.
+You can also use commands to get help directly in the terminal window while working with the Pivotal Event Alerts plugin.
 
 * To list all event alert commands:
 
