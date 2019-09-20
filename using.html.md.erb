@@ -88,31 +88,42 @@ Event alerts to a Slack channel, for example a **Critical Threshold Event** aler
 
 ### <a id='webhook_targets'></a> Create Webhook Targets
 
-Webhook targets provide many possibilities for using Event Alerts. For example, a simple
-webserver proxy could forward events to Pager Duty, New Relic, Datadog, or other products.
+Webhook targets provide many possibilities for using event alerts. For example, a simple
+webserver proxy can forward events to Pager Duty, New Relic, Datadog, and other products.
 You can also use webhook targets to log or store alerts for auditing purposes.
 
-<p class="note"><strong>Note: </strong>Webhook requests are not a standardized format. This means that the request body
-from Event Alerts will need to be transformed to a format compatible with the webhook receiver. For example, transforming
-from Event Alerts' JSON request payload (described below) to the format required for
-[PagerDuty webhooks](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview). This is typically accomplished via a
-simple webserver proxy receives the webhook request from Event Alerts, transforms the request payload to the desired
-format, and finally forwards the request to the end receiver (PagerDuty in the above example).</p>
+####<a name='formats'></a> About Webhook Request Formats
+
+Webhook requests are not a standardized format. This means that the request body
+from Event Alerts must be changed to a format compatible with the webhook receiver. 
+For example, for PagerDuty, the JSON request payload from Event Alerts must be changed to
+the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
+see the [PagerDuty documentation](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview).
+
+The format change can be done through a web server proxy. The proxy receives the webhook request
+from Event Alerts, transforms the request payload to the new format, and forwards the request
+to the end receiver, for example, PagerDuty.
+
+#### Procedure
 
 To create a webhook target, do the following:
 
 1. Run the command:
 
-    <p class="note"><strong>Note:</strong> If using a proxy as described above, the `URL` given below should be the
-    _proxy_ application, not the end receiver (e.g. PagerDuty).</p>
-
     ```
     cf eva-create-target TARGET-NAME webhook URL
     ```
-  For example:
+
+    Where:
+    * `TARGET-NAME` is the  
+    * `URL` is the URL of the end receiver or, if you are using a proxy, it is the URL of the proxy app.
+       See [About Webhook Request Formats](#formats) above.  
+
+    For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
-    This creates a target named `my-webhook`, where event alerts will `POST` a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
+    This creates a target named `my-webhook`. 
+    Event Alerts posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
     ```
@@ -130,10 +141,10 @@ To create a webhook target, do the following:
     }
     ```
 
-    In the above example:<br>
-      * `healthwatch` is the alert publisher.
-      * `system.cpu.user` is the alert topic.
-      * The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
+    In the above example:
+    + `healthwatch` is the alert publisher.
+    + `system.cpu.user` is the alert topic.
+    + The `metadata` keys shown (`level`, `foundation`, and `job`) represent what the publisher sends to PCF Event Alerts
        and may be different for each alert topic.
 
 ##<a id='subscribe_topics'></a> Subscribe to Alert Topics
