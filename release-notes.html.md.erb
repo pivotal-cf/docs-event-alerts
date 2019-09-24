@@ -1,6 +1,6 @@
 ---
-title: Release Notes for PCF Event Alerts
-owner: PCF Event Alerts
+title: Release Notes for Pivotal Event Alerts
+owner: Event Alerts
 ---
 
 <strong><%= modified_date %></strong>
@@ -90,19 +90,19 @@ This release has the following issues:
 
 Change in this release:
 
-* PCF Event Alerts now uses `cflinuxfs3` as the default stack when available.
+*  <%= vars.product_name %> now uses `cflinuxfs3` as the default stack when available.
 
-     `cflinuxfs2` is used when PCF Event Alerts is installed on an environment that does not have `cflinuxfs3`,
+     `cflinuxfs2` is used when  <%= vars.product_name %> is installed on an environment that does not have `cflinuxfs3`,
       for example, a PCF v2.2 environment.
 
 ### <a id="fixed125"></a> Fixed Issues
 
 This release fixes the following issues:
 
-* In earlier versions of PCF Event Alerts, the tile version in the tile metadata did not match the version of PCF Event Alerts.
-  The version numbers now match.
+* In earlier versions of  <%= vars.product_name %>, the tile version in the tile metadata did not match the version
+of  <%= vars.product_name %>. The version numbers now match.
 
-* This version of PCF Event Alerts supports using BOSH DNS in conjunction
+* This version of <%= vars.product_name %> supports using BOSH DNS in conjunction
   with the IPsec Add-on for PCF when using an internal database.
 
 ### <a id="known125"></a> Known Issues
@@ -135,10 +135,10 @@ New features and changes in this release:
     * Go is now v1.10.3
     * Product stemcell is now Ubuntu Xenial v97.x
 
-* Before using PCF Event Alerts v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
+* Before using  <%= vars.product_name %> v1.2.3, you must update any BOSH add-ons to support Xenial stemcells.
     For more information, see [Prerequisites](./installing.html#prereqs).
-<p class="note breaking"><strong>Breaking Change: </strong>PCF Event Alerts v1.2.3 and later require a Xenial stemcell.
-You must manually download and import a new stemcell into the Ops Manager Stemcell Library before deploying PCF Event Alerts.
+<p class="note breaking"><strong>Breaking Change: </strong> <%= vars.product_name %> v1.2.3 and later require a Xenial stemcell.
+You must manually download and import a new stemcell into the Pivotal Ops Manager Stemcell Library before deploying  <%= vars.product_name %>.
 Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells might break.</p>
 
 ### <a id="fixed123"></a> Fixed Issues
@@ -153,8 +153,11 @@ This release has the following issues:
 
 <%= partial 'azure-usernames-ki' %>
 
-* When using PCF Event Alerts and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database, PCF Event Alerts do not function. This issue is fixed in PCF Event Alerts v1.2.5.
-* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
+* When using  <%= vars.product_name %> and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database,
+ <%= vars.product_name %> do not function.
+ This issue is fixed in  <%= vars.product_name %> v1.2.5.
+* The tile version in the tile metadata might not match the version of <%= vars.product_name %>.
+These version numbers are aligned as of <%= vars.product_name %> v1.2.5.
 
 <%= partial "mariadb-ki" %>
 
@@ -168,27 +171,30 @@ This release has the following issues:
 
 New features and changes in this release:
 
-* To view Healthwatch topics, you must have [PCF Healthwatch v1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
+* To view Healthwatch topics, you must have [Pivotal Healthwatch v1.3] (https://docs.pivotal.io/pcf-healthwatch) installed.
 
 * Dependence on notifications has been removed.
 
 * Email configuration is now an option.
-  <p class="note"><strong>Note</strong>: Specifying email configuration settings is required if you want notifications sent by email.</p>
+  <p class="note"><strong>Note</strong>: Specifying email configuration settings is required
+    if you want notifications sent by email.</p>
     For more information, see [Configure Email Notifications](installing.html#email_settings).
 
 * All destination email addresses now receive validation messages.
-  Before v1.2.1, if the notification email address was the same as the account creating the target, the email address was verified automatically.
+  Before v1.2.1, if the notification email address was the same as the account creating the target,
+  the email address was verified automatically.
 
 ### <a id="known121"></a> Known Issues
 
 This release has the following issues:
 
-* Users of Event Alerts v1.2.1 are required to use escape characters in configuration passwords.
-  This is no longer required in Event Alerts v1.2.3 and later releases.
+* Users of <%= vars.product_name %> v1.2.1 are required to use escape characters in configuration passwords.
+  This is no longer required in <%= vars.product_name %> v1.2.3 and later releases.
 
 <%= partial 'azure-usernames-ki' %>
 
-* The tile version in the tile metadata might not match the version of PCF Event Alerts. These version numbers are aligned as of PCF Event Alerts v1.2.5.
+* The tile version in the tile metadata might not match the version of <%= vars.product_name %>.
+These version numbers are aligned as of <%= vars.product_name %> v1.2.5.
 
 <%= partial "mariadb-ki" %>
 

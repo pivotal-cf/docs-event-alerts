@@ -1,38 +1,39 @@
 ---
-title: Monitoring and Troubleshooting PCF Event Alerts
-owner: PCF Event Alerts
+title: Monitoring and Troubleshooting Pivotal Event Alerts
+owner: Event Alerts
 ---
 
 <strong><%= modified_date %></strong>
 
-This topic describes how to monitor and troubleshoot Pivotal Cloud Foundry (PCF) Event Alerts.
+This topic describes how to monitor and troubleshoot <%= vars.product_name %>.
 
-##<a id='monitor'></a> Monitor PCF Event Alerts
+##<a id='monitor'></a> Monitor <%= vars.product_name %>
 
-PCF Event Alerts is deployed as an app in PCF. By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
+<%= vars.product_name %> is deployed as an app in <%= vars.platform_name %>.
+By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
 
-To monitor the performance of PCF Event Alerts or to retrieve troubleshooting information, you can do one or more of the following:
+To monitor the performance of <%= vars.product_name %> or to retrieve troubleshooting information, you can do one or more of the following:
 
 * Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
-* Use the PCF Metrics service.
-  For more information, see [PCF Metrics](https://docs.pivotal.io/pcf-metrics/index.html).
-* Use the Metrics Forwarder for PCF service.
-  The `event-alerts` app detects if you have an available instance of Metrics Forwarder for PCF
+* Use the Pivotal App Metrics service.
+  For more information, see [Pivotal App Metrics](https://docs.pivotal.io/pcf-metrics/index.html).
+* Use the Pivotal Metrics Forwarder service.
+  The `event-alerts` app detects if you have an available instance of Pivotal Metrics Forwarder
   and transmits custom app metrics through Loggregator to the service.
-  For more information, see [Metrics Forwarder for PCF](https://docs.pivotal.io/metrics-forwarder/).
-  <p class="note"><strong>Note:</strong> When Metrics Forwarder is not installed,
-     Event Alerts produces an error.
+  For more information, see [Pivotal Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
+  <p class="note"><strong>Note:</strong> When Pivotal Metrics Forwarder is not installed,
+     <%= vars.product_name %> produces an error.
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
 
-##<a id="scale"></a> Scale PCF Event Alerts
+##<a id="scale"></a> Scale <%= vars.product_name %>
 
-You might need to scale PCF Event Alerts to improve performance.
+You might need to scale <%= vars.product_name %> to improve performance.
 
-To scale PCF Event Alerts, perform the following steps:
+To scale <%= vars.product_name %>, perform the following steps:
 
-1. Use the cf CLI to log in to your PCF deployment as an admin. For example:
+1. Use the cf CLI to log in to your <%= vars.platform_name %> deployment as an admin. For example:
 	<pre class="terminal">$ cf login
 	API endpoint: http<span>s:</span>//api.sys.cf-example.com
 	Email> admin
@@ -40,34 +41,34 @@ To scale PCF Event Alerts, perform the following steps:
 	</pre>
 1. When prompted, select the `system` org and the `event-alerts` space.
 1. Scale up the number of instances of the `event-alerts` app.
-   Two instances should adequately handle most alerting workloads from PCF Healthwatch.
+   Two instances should adequately handle most alerting workloads from Pivotal Healthwatch.
    For example:
 	<pre class="terminal">$ cf scale event-alerts -i 2</pre>
-	If you are running very large PCF deployments with frequent threshold events,
+	If you are running very large <%= vars.platform_name %> deployments with frequent threshold events,
         you might need to increase the instance count above two.
 
 ##<a id="reduce-notifications"></a> Reduce Notifications
 
-If PCF Event Alerts is receiving frequent event notifications, you can do one or both of the following:
+If <%= vars.product_name %> is receiving frequent event notifications, you can do one or both of the following:
 
 * Unsubscribe from alerts that have minimal action.
 * Increase threshold values to supply better indicators for action.
 
-For more information about unsubscribing from alerts and increasing threshold values, see [Using PCF Event Alerts](using.html).
+For more information about unsubscribing from alerts and increasing threshold values, see [Using <%= vars.product_name %>](using.html).
 
 ##<a id="t-shoot-errors"></a> Troubleshooting Errors
 
 This section provides information on how to troubleshooting specific errors or error messages.
 
-###<a id="errand"></a> Deploy PCF Event Alerts Errand Fails
+###<a id="errand"></a> Deploy <%= vars.product_name %> Errand Fails
 
 This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
-If you do not resolve this issue, PCF Event Alerts is not deployed.
+If you do not resolve this issue, <%= vars.product_name %> is not deployed.
 
 #### Symptom
 
 When you **Apply Changes**, you see in the Ops Manager installation pane that the
-**Deploy PCF Event Alerts** errand fails with the following error:
+**Deploy <%= vars.product_name %>** errand fails with the following error:
 
 <pre class="terminal">
 You do not have the SUPER privilege and
@@ -85,19 +86,19 @@ in the open source MySQL documentation.
 
 To solve this issue, do the following:
 
-  1. Drop the PCF Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
+  1. Drop the <%= vars.product_name %> database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
   2. Do one of the following:
      * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
      * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
-  3. In Ops Manager, **Apply Changes** with the **Deploy PCF Event Alerts** errand checked.
+  3. In Ops Manager, **Apply Changes** with the **Deploy <%= vars.product_name %>** errand checked.
 
-###<a id="ip-binding"></a> Event Alerts Fails to Release IP Address Bindings on MySQL Upgrade
+###<a id="ip-binding"></a> <%= vars.product_name %> Fails to Release IP Address Bindings on MySQL Upgrade
 
 #### Symptom
 
-When upgrading from MySQL for PCF v2.4 to v2.5, all service bindings must be changed from
+When upgrading from MySQL for Pivotal Platform v2.4 to v2.5, all service bindings must be changed from
 IP address based bindings to hostname based bindings.
-Event Alerts sometimes fails to release IP address bindings after following the procedure in
+<%= vars.product_name %> sometimes fails to release IP address bindings after following the procedure in
 [Deprecated Service Bindings Found (Upgrade Error)](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
 
 #### Explanation
@@ -110,7 +111,7 @@ Recreate the service key by running:
 
 <p class="note warning">
   <strong>Warning: </strong> You must use the username <code>migrations_user</code> in the command below.
-  Without this, a random name is generated that causes Event Alerts to fail.
+  Without this, a random name is generated that causes <%= vars.product_name %> to fail.
 </p>
 
 ```

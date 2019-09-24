@@ -1,6 +1,6 @@
 ---
-title: Using PCF Event Alerts
-owner: PCF Event Alerts
+title: Using Pivotal Event Alerts
+owner: Event Alerts
 ---
 
 <strong><%= modified_date %></strong>
@@ -9,15 +9,15 @@ This topic describes how to configure alert destinations and subscribe to alerts
 It explains how to set alert destinations as targets, and how to subscribe those targets to alert topics.
 An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
 
-PCF users with admin permissions can run event alert commands and subscribe to alerts.
+<%= vars.platform_name %> users with admin permissions can run event alert commands and subscribe to alerts.
 Admins can configure event alerts using the CF CLI.
 
 ##<a id='prerequisite'></a> Prerequisite
 
-You must install both the PCF Event Alerts tile and plugin as described in the following sections:
+You must install both the <%= vars.product_name %> tile and plugin as described in the following sections:
 
-* [Download and Install the PCF Event Alerts Tile](./installing.html#install)
-* [Install the PCF Event Alerts Plugin](./installing.html#plugin)
+* [Download and Install the <%= vars.product_name %> Tile](./installing.html#install)
+* [Install the <%= vars.product_name %> Plugin](./installing.html#plugin)
 
 
 ##<a id='targets'></a> Create Targets for Alerts
@@ -95,7 +95,7 @@ You can also use webhook targets to log or store alerts for auditing purposes.
 ####<a name='formats'></a> About Webhook Request Formats
 
 Webhook requests are not a standardized format. This means that the request payload
-from Event Alerts must be changed to a format compatible with the webhook receiver. 
+from Event Alerts must be changed to a format compatible with the webhook receiver.
 For example, for PagerDuty, the JSON request payload from Event Alerts must be changed to
 the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
 see the [PagerDuty documentation](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview).
@@ -120,7 +120,7 @@ To create a webhook target, do the following:
     For example:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
-    This creates a target named `my-webhook`. 
+    This creates a target named `my-webhook`.
     Event Alerts posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
@@ -144,7 +144,7 @@ To create a webhook target, do the following:
       <li> <code>healthwatch</code> is the alert publisher.</li>
       <li> <code>system.cpu.user</code> is the alert topic.</li>
       <li> The <code>metadata</code> keys shown, <code>level</code> <code>foundation</code> and <code>job</code>,
-           represent what the publisher sends to PCF Event Alerts
+           represent what the publisher sends to <%= vars.product_name %>
            and can be different for each alert topic.</li>
     </ul>
 
@@ -259,9 +259,9 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 5. Verify a webhook message was posted to the webhook-ops
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
-##<a id='command_help'></a> PCF Event Alert Plugin Commands
+##<a id='command_help'></a> <%= vars.product_name %> Plugin Commands
 
-Use the following PCF Event Alert plugin commands to perform various tasks related to event alerts.
+Use the following <%= vars.product_name %> plugin commands to perform various tasks related to event alerts.
 
 <table>
   <tr>
@@ -345,7 +345,7 @@ Use the following PCF Event Alert plugin commands to perform various tasks relat
   </tr>
 </table>
 
-You can also use commands to get help directly in the terminal window while working with the PCF Event Alerts plugin.
+You can also use commands to get help directly in the terminal window while working with the <%= vars.product_name %> plugin.
 
 * To list all event alert commands:
 
