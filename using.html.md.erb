@@ -95,13 +95,13 @@ You can also use webhook targets to log or store alerts for auditing purposes.
 ####<a name='formats'></a> About Webhook Request Formats
 
 Webhook requests are not a standardized format. This means that the request payload
-from Event Alerts must be changed to a format compatible with the webhook receiver.
-For example, for PagerDuty, the JSON request payload from Event Alerts must be changed to
+from <%= vars.product_name %> must be changed to a format compatible with the webhook receiver.
+For example, for PagerDuty, the JSON request payload from <%= vars.product_name %> must be changed to
 the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
 see the [PagerDuty documentation](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview).
 
 The format change can be done through a web server proxy. The proxy receives the webhook request
-from Event Alerts, transforms the request payload to the new format, and forwards the request
+from <%= vars.product_name %>, transforms the request payload to the new format, and forwards the request
 to the end receiver, for example, PagerDuty.
 
 #### Procedure
@@ -121,7 +121,7 @@ To create a webhook target, do the following:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
     This creates a target named `my-webhook`.
-    Event Alerts posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
+    <%= vars.product_name %> posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
     ```
@@ -183,9 +183,9 @@ To subscribe a target to one or more alert topics, do the following:
         ```
         cf eva-subscribe TARGET-NAME PUBLISHER --all
         ```
-        
+
         <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you can subscribe to
-        a single topic from that publisher by running <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p> 
+        a single topic from that publisher by running <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>
 
     Find the `PUBLISHER` and the `TOPIC` name(s) from the topic list in the previous step.
     Enter topic names in the command separated by commas.<br><br>
@@ -198,7 +198,7 @@ To subscribe a target to one or more alert topics, do the following:
 
     <pre class="terminal">$ cf eva-subscribe user-email healthwatch --all</pre>
 
-    
+
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics
 
@@ -271,7 +271,7 @@ Use the following <%= vars.product_name %> plugin commands to perform various ta
   <tr>
     <td><strong>eva-api</strong></td>
     <td>
-    Displays the endpoint and version of the Event Alerts API server.
+    Displays the endpoint and version of the <%= vars.product_name %> API server.
     </td>
   </tr>
   <tr>

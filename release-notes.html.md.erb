@@ -45,9 +45,12 @@ New features and changes in this release:
 For more information about configuring proxy settings, see [Configuring Proxy Settings for All Applications
 ](https://docs.pivotal.io/pivotalcf/opsguide/config-proxy.html).
 * Improves log error messages when alerts fail to send.
-* Adds option to disable Metrics Forwarder for PCF integration.
+* Adds option to disable Pivotal Metrics Forwarder integration.
 * Adds support for disabling SMTP TLS. For more information, see [Configure Email Notifications](./installing.html#email_settings)
-* If you subscribed to `-all` topics, you can selectively unsubscribe from individual topics. You can also selectively subscribe to individual topics. For more information, see [Unsubscribe from Alert Topics](./using.html#unsubscribe_topics) and [Subscribe to Alert Topics](./using.html#subscribe_topics).
+* If you subscribed to `-all` topics, you can selectively unsubscribe from individual topics.
+You can also selectively subscribe to individual topics.
+For more information, see [Unsubscribe from Alert Topics](./using.html#unsubscribe_topics)
+and [Subscribe to Alert Topics](./using.html#subscribe_topics).
 * Maintenance update of the following product dependencies:
     * cf CLI is now v6.44.1
 
@@ -143,7 +146,7 @@ New features and changes in this release:
     For more information, see [Prerequisites](./installing.html#prereqs).
 <p class="note breaking"><strong>Breaking Change: </strong> <%= vars.product_name %> v1.2.3 and later require a Xenial stemcell.
 You must manually download and import a new stemcell into the Pivotal Ops Manager Stemcell Library before deploying <%= vars.product_name %>.
-Any automation you have set up to update your PCF Event Alerts deployments using Trusty stemcells might break.</p>
+Any automation you have set up to update your <%= vars.product_name %> deployments using Trusty stemcells might break.</p>
 
 ### <a id="fixed123"></a> Fixed Issues
 
