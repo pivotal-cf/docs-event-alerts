@@ -5,9 +5,9 @@ owner: Event Alerts
 
 <strong><%= modified_date %></strong>
 
-<%= partial '../../eva/partials/branding-change' %>
+<%= partial vars.path_to_partials + "branding-change" %>
 
-<%= partial '../../eva/partials/pcf-name-change' %>
+<%= partial vars.path_to_partials + "pcf-name-change" %>
 
 ##<a id="1-2-8"></a> v1.2.8
 
@@ -25,13 +25,13 @@ New features and changes in this release:
 
 This release has the following issues:
 
-<%= partial 'deployfails-ki' %>
+<%= partial vars.path_to_partials + "/eva/deployfails-ki" %>
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ##<a id="1-2-7"></a> v1.2.7
 
@@ -58,13 +58,13 @@ and [Subscribe to Alert Topics](./using.html#subscribe_topics).
 
 This release has the following issues:
 
-<%= partial 'deployfails-ki' %>
+<%= partial vars.path_to_partials + "/eva/deployfails-ki" %>
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ##<a id="1-2-6"></a> v1.2.6
 
@@ -83,11 +83,11 @@ New features and changes in this release:
 
 This release has the following issues:
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ##<a id="1-2-5"></a> v1.2.5
 
@@ -116,11 +116,11 @@ of <%= vars.product_name %>. The version numbers now match.
 
 This release has the following issues:
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ##<a id="1-2-3"></a> v1.2.3
 
@@ -158,7 +158,7 @@ This release fixes the following issue:
 
 This release has the following issues:
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
 * When using <%= vars.product_name %> and BOSH DNS in conjunction with IPSec Add-On for PCF and an internal database,
  <%= vars.product_name %> do not function.
@@ -166,9 +166,9 @@ This release has the following issues:
 * The tile version in the tile metadata might not match the version of <%= vars.product_name %>.
 These version numbers are aligned as of <%= vars.product_name %> v1.2.5.
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ##<a id="1-2-1"></a> v1.2.1
 
@@ -198,14 +198,14 @@ This release has the following issues:
 * Users of <%= vars.product_name %> v1.2.1 are required to use escape characters in configuration passwords.
   This is no longer required in <%= vars.product_name %> v1.2.3 and later releases.
 
-<%= partial 'azure-usernames-ki' %>
+<%= partial vars.path_to_partials + "/eva/azure-username-ki" %>
 
 * The tile version in the tile metadata might not match the version of <%= vars.product_name %>.
 These version numbers are aligned as of <%= vars.product_name %> v1.2.5.
 
-<%= partial "mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
 
-<%= partial "mysql-ip-binding-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
 
 ## <a id="view"></a> View Release Notes for Another Version
 
