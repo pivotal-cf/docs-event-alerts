@@ -60,32 +60,40 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information on how to troubleshooting specific errors or error messages.
 
-###<a id="errand"></a> Deploy <%= vars.product_name %> Errand Fails
+  
+  <%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
 
-This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
-If you do not resolve this issue, <%= vars.product_name %> is not deployed.
+        description: 'Deploy Event Alerts Errand Fails',
+        symptom:<<~DESC,
 
-####Symptom
+          When you **Apply Changes**, you see in the Pivotal Ops Manager installation pane that the **Deploy Event Alerts** errand fails with the following error:
 
-When you **Apply Changes**, you see in the Pivotal Ops Manager installation pane that the **Deploy <%= vars.product_name %>** errand fails with the following error:
+          <pre class="terminal">
+          You do not have the SUPER privilege and
+          binary logging is enabled (you *might* want to use the less safe
+          log_bin_trust_function_creators variable)
+          </pre>
+          DESC
+          
+        cause:<<~DESC, 
+        
+          This problem happens when you do not have SUPER privileges and binary logging is enabled. If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
+          For information about the above error message,
+          see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
+          in the open source MySQL documentation.
+          DESC
+          
+        solution:<<~DESC,
+        
+        To solve this issue, do the following:
 
-```
-You do not have the SUPER privilege and
-binary logging is enabled (you *might* want to use the less safe
-log_bin_trust_function_creators variable)
-```
+          1. Drop the Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
+          2. Do one of the following:
+             * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
+             * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log&#95;bin&#95;trust&#95;function&#95;creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
+          3. In Ops Manager, **Apply Changes** with the **Deploy Event Alerts** errand checked.
+          DESC
+          
 
-####Explanation
-
-For information about the above error message,
-see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
-in the open source MySQL documentation.
-
-####Solution
-To solve this issue, do the following:
-
-  1. Drop the <%= vars.product_name %> database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
-  2. Do one of the following:
-     * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
-     * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
-  3. In Ops Manager, **Apply Changes** with the **Deploy <%= vars.product_name %>** errand checked.
+  } %>
+      
