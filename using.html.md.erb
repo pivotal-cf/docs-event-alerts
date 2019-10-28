@@ -14,10 +14,10 @@ Admins can configure event alerts using the CF CLI.
 
 ##<a id='prerequisite'></a> Prerequisite
 
-You must install both the <%= vars.product_name %> tile and plugin as described in the following sections:
+You must install both the <%= vars.product_full %> tile and plugin as described in the following sections:
 
-* [Download and Install the <%= vars.product_name %> Tile](./installing.html#install)
-* [Install the <%= vars.product_name %> Plugin](./installing.html#plugin)
+* [Download and Install the <%= vars.product_full %> Tile](./installing.html#install)
+* [Install the <%= vars.product_full %> Plugin](./installing.html#plugin)
 
 
 ##<a id='targets'></a> Create Targets for Alerts
@@ -144,7 +144,7 @@ To create a webhook target, do the following:
       <li> <code>healthwatch</code> is the alert publisher.</li>
       <li> <code>system.cpu.user</code> is the alert topic.</li>
       <li> The <code>metadata</code> keys shown, <code>level</code> <code>foundation</code> and <code>job</code>,
-           represent what the publisher sends to <%= vars.product_name %>
+           represent what the publisher sends to <%= vars.product_full %>
            and can be different for each alert topic.</li>
     </ul>
 
@@ -254,9 +254,9 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 5. Verify a webhook message was posted to the webhook-ops
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
-##<a id='command_help'></a> <%= vars.product_name %> Plugin Commands
+##<a id='command_help'></a> <%= vars.product_full %> Plugin Commands
 
-Use the following <%= vars.product_name %> plugin commands to perform various tasks related to event alerts.
+Use the following <%= vars.product_full %> plugin commands to perform various tasks related to event alerts.
 
 <table>
   <tr>
@@ -340,7 +340,7 @@ Use the following <%= vars.product_name %> plugin commands to perform various ta
   </tr>
 </table>
 
-You can also use commands to get help directly in the terminal window while working with the <%= vars.product_name %> plugin.
+You can also use commands to get help directly in the terminal window while working with the <%= vars.product_full %> plugin.
 
 * To list all event alert commands:
 

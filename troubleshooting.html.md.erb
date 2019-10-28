@@ -5,14 +5,14 @@ owner: Event Alerts
 
 <strong><%= modified_date %></strong>
 
-This topic describes how to monitor and troubleshoot <%= vars.product_name %>.
+This topic describes how to monitor and troubleshoot <%= vars.product_full %>.
 
-##<a id='monitor'></a> Monitor <%= vars.product_name %>
+##<a id='monitor'></a> Monitor <%= vars.product_full %>
 
-<%= vars.product_name %> is deployed as an app in <%= vars.platform_name %>.
+<%= vars.product_full %> is deployed as an app in <%= vars.platform_name %>.
 By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
 
-To monitor the performance of <%= vars.product_name %> or to retrieve troubleshooting information, you can do one or more of the following:
+To monitor the performance of <%= vars.product_full %> or to retrieve troubleshooting information, you can do one or more of the following:
 
 * Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
@@ -23,15 +23,15 @@ To monitor the performance of <%= vars.product_name %> or to retrieve troublesho
   and transmits custom app metrics through Loggregator to the service.
   For more information, see [Pivotal Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
   <p class="note"><strong>Note:</strong> When Pivotal Metrics Forwarder is not installed,
-     <%= vars.product_name %> produces an error.
+     <%= vars.product_full %> produces an error.
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
 
-##<a id="scale"></a> Scale <%= vars.product_name %>
+##<a id="scale"></a> Scale <%= vars.product_full %>
 
-You might need to scale <%= vars.product_name %> to improve performance.
+You might need to scale <%= vars.product_full %> to improve performance.
 
-To scale <%= vars.product_name %>, perform the following steps:
+To scale <%= vars.product_full %>, perform the following steps:
 
 1. Use the cf CLI to log in to your <%= vars.platform_name %> deployment as an admin. For example:
 	<pre class="terminal">$ cf login
@@ -49,12 +49,12 @@ To scale <%= vars.product_name %>, perform the following steps:
 
 ##<a id="reduce-notifications"></a> Reduce Notifications
 
-If <%= vars.product_name %> is receiving frequent event notifications, you can do one or both of the following:
+If <%= vars.product_full %> is receiving frequent event notifications, you can do one or both of the following:
 
 * Unsubscribe from alerts that have minimal action.
 * Increase threshold values to supply better indicators for action.
 
-For more information about unsubscribing from alerts and increasing threshold values, see [Using <%= vars.product_name %>](using.html).
+For more information about unsubscribing from alerts and increasing threshold values, see [Using <%= vars.product_full %>](using.html).
 
 ##<a id="t-shoot-errors"></a> Troubleshooting Errors
 
