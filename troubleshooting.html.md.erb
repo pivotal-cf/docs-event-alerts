@@ -60,9 +60,10 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information on how to troubleshooting specific errors or error messages.
 
-  
+
   <%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
-	id: 'errand-fails'
+
+        id: 'errand-fails',
         description: 'Deploy Event Alerts Errand Fails',
         symptom:<<~DESC,
 
@@ -74,17 +75,17 @@ This section provides information on how to troubleshooting specific errors or e
           log_bin_trust_function_creators variable)
           </pre>
           DESC
-          
-        cause:<<~DESC, 
-        
+
+        cause:<<~DESC,
+
           This problem happens when you do not have SUPER privileges and binary logging is enabled. If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
           For information about the above error message,
           see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
           in the open source MySQL documentation.
           DESC
-          
+
         solution:<<~DESC,
-        
+
         To solve this issue, do the following:
 
           1. Drop the Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
@@ -93,7 +94,6 @@ This section provides information on how to troubleshooting specific errors or e
              * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log&#95;bin&#95;trust&#95;function&#95;creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
           3. In Ops Manager, **Apply Changes** with the **Deploy Event Alerts** errand checked.
           DESC
-          
+
 
   } %>
-      
