@@ -26,12 +26,9 @@ To monitor the performance of <%= vars.product_name %> or to retrieve troublesho
   <%= vars.product_name %> produces an error.
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
-* Use the Pivotal Metrics Registrar service.
-  The `event-alerts` app must be registered as a source of metrics:
-  <pre class="terminal">$ cf install-plugin -r CF-Community "metric-registrar"
-	$ cf register-log-format event-alerts json
-	</pre>
-  For more information, see [Pivotal Metrics Registrar](https://docs.pivotal.io/platform/application-service/metric-registrar/).
+* Use the Pivotal Metrics Registrar service. You must install the plugin and register the `event-alerts` app as a source 
+  of metrics. For instructions,
+  see [Using Metric Registrar](https://docs.pivotal.io/platform/application-service/metric-registrar/using.html).
 
 
 ##<a id="scale"></a> Scale <%= vars.product_name %>
