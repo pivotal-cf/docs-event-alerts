@@ -17,14 +17,20 @@ owner: Event Alerts
 
 New features and changes in this release:
 
-* Removes the requirement that the slack target URLs contain "slack.com". 
-* Emits custom metrics in [structured log format](https://docs.pivotal.io/platform/application-service/2-7/metric-registrar/using.html#register-log-format). 
+* Removes requirement that Slack webhook URLs contain `slack.com`. This enables admins to create
+Slack targets with webhooks from other messaging platforms. For instructions for creating
+Slack targets, see [Create Slack Targets](./using.html#slack_targets).
+* Adds support for Metric Registrar.
+This enables <%= vars.product_name %> to emit custom app metrics in a structured log format.
+For more information about Metric Registrar,
+see [Using Metric Registrar](https://docs.pivotal.io/platform/application-service/metric-registrar/using.html#register-log-format).
 
 ### <a id="fixed1210"></a> Fixed Issues
 
 This release fixes the following issue:
 
-* In earlier versions, <%= vars.product_name %> failed to emit custom metrics on PAS versions 2.5 and above.
+* <%= vars.product_name %> no longer fails to emit custom metrics on
+Pivotal Application Service v2.5 and later.
 
 ###<a id="known1210"></a> Known Issues
 
