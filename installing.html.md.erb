@@ -5,8 +5,8 @@ owner: PCF Event Alerts
 
 <strong><%= modified_date %></strong>
 
-This topic describes how to install and configure PCF Event Alerts. For information on how to use this product,
-see [Using PCF Event Alerts](./using.html).
+This topic describes how to install and configure <%= vars.product_full %>.
+For information about how to use this product, see [Using <%= vars.product_full %>](./using.html).
 
 ##<a id='prereqs'></a> Prerequisites
 
@@ -27,7 +27,7 @@ Follow the procedures below to download and install the PCF Event Alerts tile:
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-event-alerts/).
 
-1. Navigate to the Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
+1. Navigate to the <%= vars.ops_manager_full %> Installation Dashboard and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of PCF Event Alerts.
 This adds the tile to your staging area.
@@ -73,8 +73,8 @@ Follow the steps below to choose an Availability Zone (AZ) to run PCF Event Aler
 
 ### <a id="event-alerts-alerting-config"></a> (Optional) Configure Scaling Settings
 
-You can scale PCF event alerts by adding additional instances of the app.
-Follow the steps below to optionally configure scaling settings.
+You can scale PCF <%= vars.product_short %> by adding additional instances of the app.
+Follow the steps below to configure scaling settings.
 
 1. Click the **Scale** tab.
 
@@ -148,7 +148,9 @@ If you want to use an external database for PCF Event Alerts, follow the steps b
 
 1. Click **Save**.
 
-###<a id="stemcell"></a> Verify Stemcell Version
+### <a id="stemcell"></a> Verify Stemcell Version
+
+To verify that you have the correct stemcell version for the <%= vars.product_full %> tile:
 
 1. Click the **Stemcell** tab.
 
@@ -162,7 +164,7 @@ a message similar to the following appears (the version numbers shown may be dif
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard and click **Apply Changes** to install the PCF Event Alerts tile.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard and click **Apply Changes** to install the PCF Event Alerts tile.
 
 ##<a id="plugin"></a> Install the PCF Event Alerts Plugin
 
