@@ -12,7 +12,7 @@ This topic describes how to monitor and troubleshoot <%= vars.product_full %>.
 <%= vars.product_full %> is deployed as an app in <%= vars.platform_name %>.
 By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
 
-To monitor the performance of <%= vars.product_full %> or to retrieve troubleshooting information, you can do one or more of the following:
+To monitor the performance of <%= vars.product_short %> or to retrieve troubleshooting information, you can do one or more of the following:
 
 * Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
@@ -23,15 +23,15 @@ To monitor the performance of <%= vars.product_full %> or to retrieve troublesho
   and transmits custom app metrics through Loggregator to the service.
   For more information, see [Pivotal Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
   <p class="note"><strong>Note:</strong> When Pivotal Metrics Forwarder is not installed,
-     <%= vars.product_full %> produces an error.
+     <%= vars.product_short %> produces an error.
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
 
 ##<a id="scale"></a> Scale <%= vars.product_full %>
 
-You might need to scale <%= vars.product_full %> to improve performance.
+You might need to scale <%= vars.product_short %> to improve performance.
 
-To scale <%= vars.product_full %>, perform the following steps:
+To scale <%= vars.product_short %>:
 
 1. Use the cf CLI to log in to your <%= vars.platform_name %> deployment as an admin. For example:
 	<pre class="terminal">$ cf login
@@ -58,16 +58,16 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 ##<a id="t-shoot-errors"></a> Troubleshooting Errors
 
-This section provides information on how to troubleshooting specific errors or error messages.
+This section provides information about how to troubleshooting specific errors or error messages.
 
 
   <%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
 
         id: 'errand-fails',
-        description: 'Deploy Event Alerts Errand Fails',
+        description: 'Deploy Event Alerts<%# Use <%= vars.product_short %> Errand Fails',
         symptom:<<~DESC,
 
-          When you **Apply Changes**, you see in the Pivotal Ops Manager installation pane that the **Deploy Event Alerts** errand fails with the following error:
+          When you **Apply Changes**, you see in the <%= vars.ops_manager_full %> installation pane that the **Deploy Event Alerts** errand fails with the following error:
 
           <pre class="terminal">
           You do not have the SUPER privilege and
@@ -78,7 +78,7 @@ This section provides information on how to troubleshooting specific errors or e
 
         cause:<<~DESC,
 
-          This problem happens when you do not have SUPER privileges and binary logging is enabled. If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
+          This problem happens when you do not have SUPER privileges and binary logging is enabled. If you do not resolve this issue, <%= vars.product_full %> is not deployed. <br>
           For information about the above error message,
           see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
           in the open source MySQL documentation.
@@ -86,13 +86,13 @@ This section provides information on how to troubleshooting specific errors or e
 
         solution:<<~DESC,
 
-        To solve this issue, do the following:
+        To solve this issue:
 
-          1. Drop the Event Alerts database and recreate it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
+          1. Drop the <%= vars.product_short %> database and re-create it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
           2. Do one of the following:
              * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
              * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log&#95;bin&#95;trust&#95;function&#95;creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
-          3. In Ops Manager, **Apply Changes** with the **Deploy Event Alerts** errand checked.
+          3. In <%= vars.ops_manager %>, **Apply Changes** with the **Deploy Event Alerts** errand checked.
           DESC
 
 
