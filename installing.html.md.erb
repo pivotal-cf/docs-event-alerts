@@ -5,8 +5,8 @@ owner: Event Alerts
 
 <strong><%= modified_date %></strong>
 
-This topic describes how to install and configure <%= vars.product_full %>. For information about how to use
-this product, see [Using <%= vars.product_short %>](./using.html).
+This topic describes how to install and configure <%= vars.product_full %>.
+For information about how to use this product, see [Using <%= vars.product_full %>](./using.html).
 
 ##<a id='prereqs'></a> Prerequisites
 
@@ -31,7 +31,7 @@ Follow the procedures below to download and install the <%= vars.product_short %
 
 1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-event-alerts/).
 
-1. Navigate to the Pivotal Ops Manager Installation Dashboard and click **Import a Product** to upload the product file.
+1. Navigate to the <%= vars.ops_manager_full %> Installation Dashboard and click **Import a Product** to upload the product file.
 
 1. Under the **Import a Product** button, click **+** next to the version number of <%= vars.product_short %>.
 This adds the tile to your staging area.
@@ -78,7 +78,7 @@ Follow the steps below to choose an Availability Zone (AZ) to run <%= vars.produ
 ### <a id="event-alerts-alerting-config"></a> (Optional) Configure Scaling Settings
 
 You can scale <%= vars.product_short %> by adding additional instances of the app.
-Follow the steps below to optionally configure scaling settings.
+Follow the steps below to configure scaling settings.
 
 1. Click the **Scale** tab.
 
@@ -216,7 +216,7 @@ Follow the steps below to configure settings for <%= vars.product_short %> email
       <tr>
         <td><strong>SMTP Server Credentials</strong></td>
         <td>The Username and Password for the outgoing email account.
-          <p class="note"><strong>Note: </strong>To connect to a SMTP server without authentication, leave the SMTP
+          <p class="note"><strong>Note:</strong> To connect to a SMTP server without authentication, leave the SMTP
           username and password fields empty.</p>
         </td>
       </tr>
@@ -226,7 +226,7 @@ Follow the steps below to configure settings for <%= vars.product_short %> email
 
 ### <a id="stemcell"></a> Verify Stemcell Version
 
-To verify that you have the correct stemcell version for the <%= vars.product_short %> tile:
+To verify that you have the correct stemcell version for the <%= vars.product_full %> tile:
 
 1. Click the **Stemcell** tab.
 
@@ -242,10 +242,10 @@ a message similar to the following appears:
 
 1. Click **Save**.
 
-1. Return to the Ops Manager Installation Dashboard.
+1. Return to the <%= vars.ops_manager %> Installation Dashboard.
 
-1. If you are using Ops Manager v2.3 or later, click **Review Pending Changes**.
-For more information about this Ops Manager page, see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
+1. If you are using <%= vars.ops_manager %> v2.3 or later, click **Review Pending Changes**.
+For more information about this <%= vars.ops_manager %> page, see [Reviewing Pending Product Changes](https://docs.pivotal.io/pivotalcf/customizing/review-pending-changes.html).
 
 1. Click **Apply Changes** to install the <%= vars.product_short %> tile.
 
