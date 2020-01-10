@@ -18,6 +18,11 @@ To monitor the performance of <%= vars.product_short %> or to retrieve troublesh
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
 * Use the Pivotal App Metrics service.
   For more information, see [Pivotal App Metrics](https://docs.pivotal.io/app-metrics/index.html).
+* Use the Pivotal Metrics Registrar service. To use this service, you must install the plugin
+  and register the `event-alerts` app as a JSON metrics source. For instructions,
+  see [Install the Plugin](https:/_/docs.pivotal.io/platform/application-service/2-7/metric-registrar/using.html#install-plugin)
+  and [Register a Structured Log Format](https://docs.pivotal.io/platform/application-service/metric-registrar/using.html#register-log-format)
+  in _Using Metric Registrar_.
 * Use the Pivotal Metrics Forwarder service.
   The `event-alerts` app detects if you have an available instance of Pivotal Metrics Forwarder
   and transmits custom app metrics through Loggregator to the service.
