@@ -10,14 +10,14 @@ It explains how to set alert destinations as targets, and how to subscribe those
 An example workflow is included below these procedures: see [Example Workflow](#example-workflow-webhook).
 
 <%= vars.platform_name %> users with admin permissions can run event alert commands and subscribe to alerts.
-Admins can configure event alerts using the CF CLI.
+Admins can configure event alerts using the Cloud Foundry CLI.
 
 ##<a id='prerequisite'></a> Prerequisite
 
-You must install both the <%= vars.product_name %> tile and plugin as described in the following sections:
+You must install both the <%= vars.product_full %> tile and plugin as described in the following sections:
 
-* [Download and Install the <%= vars.product_name %> Tile](./installing.html#install)
-* [Install the <%= vars.product_name %> Plugin](./installing.html#plugin)
+* [Download and Install the <%= vars.product_short %> Tile](./installing.html#install)
+* [Install the <%= vars.product_short %> Plugin](./installing.html#plugin)
 
 
 ##<a id='targets'></a> Create Targets for Alerts
@@ -25,7 +25,7 @@ You must install both the <%= vars.product_name %> tile and plugin as described 
 Targets are destinations for alerts and are unique to each user.
 A target can be an email address, a Slack channel, or a webhook.
 
-To create an alert target, do the following:
+To create an alert target:
 
 1. Run the command:
 
@@ -35,16 +35,16 @@ To create an alert target, do the following:
     Where:<br>
     * `TARGET-NAME` is a unique name for this target
     * `TARGET-TYPE` is one of the following:
-      * email
-      * slack
-      * webhook
+      * Email
+      * Slack
+      * Webhook
     * `VALUE` is an appropriate value for the target type, for example, an email address
 
 Examples for using this command to create each of these targets appear below.
 
 ### <a id='email_targets'></a> Create Email Targets
 
-To create an email target, do the following:
+To create an email target:
 
 1. Run the command:
 
@@ -64,7 +64,7 @@ To create an email target, do the following:
 
 ### <a id='slack_targets'></a> Create Slack Targets
 
-To create a Slack target, do the following:
+To create a Slack target:
 
 1. Create an incoming Slack webhook using the instructions in the
 [Slack documentation](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack).<br><br>
@@ -95,18 +95,18 @@ You can also use webhook targets to log or store alerts for auditing purposes.
 ####<a name='formats'></a> About Webhook Request Formats
 
 Webhook requests are not a standardized format. This means that the request payload
-from <%= vars.product_name %> must be changed to a format compatible with the webhook receiver.
-For example, for PagerDuty, the JSON request payload from <%= vars.product_name %> must be changed to
+from <%= vars.product_short %> must be changed to a format compatible with the webhook receiver.
+For example, for PagerDuty, the JSON request payload from <%= vars.product_short %> must be changed to
 the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
 see the [PagerDuty documentation](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview).
 
 The format change can be done through a web server proxy. The proxy receives the webhook request
-from <%= vars.product_name %>, transforms the request payload to the new format, and forwards the request
+from <%= vars.product_short %>, transforms the request payload to the new format, and forwards the request
 to the end receiver, for example, PagerDuty.
 
 #### Procedure
 
-To create a webhook target, do the following:
+To create a webhook target:
 
 1. Run the command:
 
@@ -121,7 +121,7 @@ To create a webhook target, do the following:
   <pre class="terminal">$ cf eva-create-target my-webhook webhook https<span>:</span>//example.com/pcf-events/foundation-prod</pre>
 
     This creates a target named `my-webhook`.
-    <%= vars.product_name %> posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
+    <%= vars.product_short %> posts a JSON webhook payload to `https://example.com/pcf-events/foundation-prod`
     in the following format:
 
     ```
@@ -144,7 +144,7 @@ To create a webhook target, do the following:
       <li> <code>healthwatch</code> is the alert publisher.</li>
       <li> <code>system.cpu.user</code> is the alert topic.</li>
       <li> The <code>metadata</code> keys shown, <code>level</code> <code>foundation</code> and <code>job</code>,
-           represent what the publisher sends to <%= vars.product_name %>
+           represent what the publisher sends to <%= vars.product_short %>
            and can be different for each alert topic.</li>
     </ul>
 
@@ -156,7 +156,7 @@ A topic is an event that is relevant to your system.
 you <strong>must</strong> have Pivotal Healthwatch v1.3 or later installed.
 </p>
 
-To subscribe a target to one or more alert topics, do the following:
+To subscribe a target to one or more alert topics:
 
 1. To see a list of available topics, run the <code>cf eva-topics</code> command:
   <pre class="terminal">
@@ -202,7 +202,7 @@ To subscribe a target to one or more alert topics, do the following:
 
 ##<a id='unsubscribe_topics'></a>Unsubscribe from Alert Topics
 
-To unsubscribe a target from alert topics, do one of the following:
+To unsubscribe a target from alert topics:
 
 * Unsubscribe a target from one or more topics from a publisher by running the following command:
 
@@ -210,19 +210,19 @@ To unsubscribe a target from alert topics, do one of the following:
     cf eva-unsubscribe TARGET-NAME PUBLISHER --topics TOPIC1,TOPIC2,...
     ```
     <br>
-    For example, to unsubscribe the target `user-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run the following command:
+    For example, to unsubscribe the target `user-email` from the `system.cpu.user` topic from the publisher `healthwatch`, run:
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --topics system.cpu.user</pre>
 
     <p class="note"><strong>Note:</strong> If you subscribe to <code>all</code> topics from a publisher, you can unsubscribe from
-    a single topic from that publisher using the above command. If you want to resubscribe to the topic, run <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>
+    a single topic from that publisher using the above command. To resubscribe to the topic, run <code>cf eva-subscribe TAEGET-NAME PUBLISHER --topics TOPIC1</code>.</p>
 * Unsubscribe a target from all topics from a publisher by running the following command:
 
     ```
     cf eva-unsubscribe TARGET-NAME PUBLISHER --all
     ```
     <br>
-    For example, to unsubscribe the target `user-email` from all topics from the publisher `healthwatch`, run the following command:
+    For example, to unsubscribe the target `user-email` from all topics from the publisher `healthwatch`, run:
 
     <pre class="terminal">$ cf eva-unsubscribe user-email healthwatch --all</pre>
 
@@ -259,9 +259,9 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 5. Verify a webhook message was posted to the webhook-ops
 URL. In this example, that is `http://example.com/healthwatch-events/foundation-prod`.
 
-##<a id='command_help'></a> <%= vars.product_name %> Plugin Commands
+##<a id='command_help'></a> <%= vars.product_short %> Plugin Commands
 
-Use the following <%= vars.product_name %> plugin commands to perform various tasks related to event alerts.
+Use the following <%= vars.product_short %> plugin commands to perform various tasks related to event alerts.
 
 <table>
   <tr>
@@ -271,7 +271,7 @@ Use the following <%= vars.product_name %> plugin commands to perform various ta
   <tr>
     <td><strong>eva-api</strong></td>
     <td>
-    Displays the endpoint and version of the <%= vars.product_name %> API server.
+    Displays the endpoint and version of the <%= vars.product_short %> API server.
     </td>
   </tr>
   <tr>
@@ -298,7 +298,7 @@ Use the following <%= vars.product_name %> plugin commands to perform various ta
     Publishes a sample event to all subscribers of the specified topic.
     To issue this command, you must have the <code>notifications.write</code> UAA scope.
     For information about these UAA privileges,
-    see <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Scopes</a>.
+    see the <a href="https://docs.cloudfoundry.org/concepts/architecture/uaa.html#scopes">Cloud Foundry documentation</a>.
     </td>
   </tr>
   <tr>
@@ -345,7 +345,8 @@ Use the following <%= vars.product_name %> plugin commands to perform various ta
   </tr>
 </table>
 
-You can also use commands to get help directly in the terminal window while working with the <%= vars.product_name %> plugin.
+You can also use commands to get help directly on the command line while working with the
+<%= vars.product_short %> plugin.
 
 * To list all event alert commands:
 
