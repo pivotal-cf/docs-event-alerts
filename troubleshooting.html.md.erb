@@ -32,7 +32,8 @@ To monitor the performance of <%= vars.product_short %> or to retrieve troublesh
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
 
-     <p class="note"><strong>Note:</strong> If you are on <%= vars.app_runtime_full %> v2.5 and later,
+     <p class="note"><strong>Note:</strong> If you use <%= vars.product_short %> v1.2.9 and earlier
+       on <%= vars.app_runtime_full %> v2.5 and later,
        App Metrics and Metric Forwarder fail to emit metrics.</p>
 
 ##<a id="scale"></a> Scale <%= vars.product_short %>
@@ -104,7 +105,7 @@ To solve this issue:
 
 #### Symptom
 
-When upgrading from MySQL for Pivotal Platform v2.4 to v2.5, all service bindings must be changed from
+When upgrading from MySQL for Pivotal Cloud Foundry v2.4 to v2.5, all service bindings must be changed from
 IP address based bindings to hostname based bindings.
 <%= vars.product_short %> sometimes fails to release IP address bindings after following the procedure in
 [Deprecated Service Bindings Found (Upgrade Error)](https://docs.pivotal.io/p-mysql/2-5/troubleshoot.html#deprecated-service-bindings).
