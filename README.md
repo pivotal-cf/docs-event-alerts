@@ -1,8 +1,8 @@
-## <%= vars.product_name %>
+## Pivotal Event Alerts
 
-This repo contains the documentation for <%= vars.product_name %>.
+This repo contains the documentation for Pivotal Event Alerts.
 
-**IMPORTANT**: Use PRs to contribute new content or make fixes to this <%= vars.product_name %> documentation.
+**IMPORTANT**: Use PRs to contribute new content or make fixes to this Pivotal Event Alerts documentation.
 
 The contents of this repo are currently published at [docs-pcf-staging.cfapps.io/event-alerts/](https://docs-pcf-staging.cfapps.io/event-alerts/).
 
@@ -10,7 +10,7 @@ The book file that publishes this content is at [https://github.com/pivotal-cf/d
 
 ## About product name
 
-The name of this product is **<%= vars.product_name %>**. The plugin is the **<%= vars.product_name %> plugin**, which users can install from Pivnet.
+The name of this product is **Pivotal Event Alerts**. The plugin is the **Pivotal Event Alerts plugin**, which users can install from Pivnet.
 
 When you are referring generically to an alert as a concept (rather than referring to the actual product), use the term "alerts" consistently.
 
