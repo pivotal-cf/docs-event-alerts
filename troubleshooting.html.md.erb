@@ -65,35 +65,45 @@ This section provides information about how to troubleshooting specific errors o
 
         id: 'errand-fails',
         description: 'Deploy Event Alerts Errand Fails',
-        symptom:<<~DESC,
+        symptom: 'When you <strong>Apply Changes</strong>, you see in the ' +  vars.ops_manager_full +
+        ' installation pane that the <strong>Deploy Event Alerts</strong>
+        errand fails with the following error:
 
-          When you **Apply Changes**, you see in the Ops Manager installation pane that the **Deploy Event Alerts** errand fails with the following error:
-
-          <pre class="terminal">
-          You do not have the SUPER privilege and
-          binary logging is enabled (you *might* want to use the less safe
-          log_bin_trust_function_creators variable)
-          </pre>
-          DESC
+          <pre class="terminal">You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)</pre>',
 
         cause:<<~DESC,
 
-          This problem happens when you do not have SUPER privileges and binary logging is enabled. If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
-          For information about the above error message,
-          see [Stored Program Binary Logging](https://dev.mysql.com/doc/refman/en/stored-programs-logging.html)
+          This problem happens when you do not have SUPER privileges and binary logging is enabled.
+          If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
+          For information about the above error message,<br><br>
+          see <a href="https://dev.mysql.com/doc/refman/en/stored-programs-logging.html">Stored Program Binary Logging</a>
           in the open source MySQL documentation.
           DESC
 
-        solution:<<~DESC,
-
-        To solve this issue:
-
-          1. Drop the Event Alerts database and re-create it. For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
-          2. Do one of the following:
-             * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
-             * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log&#95;bin&#95;trust&#95;function&#95;creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
-          3. In Ops Manager, **Apply Changes** with the **Deploy Event Alerts** errand checked.
-          DESC
-
-
+        solution:'To solve this issue: <br>
+          <ol>
+            <li>Drop the Event Alerts database and re-create it. For information about dropping a database,
+            see the
+            <a href="https://dev.mysql.com/doc/refman/en/drop-database.html">open source MySQL documentation</a>.
+          </li>
+          <li>
+             Do one of the following:
+             <ul>
+               <li> In the database, disable binary logging.
+                 For information,
+                 see the
+                 <a href="https://dev.mysql.com/doc/refman/en/binary-log.html">open source MySQL documentation</a>
+               </li>
+               <li>
+                 In the database, set <code>log_bin_trust_function_creators</code> to  <code>1</code>.
+                 For information,
+                 see the
+                 <a href="https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators"> open
+                   source MySQL documentation</a>.
+               </li>
+             </ul>
+          </li>
+          <li>In ' + vars.ops_manager + ', <strong>Apply Changes</strong>
+            with the <strong>Deploy Event Alerts</strong> errand checked.</li>
+          </ol>'
   } %>
