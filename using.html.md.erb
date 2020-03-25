@@ -96,8 +96,8 @@ You can also use webhook targets to log or store alerts for auditing purposes.
 
 Webhook requests are not a standardized format. This means that the request payload
 from <%= vars.product_short %> must be changed to a format compatible with the webhook receiver.
-For example, for PagerDuty, the JSON request payload from <%= vars.product_short %> must be changed to
-the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
+For example, for PagerDuty, the JSON request payload from <%= vars.product_short %> must be changed
+to the format required for PagerDuty webhooks. For information about PagerDuty webhook payloads,
 see the [PagerDuty documentation](https://v2.developer.pagerduty.com/docs/webhooks-v2-overview).
 
 The format change can be done through a web server proxy. The proxy receives the webhook request
@@ -237,7 +237,7 @@ You then subsribe this target to all alert topics from the publisher `healthwatc
 
 2. To verify that the target is created correctly, run `cf eva-targets`.
 
-3. Subscribe the `webhook-ops` target to all healthwatch topics:
+3. Subscribe the `webhook-ops` target to all Healthwatch topics:
 
 	<pre class="terminal">
 	$ cf eva-subscribe webhook-ops healthwatch --all
