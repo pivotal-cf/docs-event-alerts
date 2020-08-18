@@ -28,15 +28,6 @@ Make changes or PRs to the correct branch:
 
 
 Other branches will be created for future versions.
-For example, when work began on v1.2.x, we did the following:
-
-1. Create a v1.1 branch from master.
-2. Update the config.yml in the master branch of https://github.com/pivotal-cf/docs-book-event-alerts
-to publish the v1.1 branch. 
-3. Develop content for v1.2.x on the master branch.
-4. Create an edge branch in https://github.com/pivotal-cf/docs-book-event-alerts to publish staging.
-
-The above info about branches is true as of July 18, 2018.
 
 ## First draft info 
 
