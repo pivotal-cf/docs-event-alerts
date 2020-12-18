@@ -69,7 +69,77 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information about how to troubleshoot specific errors.
 
-###<a id="errand"></a> Deploy <%= vars.product_short %> Errand Fails
+###<a id="errand-binary-logging"></a> Deploy <%= vars.product_short %> Errand Fails Due to Communications Link Failure
+
+This problem happens when you have VMware Tanzu™ SQL with MySQL for VMs (Tanzu SQL for VMs) v2.10 installed
+and **TLS Options** is set to any value other than **Not Configured**
+in the **Security** configuration pane.
+If you do not resolve this issue, <%= vars.product_short %> is not deployed.
+
+#### Symptom
+
+When you **Apply Changes**, you see in the <%= vars.ops_manager_full %> installation pane that
+the **Deploy <%= vars.product_short %>** errand fails with an error similar to the following example:
+
+<pre class="terminal">
+ERROR:
+Unable to obtain connection from database (jdbc://example.com) for user 'migrations_user': Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08S01
+Error Code : 0
+Message    : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+</pre>
+
+#### Explanation
+
+In Tanzu SQL for VMs v2.10, MySQL requires connections use TLS v1.2 for all TLS connections
+even when the **Accept only TLS 1.2 connections** checkbox in the **Security** configuration pane
+of Tanzu SQL for VMs tile is disabled.
+When the **Deploy <%= vars.product_short %> Errand** is running,
+the errand does not connect to the database using TLS v1.2 when attempting to migrate the database.
+This causes the errand to fail.
+
+#### Solution
+
+To solve this issue:
+
+1. Export the GUID of the `event-alerts` space by running:
+
+    ```
+    export SPACE_GUID=$(cf space event-alerts --guid)
+    ```
+
+1. To find the Tanzu SQL for VMs service instance GUID assigned by BOSH, run:
+
+    ```
+    cf curl "/v3/service_instances?names=pcf-event-alerts-db&space_guids=${SPACE_GUID}"
+    ```
+
+1. Record the GUID from the `resources[0].guid` property in the JSON output of the command you ran in the previous step.
+1. To retrieve the list of VMs in your Tanzu SQL for VMs service instance, run:
+
+    ```
+    bosh -d service-instance_GUID vms
+    ```
+    Where `GUID` is the GUID you recorded in the previous step.
+
+1. For each `mysql` VM:
+    1. Run `bosh -d service-instance_GUID ssh MYSQL-INSTANCE-NAME`
+
+        Where:
+        * `GUID` is the GUID you recorded previously.
+        * `MYSQL-INSTANCE-NAME` is one of the MySQL Instance names from the previous step.
+    1. Run `sudo -i` to switch to the root user.
+    1. Open the `/var/vcap/jobs/mysql/config/my.cnf` file in a text editor.
+    1. Delete the line: `tls_version = TLSv1.2`.
+    1. Restart the MySQL process: `monit restart mysql`.
+1. Re-run the **Deploy <%= vars.product_short %> Errand**.
+
+###<a id="errand-binary-logging"></a> Deploy <%= vars.product_short %> Errand Fails Due to Binary Logging
 
 This problem happens when you do not have `SUPER` privileges and binary logging is enabled.
 If you do not resolve this issue, <%= vars.product_short %> is not deployed.
