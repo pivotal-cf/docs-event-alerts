@@ -69,7 +69,7 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information about how to troubleshoot specific errors.
 
-###<a id="errand-binary-logging"></a> Deploy <%= vars.product_short %> Errand Fails Due to Communications Link Failure
+###<a id="errand-communication-failure"></a> Deploy <%= vars.product_short %> Errand Fails Due to Communications Link Failure
 
 This issue occurs when you have VMware Tanzu™ SQL with MySQL for VMs (Tanzu SQL for VMs) v2.10 installed
 and **TLS Options** is set to any value other than **Not Configured**
@@ -119,38 +119,47 @@ To solve this issue:
     cf curl "/v3/service_instances?names=pcf-event-alerts-db&space_guids=${SPACE_GUID}"
     ```
 
-1. Record the GUID from the `resources[0].guid` property in the JSON output of the command you ran in the previous step.
+2. Record the GUID from the `resources[0].guid` property in the JSON output of the command
+   in the step above.
 
 1. To retrieve a list of the VMs in your Tanzu SQL for VMs service instance, run:
 
     ```
     bosh -d service-instance_GUID vms
     ```
-    Where `GUID` is the GUID of your Tanzu SQL for VMs service instance that you recorded in the previous step.
+    Where `GUID` is the GUID of your Tanzu SQL for VMs service instance that you recorded
+    in the step above.
 
 1. For each `mysql` VM:
-    1. Run:
 
-	```
-	bosh -d service-instance_GUID ssh MYSQL-INSTANCE-NAME
-	```
+     1. Run:
+
+        ```
+        bosh -d service-instance_GUID ssh MYSQL-INSTANCE-NAME
+        ```
+
         Where:
         * `GUID` is the GUID of your Tanzu SQL for VMs service instance.
-        * `MYSQL-INSTANCE-NAME` is one of the MySQL instance names from the list of VMs you retrieved in the previous step.
-    1. Switch to the root user profile in your terminal by running:
+        * `MYSQL-INSTANCE-NAME` is one of the MySQL instance names from the list of VMs
+          that you retrieved in the step above.
 
-	```
-	sudo -i
-	```
-    1. Open the `/var/vcap/jobs/mysql/config/my.cnf` file in a text editor.
-    1. Delete the line containing `tls_version = TLSv1.2`.
-    1. Restart the VM by running:
+     1. Switch to the root user profile in your terminal by running:
 
-	```
-	monit restart mysql
-	```
+        ```
+        sudo -i
+        ```
 
-1. After you have restarted each MySQL VM, re-run the **Deploy <%= vars.product_short %> Errand**.
+     1. Open the `/var/vcap/jobs/mysql/config/my.cnf` file in a text editor.
+
+     1. Delete the line containing `tls_version = TLSv1.2`.
+
+     1. Restart the VM by running:
+
+        ```
+        monit restart mysql
+        ```
+
+1. After you have restarted each MySQL VM, rerun the **Deploy <%= vars.product_short %> Errand**.
 
 ###<a id="errand-binary-logging"></a> Deploy <%= vars.product_short %> Errand Fails Due to Binary Logging
 
