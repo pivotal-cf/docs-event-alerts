@@ -19,7 +19,7 @@ You must have the following to install <%= vars.product_short %>:
   + If binary logging is enabled, the user must have `SUPER` privileges or the global variable `log_bin_trust_function_creators` must be set to `1`.
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the <%= vars.product_short %> tile
-+ Updated and properly configured any BOSH add-ons used in your <%= vars.platform_name %> deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
++ Updated and properly configured any BOSH add-ons used in your <%= vars.app_runtime_abbr %> deployment to support Xenial stemcells. The following add-on versions support the Xenial stemcell:
   + ClamAV Add-on for PCF v1.2.22 and later.
   For information about how to update this add-on, see [Updating ClamAV Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-antivirus/1-4/updating-for-xenial.html).
   + File Integrity Monitoring Add-on for PCF v1.4.28 and later. For information about how to update this add-on, see [Updating <%= vars.product_short %> Add-on for PCF to Run with Xenial Stemcells](https://docs.pivotal.io/addon-fim/updating-for-xenial.html).
@@ -246,7 +246,8 @@ a message similar to the following appears:
       1. Download the appropriate stemcell version targeted for your IaaS.
       1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
       <p class="note"><strong>Note:</strong> <%= vars.product_full %> v1.2.3 and later require a Xenial stemcell.
-        To download a Xenial stemcell from <%= vars.product_network %> see <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial/">Stemcells for <%= vars.platform_name %> (Ubuntu Xenial)</a>.</p>
+        To download a Xenial stemcell from <%= vars.product_network %> see
+        <a href="https://network.pivotal.io/products/stemcells-ubuntu-xenial/">Pivotal Stemcells (Ubuntu Xenial)</a>.</p>
 
 1. Click **Save**.
 
