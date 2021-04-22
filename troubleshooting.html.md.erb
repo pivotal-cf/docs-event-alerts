@@ -16,7 +16,6 @@ To monitor the performance of <%= vars.product_short %> or to retrieve troublesh
 
 * Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
-<<<<<<< HEAD
 * Use the App Metrics service.
   For more information, see [App Metrics](https://docs.pivotal.io/app-metrics/index.html).
 * Use the Metrics Registrar service. To use this service, you must install the plugin
@@ -30,16 +29,6 @@ To monitor the performance of <%= vars.product_short %> or to retrieve troublesh
   For more information, see [Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
   <p class="note"><strong>Note:</strong> When Metrics Forwarder is not installed,
   <%= vars.product_short %> produces an error.
-=======
-* Use the App Metrics service.
-  For more information, see [App Metrics](https://docs.pivotal.io/app-metrics/index.html).
-* Use the Metrics Forwarder service.
-  The `event-alerts` app detects if you have an available instance of Metrics Forwarder
-  and transmits custom app metrics through Loggregator to the service.
-  For more information, see [Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
-  <p class="note"><strong>Note:</strong> When Metrics Forwarder is not installed,
-     <%= vars.product_short %> produces an error.
->>>>>>> 2f12c17... Rebrand Event Alerts [#174088735]
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
 
@@ -78,7 +67,6 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 ##<a id="t-shoot-errors"></a> Troubleshooting Errors
 
-<<<<<<< HEAD
 This section provides information about how to troubleshoot specific errors.
 
 ###<a id="errand-communication-failure"></a> Deploy <%= vars.product_short %> Errand Fails Due to Communications Link Failure
@@ -231,54 +219,3 @@ Re-create the service key by running:
 ```
 cf create-service-key pcf-event-alerts-db migrations_service_key -c '{ "username": "migrations_user" }'
 ```
-=======
-This section provides information about how to troubleshooting specific errors or error messages.
-
-
-  <%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
-
-        id: 'errand-fails',
-        description: 'Deploy Event Alerts Errand Fails',
-        symptom: 'When you <strong>Apply Changes</strong>, you see in the ' +  vars.ops_manager +
-        ' installation pane that the <strong>Deploy Event Alerts</strong>
-        errand fails with the following error:
-
-          <pre class="terminal">You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)</pre>',
-
-        cause:<<~DESC,
-
-          This problem happens when you do not have SUPER privileges and binary logging is enabled.
-          If you do not resolve this issue, Event Alerts is not deployed. <br>
-          For information about the above error message,<br><br>
-          see <a href="https://dev.mysql.com/doc/refman/en/stored-programs-logging.html">Stored Program Binary Logging</a>
-          in the open source MySQL documentation.
-          DESC
-
-        solution:'To solve this issue: <br>
-          <ol>
-            <li>Drop the Event Alerts database and re-create it. For information about dropping a database,
-            see the
-            <a href="https://dev.mysql.com/doc/refman/en/drop-database.html">open source MySQL documentation</a>.
-          </li>
-          <li>
-             Do one of the following:
-             <ul>
-               <li> In the database, disable binary logging.
-                 For information,
-                 see the
-                 <a href="https://dev.mysql.com/doc/refman/en/binary-log.html">open source MySQL documentation</a>
-               </li>
-               <li>
-                 In the database, set <code>log_bin_trust_function_creators</code> to  <code>1</code>.
-                 For information,
-                 see the
-                 <a href="https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators"> open
-                   source MySQL documentation</a>.
-               </li>
-             </ul>
-          </li>
-          <li>In ' + vars.ops_manager + ', <strong>Apply Changes</strong>
-            with the <strong>Deploy Event Alerts</strong> errand checked.</li>
-          </ol>'
-  } %>
->>>>>>> 2f12c17... Rebrand Event Alerts [#174088735]
