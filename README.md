@@ -1,8 +1,8 @@
-## Pivotal Event Alerts
+## Event Alerts
 
-This repo contains the documentation for Pivotal Event Alerts.
+This repo contains the documentation for Event Alerts.
 
-**IMPORTANT**: Use PRs to contribute new content or make fixes to this Pivotal Event Alerts documentation.
+**IMPORTANT**: Use PRs to contribute new content or make fixes to this Event Alerts documentation.
 
 The contents of this repo are currently published at [docs-pcf-staging.cfapps.io/event-alerts/](https://docs-pcf-staging.cfapps.io/event-alerts/).
 
@@ -10,11 +10,11 @@ The book file that publishes this content is at [https://github.com/pivotal-cf/d
 
 ## About product name
 
-The name of this product is **Pivotal Event Alerts**. The plugin is the **Pivotal Event Alerts plugin**, which users can install from Pivnet.
+The name of this product is **Event Alerts**. The plugin is the **Event Alerts plugin**, which users can install from Pivnet.
 
 When you are referring generically to an alert as a concept (rather than referring to the actual product), use the term "alerts" consistently.
 
-## About branches 
+## About branches
 
 Make changes or PRs to the correct branch:
 
@@ -24,12 +24,12 @@ Make changes or PRs to the correct branch:
 | 1.2         | v1.2.x GA release |
 | 1.1         | v1.1.x (this was a closed beta)|
 
-**Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to. 
+**Note**: Provide instructions in your PRs to indicate which branches you want Docs to apply your commits to.
 
 
 Other branches will be created for future versions.
 
-## First draft info 
+## First draft info
 
 Some questions tech writers had for PMs during the first documentation phase are summarized in [this google doc](https://docs.google.com/document/d/1aNMSYMR6rs1_gunXoBlC3qq_Uq97mMXWBiJUydGCDHw/edit?usp=sharing).
 

@@ -1,5 +1,5 @@
 ---
-title: Monitoring and Troubleshooting Pivotal Event Alerts
+title: Monitoring and Troubleshooting Event Alerts
 owner: Event Alerts
 ---
 
@@ -16,13 +16,13 @@ To monitor the performance of <%= vars.product_short %> or to retrieve troublesh
 
 * Use the Cloud Foundry Command Line Interface (cf CLI) to obtain logs for the `event-alerts` app.
   For more information, see [Application Logging in Cloud Foundry](https://docs.pivotal.io/pivotalcf/devguide/deploy-apps/streaming-logs.html).
-* Use the Pivotal App Metrics service.
-  For more information, see [Pivotal App Metrics](https://docs.pivotal.io/app-metrics/index.html).
-* Use the Pivotal Metrics Forwarder service.
-  The `event-alerts` app detects if you have an available instance of Pivotal Metrics Forwarder
+* Use the App Metrics service.
+  For more information, see [App Metrics](https://docs.pivotal.io/app-metrics/index.html).
+* Use the Metrics Forwarder service.
+  The `event-alerts` app detects if you have an available instance of Metrics Forwarder
   and transmits custom app metrics through Loggregator to the service.
-  For more information, see [Pivotal Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
-  <p class="note"><strong>Note:</strong> When Pivotal Metrics Forwarder is not installed,
+  For more information, see [Metrics Forwarder](https://docs.pivotal.io/metrics-forwarder/).
+  <p class="note"><strong>Note:</strong> When Metrics Forwarder is not installed,
      <%= vars.product_short %> produces an error.
      This indicates that no custom metrics are being published to the Firehose.
      It does not indicate a problem with the system.</p>
@@ -41,7 +41,7 @@ To scale <%= vars.product_short %>:
 	</pre>
 1. When prompted, select the `system` org and the `event-alerts` space.
 1. Scale up the number of instances of the `event-alerts` app.
-   Two instances should adequately handle most alerting workloads from Pivotal Healthwatch.
+   Two instances should adequately handle most alerting workloads from Healthwatch.
    For example:
 	<pre class="terminal">$ cf scale event-alerts -i 2</pre>
 	If you are running very large <%= vars.platform_name %> deployments with frequent threshold events,
@@ -74,7 +74,7 @@ This section provides information about how to troubleshooting specific errors o
         cause:<<~DESC,
 
           This problem happens when you do not have SUPER privileges and binary logging is enabled.
-          If you do not resolve this issue, Pivotal Event Alerts is not deployed. <br>
+          If you do not resolve this issue, Event Alerts is not deployed. <br>
           For information about the above error message,<br><br>
           see <a href="https://dev.mysql.com/doc/refman/en/stored-programs-logging.html">Stored Program Binary Logging</a>
           in the open source MySQL documentation.

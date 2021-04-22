@@ -1,5 +1,5 @@
 ---
-title: Pivotal Event Alerts
+title: Event Alerts
 owner: Event Alerts
 ---
 
@@ -19,7 +19,7 @@ You can use this service to subscribe to notification topics---notable events th
 Notification topics are monitored by publishers---<%= vars.platform_name %> components that emit events.
 You can send these notifications using email, Slack, or webhook integration.
 
-For example, you can subscribe to a topic from [Pivotal Healthwatch](http://docs.pivotal.io/pcf-healthwatch/1-2/index.html)
+For example, you can subscribe to a topic from [Healthwatch](http://docs.pivotal.io/pcf-healthwatch/index.html)
 that sends a notification when the memory use on a specific VM reaches a certain percentage.
 
 <%= vars.platform_name %> users with admin permissions can run event alert commands and subscribe to alerts.
@@ -33,8 +33,8 @@ Admins can configure event alerts using the Cloud Foundry Command Line Interface
 
 ## <a id='publishers'></a>Supported Publishers
 
-<%= vars.product_full %> v1.2.1 supports Pivotal Healthwatch as a publisher.
-For general information about Pivotal Healthwatch, see [Pivotal Healthwatch](https://docs.pivotal.io/pcf-healthwatch/).
+<%= vars.product_full %> v1.2.1 supports Healthwatch as a publisher.
+For general information about Healthwatch, see [Healthwatch](https://docs.pivotal.io/pcf-healthwatch/).
 
 ## <a id="snapshot"></a>Product Snapshot
 
@@ -60,12 +60,12 @@ The following table provides version and version-support information about <%= v
         <td>2.3, 2.4, 2.5, 2.6, and 2.7</td>
     </tr>
     <tr>
-        <td>Compatible Pivotal Healthwatch versions</td>
+        <td>Compatible Healthwatch versions</td>
         <td>1.4 and later</td>
     </tr>
     <tr>
         <td>MySQL</td>
-        <td>MySQL for Pivotal Platform v2 or MySQL 5.7 and later</td>
+        <td>VMware Tanzu SQL with MySQL for VMs v2.0 and later or MySQL 5.7 and later</td>
     </tr>
     <tr>
         <td>IaaS support</td>
