@@ -1,5 +1,5 @@
 ---
-title: Installing and Configuring Pivotal Event Alerts
+title: Installing and Configuring Event Alerts
 owner: Event Alerts
 ---
 
@@ -10,13 +10,13 @@ For information about how to use this product, see [Using <%= vars.product_full 
 
 ##<a id='prereqs'></a> Prerequisites
 
-<!-- If the MariaDB issue has not been fixed, add a note under the MySQL for Pivotal Platform or external MySQL credentials header about the issue. See 1.2 for example. -->
+<!-- If the MariaDB issue has not been fixed, add a note under the VMware Tanzu SQL with MySQL for VMs or external MySQL credentials header about the issue. See 1.2 for example. -->
 
 You must have the following to install <%= vars.product_short %>:
 
 + <%= vars.app_runtime_full %>  (<%= vars.app_runtime_abbr %>) v2.3.x or later
-+ MySQL for Pivotal Platform or credentials for an existing external MySQL database v5.7 or later.
-  + If you are using MySQL for Pivotal Platform, you must configure a single node service plan.
++ VMware Tanzu SQL with MySQL for VMs (Tanzu SQL for VMs) v2.0 and later or credentials for an existing external MySQL database v5.7 or later.
+  + If you are using Tanzu SQL for VMs, you must configure a single node service plan.
   + If binary logging is enabled, the user must have `SUPER` privileges or the global variable `log_bin_trust_function_creators` must be set to `1`.
 + If you want notifications sent to Slack channels, a Slack account
 + If you want notifications sent to email addresses, **Email Configuration** must be enabled and configured on the <%= vars.product_short %> tile
@@ -25,7 +25,7 @@ You must have the following to install <%= vars.product_short %>:
 
 Follow the procedures below to download and install the <%= vars.product_short %> tile:
 
-1. Download the product file from [Pivotal Network](https://network.pivotal.io/products/p-event-alerts/).
+1. Download the product file from [<%= vars.product_network %>](https://network.pivotal.io/products/p-event-alerts/).
 
 1. Navigate to the <%= vars.ops_manager_full %> Installation Dashboard and click **Import a Product** to upload the product file.
 
@@ -86,15 +86,15 @@ can scale down to one instance.
 
 ### <a id="mysql"></a> Configure MySQL Settings
 
-<%= vars.product_short %> can either use the MySQL for Pivotal Platform service or an external MySQL database.
-To use the MySQL for Pivotal Platform service, you must have MySQL for Pivotal Platform installed.
+<%= vars.product_short %> can either use the Tanzu SQL for VMs service or an external MySQL database.
+To use the Tanzu SQL for VMs service, you must have the tile installed.
 
 Follow the steps below to configure MySQL settings.
 
-#### Use the MySQL for Pivotal Platform Service
+#### Use the Tanzu SQL for VMs Service
 
 
-If you have MySQL for Pivotal Platform installed and want to use the service:
+If you have Tanzu SQL for VMs installed and want to use the service:
 
 1. Click **MySQL Settings**.
 
@@ -232,7 +232,7 @@ To verify that you have the correct stemcell version for the <%= vars.product_fu
 a message similar to the following appears:
     ![Stemcell Section](images/stemcell-library-xenial.png)<%# Images require alt text that describes the image in detail. %>
     If you need to upload a stemcell:
-      1. Navigate to [Pivotal Network](https://network.pivotal.io/) and click **Stemcells**.
+      1. Navigate to [<%= vars.product_network %>](https://network.pivotal.io/) and click **Stemcells**.
       1. Download the appropriate stemcell version targeted for your IaaS.
       1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
 
@@ -248,8 +248,8 @@ For more information about this <%= vars.ops_manager %> page, see [Reviewing Pen
 ##<a id="plugin"></a> Install the <%= vars.product_short %> Plugin
 
 You must install the <%= vars.product_short %> plugin to configure notifications.
-You can use this cf CLI plugin to subscribe to topics published by Pivotal Healthwatch.
-For general information about Pivotal Healthwatch, see [Pivotal Healthwatch](http://docs.pivotal.io/pcf-healthwatch/index.html).
+You can use this cf CLI plugin to subscribe to topics published by Healthwatch.
+For general information about Healthwatch, see [Healthwatch](http://docs.pivotal.io/pcf-healthwatch/index.html).
 
 ###<a id='installing'></a> Install the Plugin
 
@@ -257,7 +257,7 @@ The plugin is currently only available to admins.
 
 To install the plugin:
 
-1. Download one of the following files from Pivotal Network, depending on your operating system (OS).
+1. Download one of the following files from <%= vars.product_network %>, depending on your operating system (OS).
     * `pcf-event-alerts-cli-plugin-OS-binary`
     * `pcf-event-alerts-cli-plugin-OS-exe`
 
