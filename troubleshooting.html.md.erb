@@ -9,7 +9,7 @@ This topic describes how to monitor and troubleshoot <%= vars.product_full %>.
 
 ##<a id='monitor'></a> Monitor <%= vars.product_short %>
 
-<%= vars.product_short %> is deployed as an app in <%= vars.platform_name %>.
+<%= vars.product_short %> is deployed as an app in <%= vars.app_runtime_full %> (<%= vars.app_runtime_abbr %>).
 By default, this app is called `event-alerts` and is deployed in the `event-alerts` space within the `system` org.
 
 To monitor the performance of <%= vars.product_short %> or to retrieve troubleshooting information:
@@ -42,7 +42,7 @@ You might need to scale <%= vars.product_short %> to improve performance.
 
 To scale <%= vars.product_short %>:
 
-1. Use the cf CLI to log in to your <%= vars.platform_name %> deployment as an admin. For example:
+1. Use the cf CLI to log in to your <%= vars.app_runtime_abbr %> deployment as an admin. For example:
 	<pre class="terminal">$ cf login
 	API endpoint: http<span>s:</span>//api.sys.cf-example.com
 	Email> admin
@@ -53,7 +53,7 @@ To scale <%= vars.product_short %>:
    Two instances should adequately handle most alerting workloads from Healthwatch.
    For example:
 	<pre class="terminal">$ cf scale event-alerts -i 2</pre>
-	If you are running very large <%= vars.platform_name %> deployments with frequent threshold events,
+	If you are running very large <%= vars.app_runtime_abbr %> deployments with frequent threshold events,
         you might need to increase the instance count above two.
 
 ##<a id="reduce-notifications"></a> Reduce Notifications
