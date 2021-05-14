@@ -7,6 +7,29 @@ owner: Event Alerts
 
 <%= partial vars.path_to_partials + "/upgrade-planner" %>
 
+
+##<a id="1-2-12"></a> v1.2.12
+
+**Release Date: May 14, 2021**
+
+### <a id="fixed1212"></a> Resolved Issues
+
+This release has the following fix:
+
+* **The Deploy Event Alerts errand runs successfully for all TLS settings:**
+  Event Alerts no longer fails to connect to its provisioned backing database
+  when **TLS Options** is set to any value other than **Not Configured**
+  in the **Security** pane of the Tanzu SQL for VMs v2.10 tile.
+
+###<a id="known1212"></a> Known Issues
+
+This release has the following issues:
+
+<%= partial vars.path_to_partials + "/eva/deployfails-ki" %>
+<%= partial vars.path_to_partials + "/eva/azure-usernames-ki" %>
+<%= partial vars.path_to_partials + "/eva/mariadb-ki" %>
+<%= partial vars.path_to_partials + "/eva/mysql-ip-binding-ki" %>
+
 ##<a id="1-2-11"></a> v1.2.11
 
 **Release Date: December 7, 2020**
@@ -51,7 +74,7 @@ For instructions,
   and [Register a Structured Log Format](https://docs.pivotal.io/platform/application-service/metric-registrar/using.html#register-
   log-format) in _Using Metric Registrar_.
 
-### <a id="fixed1210"></a> Fixed Issues
+### <a id="fixed1210"></a> Resolved Issues
 
 This release fixes the following issue:
 
@@ -213,7 +236,7 @@ Change in this release:
      `cflinuxfs2` is used when <%= vars.product_short %> is installed on an environment that does not have `cflinuxfs3`,
       for example, a PCF v2.2 environment.
 
-### <a id="fixed125"></a> Fixed Issues
+### <a id="fixed125"></a> Resolved Issues
 
 This release fixes the following issues:
 
@@ -265,7 +288,7 @@ New features and changes in this release:
 You must manually download and import a new stemcell into the <%= vars.ops_mangaer %> Stemcell Library before deploying <%= vars.product_short %>.
 Any automation you have set up to update your <%= vars.product_short %> deployments using Trusty stemcells might break.</p>
 
-### <a id="fixed123"></a> Fixed Issues
+### <a id="fixed123"></a> Resolved Issues
 
 This release fixes the following issue:
 
