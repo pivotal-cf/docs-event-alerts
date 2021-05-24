@@ -239,15 +239,13 @@ Follow the steps below to configure settings for <%= vars.product_short %> email
 To verify that you have the correct stemcell version for the <%= vars.product_full %> tile:
 
 1. From the <%= vars.ops_manager %> Installation Dashboard, click **Stemcell Library**.
+    ![Screenshot of the Stemcell Library. The second row contains the Event Alerts product.](images/stemcell-library-xenial.png)
 
 1. Verify the settings. If <%= vars.product_short %> cannot detect a stemcell TGZ file,
-a message similar to the following appears:
-    ![Screenshot of the Stemcell Library. The third row contains the Event Alerts product.
-     Under the Import Stemcell button for that row is the message "No compatible stemcell available".](images/stemcell-library-xenial.png)
-    If you need to upload a stemcell:
-      1. Navigate to [<%= vars.product_network %>](https://network.pivotal.io/) and click **Stemcells**.
-      1. Download the appropriate stemcell version targeted for your IaaS.
-      1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
+a message similar to "No compatible stemcell available" appears. To upload a stemcell, do the following:
+    1. Navigate to [<%= vars.product_network %>](https://network.pivotal.io/) and click **Stemcells**.
+    1. Download the appropriate stemcell version targeted for your IaaS.
+    1. Return to the **Stemcell** tab and click **Import Stemcell** to import the downloaded stemcell TGZ file.
 
 1. Click **Save**.
 
