@@ -60,50 +60,70 @@ For more information about unsubscribing from alerts and increasing threshold va
 
 This section provides information about how to troubleshooting specific errors or error messages.
 
-
-  <%= partial vars.path_to_partials + "/troubleshoot-template", locals: {
-
-        id: 'errand-fails',
-        description: 'Deploy Event Alerts Errand Fails',
-        symptom: 'When you <strong>Apply Changes</strong>, you see in the ' +  vars.ops_manager +
-        ' installation pane that the <strong>Deploy Event Alerts</strong>
-        errand fails with the following error:
-
-          <pre class="terminal">You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)</pre>',
-
-        cause:<<~DESC,
-
-          This problem happens when you do not have SUPER privileges and binary logging is enabled.
-          If you do not resolve this issue, Event Alerts is not deployed. <br>
-          For information about the above error message,<br><br>
-          see <a href="https://dev.mysql.com/doc/refman/en/stored-programs-logging.html">Stored Program Binary Logging</a>
-          in the open source MySQL documentation.
-          DESC
-
-        solution:'To solve this issue: <br>
-          <ol>
-            <li>Drop the Event Alerts database and re-create it. For information about dropping a database,
-            see the
-            <a href="https://dev.mysql.com/doc/refman/en/drop-database.html">open source MySQL documentation</a>.
-          </li>
-          <li>
-             Do one of the following:
-             <ul>
-               <li> In the database, disable binary logging.
-                 For information,
-                 see the
-                 <a href="https://dev.mysql.com/doc/refman/en/binary-log.html">open source MySQL documentation</a>
-               </li>
-               <li>
-                 In the database, set <code>log_bin_trust_function_creators</code> to  <code>1</code>.
-                 For information,
-                 see the
-                 <a href="https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators"> open
-                   source MySQL documentation</a>.
-               </li>
-             </ul>
-          </li>
-          <li>In ' + vars.ops_manager + ', <strong>Apply Changes</strong>
-            with the <strong>Deploy Event Alerts</strong> errand checked.</li>
-          </ol>'
-  } %>
+<a name="errand-fails"></a>
+<table class="nice">
+  <style>
+    main table {
+      table-layout: fixed;
+    }
+  </style>
+  <col width="20%">
+  <col width="80%">
+  <tr>
+  <th colspan="2" style="text-align: left;">
+    <br>
+    Deploy Event Alerts Errand Fails
+    <br><br>
+  </th>
+  </tr>
+  <tr>
+    <th>Symptom</th>
+    <td>
+      When you <strong>Apply Changes</strong>, you see in the <%=  vars.ops_manager %>
+      installation pane that the <strong>Deploy Event Alerts</strong> errand fails with the following error:
+      <pre class="terminal">You do not have the SUPER privilege and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)</pre>
+    </td>
+  </tr>
+  <tr>
+    <th>Cause</th>
+    <td>
+      This problem happens when you do not have SUPER privileges and binary logging is enabled.
+      If you do not resolve this issue, Event Alerts is not deployed. <br>
+      For information about the above error message,<br><br>
+      see <a href="https://dev.mysql.com/doc/refman/en/stored-programs-logging.html">Stored Program Binary Logging</a>
+      in the open source MySQL documentation.
+    </td>
+  </tr>
+  <tr>
+    <th style="vertical-align: top; padding-top: 1em;">Solution</th>
+    <td>
+      To solve this issue: <br>
+      <ol>
+        <li>
+          Drop the Event Alerts database and re-create it. For information about dropping a database, see the
+          <a href="https://dev.mysql.com/doc/refman/en/drop-database.html">open source MySQL documentation</a>.
+        </li>
+        <li>
+          Do one of the following:
+          <ul>
+            <li>
+              In the database, disable binary logging.
+              For information, see the
+              <a href="https://dev.mysql.com/doc/refman/en/binary-log.html">open source MySQL documentation</a>
+            </li>
+            <li>
+              In the database, set <code>log_bin_trust_function_creators</code> to  <code>1</code>.
+              For information, see the
+              <a href="https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators"> open
+              source MySQL documentation</a>.
+            </li>
+          </ul>
+        </li>
+        <li>
+          In <%= vars.ops_manager %>, <strong>Apply Changes</strong> with the
+          <strong>Deploy Event Alerts</strong> errand checked.
+        </li>
+      </ol>
+    </td>
+  </tr>
+</table>
