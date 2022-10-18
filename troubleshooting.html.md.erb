@@ -102,7 +102,7 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 
 In Tanzu SQL for VMs v2.10, MySQL requires TLS v1.2 for all TLS connections
 even when the **Accept only TLS 1.2 connections** checkbox in the **Security** pane
-of the Tanzu SQL for VMs tile is disabled.
+of the Tanzu SQL for VMs tile is not selected.
 When the **Deploy <%= vars.product_short %> Errand** runs,
 the errand does not connect to the database using TLS v1.2 when attempting to migrate the database.
 This causes the errand to fail.
@@ -194,7 +194,7 @@ To solve this issue:
   1. Drop the <%= vars.product_short %> database and re-create it.
   For information about dropping a database, see [DROP DATABASE Syntax](https://dev.mysql.com/doc/refman/en/drop-database.html) in the open source MySQL documentation.
   2. Do one of the following:
-     * In the database, disable binary logging. For information about disabling binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
+     * In the database, deactivate binary logging. For information about deactivating binary logging, see [The Binary Log](https://dev.mysql.com/doc/refman/en/binary-log.html) in the open source MySQL documentation.
      * In the database, set `log_bin_trust_function_creators` to `1`. For information about `log_bin_trust_function_creators`, see [log\_bin\_trust\_function\_creators](https://dev.mysql.com/doc/refman/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) in the open source MySQL documentation.
   3. In <%= vars.ops_manager %>, **Apply Changes** with the **Deploy <%= vars.product_short %>** errand checked.
 
