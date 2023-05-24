@@ -20,7 +20,7 @@ Make changes or PRs to the correct branch:
 
 | Branch name | Use for… |
 |-------------| ------|
-| master      | v1.3.x pre-release (out-of-date, see story: [178166468](https://www.pivotaltracker.com/story/show/178166468))|
+| main        | v1.3.x pre-release (out-of-date, see story: [178166468](https://www.pivotaltracker.com/story/show/178166468))|
 | 1.2         | v1.2.x GA release |
 | 1.1         | v1.1.x (this was a closed beta)|
 
